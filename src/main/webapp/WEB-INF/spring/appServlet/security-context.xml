@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="/login/loginForm" access="permitAll" /> 
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+		<security:form-login login-page="/login/loginForm" default-target-url="/" 
+								authentication-failure-url="/login/loginForm?error"
+								username-parameter="id" password-parameter="password" />
+		<security:logout logout-url="/logout" logout-success-url="/login/loginForm" />
+		<security:access-denied-handler error-page="/login/accessDenied"/>
+		<security:csrf disabled="true"/>
+	</security:http>
+	<!-- 
+		access= "permitAll" ( 누구나 접근 가능 )
+				"hasRole('ADMIN')" (ADMIN 권한을 가지고 있는 유저만 접근 가능)
+				"hasAnyRole('USER','ADMIN') (USER 또는 ADMIN 권한을 가지고 있는 유저는 접근 가능)
+	 -->
+	 
+	 <!-- 
+	 	login-page : 로그인 페이지 URL
+	 	default-target-url : 로그인 후 보여질 페이지
+	 	authentication-failure-url : 로그인 실패시 보여질 페이지
+	 	username-parameter : 아이디 입력 필드에 사용될 name
+	 	password-parameter : 비밀번호 입력 필드에 사용될 password
+	  -->
+	  
+	  <!-- 
+	  	logout-url : 로그아웃 페이지 URL
+	  	logout-success-url : 로그아웃에 성공하였을 때 보여질 페이지
+	   -->
+	<!-- provider -->
+	<!-- <security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="password" authorities="ROLE_USER" />
+				<security:user name="admin" password="password" authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager> -->
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service data-source-ref="dataSource"
+										role-prefix=""
+										users-by-username-query="SELECT username, password, enabled FROM users WHERE username = ?"
+										authorities-by-username-query="SELECT username, authority FROM authorities WHERE username = ?"
+			/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	
+</beans>
