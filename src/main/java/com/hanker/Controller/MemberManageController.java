@@ -1,10 +1,10 @@
 package com.hanker.Controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.jws.WebParam.Mode;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,5 +31,18 @@ public class MemberManageController {
 		System.out.println("list = " + list);
 		
 		return "admin/adminPage";
+	}
+	
+	@RequestMapping(value="/admin/memChck", method=RequestMethod.POST)
+	public String memberCheck(Model model ,HttpServletRequest req) throws Exception{
+		
+		String userId = req.getParameter("userId");
+
+		memberService.memGradeChg(userId);
+		memberService.memCheck(userId);
+		
+		model.addAttribute("sc", "sc");
+		
+		return "jsonView";
 	}
 }

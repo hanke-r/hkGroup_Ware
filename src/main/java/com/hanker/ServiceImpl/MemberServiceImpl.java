@@ -22,5 +22,15 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.memList(memberVO);
 	}
 
+	@Override
+	public void memCheck(String userId) throws Exception {
+		memberDAO.memCheck(userId);
+	}
+
+	@Override
+	public void memGradeChg(String userId) throws Exception {
+		memberDAO.memGradeChg(userId);
+	}
+
 
 }

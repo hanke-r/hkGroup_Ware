@@ -114,8 +114,8 @@ Released   : 20140330
 							<fmt:formatDate value="${memberVO.regdate }" pattern="yyyy년 MM월 dd일 EE요일" />
 						</td>
 						<td>
-							<button type="button" id="memOptChange" onclick="MANAGE.memOptionChange('${memberVO.username}');" class="btn btn-sm btn-primary">변경</button>
-							<button type="button" id="memExpire" class="btn btn-sm btn-danger">강퇴</button>
+							<button type="button" id="memOptChange" onclick="MANAGE.memOptionChange('${memberVO.username}');" class="btn btn-sm btn-primary">승인</button>
+							<button type="button" id="memExpire" onclick="MANAGE.memExpire('${memberVO.username}')" class="btn btn-sm btn-danger">강퇴</button>
 						</td>
 					</tr>
 				</c:forEach>

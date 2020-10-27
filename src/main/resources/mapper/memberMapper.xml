@@ -21,4 +21,26 @@
 		]]>
 	</select>
 	
+	<update id="memCheck" parameterType="String">
+		<![CDATA[
+			UPDATE
+				users
+			SET
+				enabled = 1
+			WHERE
+				username = #{userId}
+		]]>
+	</update>
+	<update id="memGradeChg" parameterType="String">
+		<![CDATA[
+			UPDATE
+				authorities
+			SET
+				authority = 'ROLE_USER'
+			WHERE
+				username = #{userId}
+		]]>
+	</update>
+	
+	
 </mapper>

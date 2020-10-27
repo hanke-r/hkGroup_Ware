@@ -9,4 +9,8 @@ public interface MemberService {
 
 	public List<MemberVO> memList(MemberVO memberVO) throws Exception;
 
+	public void memCheck(String userId) throws Exception;
+
+	public void memGradeChg(String userId) throws Exception;
+
 }

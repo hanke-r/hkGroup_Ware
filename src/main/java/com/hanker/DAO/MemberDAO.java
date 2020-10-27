@@ -26,5 +26,13 @@ public class MemberDAO {
 		return sql.selectList("memberMapper.memJoinList", null);
 	}
 
+	public void memCheck(String userId) throws Exception{
+		sql.update("memberMapper.memCheck", userId);
+	}
+
+	public void memGradeChg(String userId) throws Exception{
+		sql.update("memberMapper.memGradeChg", userId);
+	}
+
 	
 }
