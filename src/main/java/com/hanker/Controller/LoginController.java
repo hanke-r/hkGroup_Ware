@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanker.DTO.MemberVO;
 import com.hanker.Service.LoginService;
+import com.hanker.Util.SecurityUtil;
 
 @Controller
 public class LoginController {
@@ -30,25 +31,29 @@ public class LoginController {
 	}
 	@RequestMapping(value="/login/register", method=RequestMethod.GET)
 	public void getRegister() throws Exception{
-		System.out.println("회원가입 페이지로 이동합니다.");
 	}
 	
-	@RequestMapping(value="/login/register", method=RequestMethod.POST)
+	@RequestMapping(value="/login/ajaxRegister", method=RequestMethod.POST)
 	public String regiChck(Model model, HttpServletRequest req) throws Exception{
 		
 		MemberVO memberVO = new MemberVO();
 		memberVO.setUsername(req.getParameter("ID"));
-		memberVO.setPassword(req.getParameter("PASSWORD"));
+		memberVO.setPassword(req.getParameter("PW"));
 		memberVO.setEmail(req.getParameter("EMAIL"));
 		memberVO.setUname(req.getParameter("NAME"));
 		memberVO.setEnabled("0");
 		
 		String pwd = memberVO.getPassword();
 		
+		SecurityUtil sec = new SecurityUtil();
+		String encPwd = sec.encryptSHA256(pwd);
+		
+		memberVO.setPassword(encPwd);
+		
 		loginService.memRegister(memberVO);
 		loginService.memGradeInsert(memberVO);
 		
-		model.addAttribute("MODEL", memberVO);
+		model.addAttribute("SC", "SUCCESS");
 		
 		return "jsonView";
 	}

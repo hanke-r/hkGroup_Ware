@@ -9,21 +9,25 @@ var REGI = {
 	
 	memRegi:function(){
 		
-		var formData = new FormData();
-		formData.append('ID', $("#id").val());
-		formData.append('PW', $("#password").val());
-		formData.append('EMAIL', $("#email").val());
-		formData.append('NAME', $("#name").val());
+		var data = {
+				ID: $("#id").val(),
+				PW: $("#password").val(),
+				EMAIL: $("#email").val(),
+				NAME: $("#name").val()
+		};
+		
 		
 		$.ajax({
-			url:"../login/register",
-			data:formData,
-			dataType:"json",
-			contentType: false,
-			processData: false,
+			url:"../login/ajaxRegister",
 			type:"post",
-			success:function(){
+			dataType:"json",
+			data:data,
+			success:function(result){
+				console.log(result);
 				location.reload();
+			},
+			error:function(error){
+				console.log("ERRRRRRRRRRRRRRRRRRR");
 			}
 		});
 	},

@@ -4,7 +4,6 @@
 <mapper namespace="loginMapper">
 
 	<insert id="memRegister" parameterType="memberVO">
-		<![CDATA[
 			INSERT INTO 
 				users(
 					username,
@@ -20,13 +19,11 @@
 					#{uname},
 					#{email}	
 			)
-		]]>
 	</insert>
 	
 	<insert id="memGradeInsert" parameterType="memberVO">
-		<![CDATA[
 			INSERT INTO
-				authority(
+				authorities(
 					username,
 					authority
 				)
@@ -34,6 +31,5 @@
 				#{username},
 				"Non-members"
 			)
-		]]>
 	</insert>
 </mapper>
