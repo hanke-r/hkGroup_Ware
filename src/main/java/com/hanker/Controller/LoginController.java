@@ -45,7 +45,6 @@ public class LoginController {
 		
 		String pwd = memberVO.getPassword();
 		
-		
 		loginService.memRegister(memberVO);
 		loginService.memGradeInsert(memberVO);
 		

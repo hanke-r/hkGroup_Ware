@@ -100,6 +100,7 @@
 	<script src="../assets/Login_v1/vendor/tilt/tilt.jquery.min.js"></script>
 	<script src="../assets/js/login/register.js"></script>
 	<script src="../assets/Login_v1/js/main.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.js-tilt').tilt({

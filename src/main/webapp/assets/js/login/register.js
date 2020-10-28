@@ -31,23 +31,23 @@ var REGI = {
 	register:function(){
 		
 		if($("#id").val() == "" || $("#id").val() == null){
-			alert("ID를 입력해주세요");
+			swal("ID를 입력해주세요.","","error");
 		}
 		
 		else if($("#password").val() == "" || $("#password").val() == null){
-			alert("password를 입력해주세요");
+			swal("password를 입력해주세요","","error");
 		}
 		
 		else if($("#re_password").val() == "" || $("#re_password").val() == null){
-			alert("비밀번호를 확인해주세요");
+			swal("비밀번호를 확인해주세요", "", "error");
 		}
 		
 		else if($("#email").val() == "" || $("#email").val() == null){
-			alert("email를 입력해주세요");
+			swal("email를 입력해주세요", "", "error");
 		}
 		
 		else if($("#name").val() == "" || $("#name").val() == null){
-			alert("name을 입력해주세요");
+			swal("이름을 입력해주세요","","error");
 		} else{
 			REGI.memRegi();
 		}
