@@ -45,4 +45,16 @@ public class MemberManageController {
 		
 		return "jsonView";
 	}
+	
+	@RequestMapping(value="/admin/memExpire", method=RequestMethod.POST)
+	public String memExpire(Model model, HttpServletRequest req) throws Exception{
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUsername(req.getParameter("userId"));
+		
+		memberService.memExpire(memberVO);
+		
+		model.addAttribute("SC","SUCCESS");
+		return "jsonView";
+	}
 }

@@ -101,7 +101,7 @@ Released   : 20140330
 						<td>
 							<c:choose>
 								<c:when test="${memberVO.enabled == 1}">
-									회원
+									승인
 								</c:when>
 							</c:choose>
 							<c:choose>

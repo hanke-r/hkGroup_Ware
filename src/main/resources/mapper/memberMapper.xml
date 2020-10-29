@@ -42,5 +42,26 @@
 		]]>
 	</update>
 	
+	<update id="memExpire" parameterType="memberVO">
+		<![CDATA[
+			UPDATE
+				authorities
+			SET
+				authority = 'non-member'
+			WHERE
+				username = #{username}
+		]]>
+	</update>
+	<update id="memExpireUser" parameterType="memberVO">
+		<![CDATA[
+			UPDATE
+				users
+			SET
+				enabled = 0
+			WHERE
+				username = #{username}
+		]]>
+	</update>
+	
 	
 </mapper>

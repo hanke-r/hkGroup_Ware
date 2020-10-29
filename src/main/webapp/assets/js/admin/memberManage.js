@@ -24,12 +24,15 @@ var MANAGE = {
 			icon: "warning",
 			buttons: true,
 			showCancelButton: true,
-			closeOnConfirm: false
-		}).then(function(){
-			MANAGE.memJoin(userId);
+			closeOnConfirm: false,
+			cancelButtonText: 'cancel'
+		}).then(function(result){
+			if(result.dismiss == 'cancel'){
+				console.log(cancel);
+			}else {
+				MANAGE.memJoin(userId);
+			}
 		});
-		
-		
 	},
 	
 	memJoin: function(userId){
@@ -42,9 +45,41 @@ var MANAGE = {
 			type:'post',
 			dataType:'json',
 			data:data,
-
+			success:function(result){
+				location.reload();
+			}
 		});
 		
-		location.reload();
+	},
+	
+	memExpire:function(userId){
+		swal({
+			title: "Member Expire!", 
+			text: "강퇴하시겠습니까?",
+			icon: "error",
+			buttons: true,
+			showCancelButton: true,
+			closeOnConfirm: false,
+			cancelButtonText: 'cancel'
+		}).then(function(result){
+			if(result.dismiss == 'cancel'){
+			}else {
+				var data={
+					userId:userId	
+				};
+				
+				$.ajax({
+					url: '/admin/memExpire',
+					type: 'post',
+					dataType:'json',
+					data:data,
+					success:function(result){
+						console.log("result = " + result);
+						
+						location.reload();
+					}
+				});
+			}
+		});
 	},
 }

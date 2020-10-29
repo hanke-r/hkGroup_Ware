@@ -13,4 +13,6 @@ public interface MemberService {
 
 	public void memGradeChg(String userId) throws Exception;
 
+	public void memExpire(MemberVO memberVO) throws Exception;
+
 }

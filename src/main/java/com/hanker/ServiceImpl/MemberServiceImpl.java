@@ -32,5 +32,10 @@ public class MemberServiceImpl implements MemberService{
 		memberDAO.memGradeChg(userId);
 	}
 
+	@Override
+	public void memExpire(MemberVO memberVO) throws Exception {
+		memberDAO.memExpire(memberVO);
+	}
+
 
 }

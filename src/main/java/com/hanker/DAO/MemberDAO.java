@@ -34,5 +34,10 @@ public class MemberDAO {
 		sql.update("memberMapper.memGradeChg", userId);
 	}
 
+	public void memExpire(MemberVO memberVO) throws Exception {
+		sql.update("memberMapper.memExpire", memberVO);
+		sql.update("memberMapper.memExpireUser", memberVO);
+	}
+
 	
 }
