@@ -24,7 +24,7 @@ var REGI = {
 			data:data,
 			success:function(result){
 				console.log(result);
-				location.reload();
+				location.href="/login/loginForm";
 			},
 			error:function(error){
 				console.log("ERRRRRRRRRRRRRRRRRRR");

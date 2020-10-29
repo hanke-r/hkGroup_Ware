@@ -24,9 +24,9 @@
 		<!-- port:63306 -->
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		    <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property> 
-		    <property name="url" value="jdbc:log4jdbc:mysql://localhost:63306/hgroupware?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
+		    <property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/hanker?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
 		    <property name="username" value="hanker"></property>
-		    <property name="password" value="hanker"></property>
+		    <property name="password" value="20150804"></property>
 		</bean>
 		
 		
