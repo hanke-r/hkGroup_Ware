@@ -58,7 +58,7 @@ Released   : 20140330
 		<div id="menu">
 			<ul>
 				<li><a href="/" accesskey="1" title="">Homepage</a></li>
-				<li class="active"><a href="#" accesskey="2" title="">회원관리</a></li>
+				<li><a href="/admin/adminPage" title="">회원관리</a></li>
 				<li><a href="#" accesskey="3" title=""></a></li>
 				<li><a href="#" accesskey="4" title=""></a></li>
 				<li><a href="#" accesskey="5" title=""></a></li>
@@ -66,3 +66,7 @@ Released   : 20140330
 		</div>
 	</div>
 </div>
+
+<script>
+	
+</script>
