@@ -27,6 +27,8 @@ public class LoginController {
 	@RequestMapping(value="/login/loginForm", method=RequestMethod.POST)
 	public String postLoginForm() throws Exception{
 		
+		System.out.println("123");
+		
 		return "login/loginForm";
 	}
 	@RequestMapping(value="/login/register", method=RequestMethod.GET)
