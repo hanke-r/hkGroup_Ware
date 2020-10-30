@@ -223,6 +223,11 @@
 	.boxC
 	{
 		width: 365px;
+		padding: 10px;
+		background-color: white;
+		border-radius: 10px;
+		border: 1px solid white;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 	}
 
 	.boxA,
