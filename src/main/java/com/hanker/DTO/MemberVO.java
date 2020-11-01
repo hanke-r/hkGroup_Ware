@@ -8,10 +8,24 @@ public class MemberVO {
 	private String password;
 	private String enabled;
 	private String uname;
+	private String phnumber;
 	private String email;
 	private Date regdate;
 	
 	private String authority;
+
+	
+	
+
+
+
+	public String getPhnumber() {
+		return phnumber;
+	}
+
+	public void setPhnumber(String phnumber) {
+		this.phnumber = phnumber;
+	}
 
 	public String getUsername() {
 		return username;

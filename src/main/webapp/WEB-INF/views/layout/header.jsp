@@ -20,7 +20,7 @@ Released   : 20140330
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>Hanker | GroupWare</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
@@ -57,7 +57,7 @@ Released   : 20140330
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="/" accesskey="1" title="">Homepage</a></li>
+				<li><a href="/" accesskey="1" title="">Home</a></li>
 				<li><a href="/admin/adminPage" title="">회원관리</a></li>
 				<li><a href="#" accesskey="3" title=""></a></li>
 				<li><a href="#" accesskey="4" title=""></a></li>

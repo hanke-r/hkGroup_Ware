@@ -10,6 +10,7 @@
 					password,
 					enabled,
 					uname,
+					phnumber
 					email
 				)
 			VALUES(
@@ -17,6 +18,7 @@
 					#{password},
 					#{enabled},
 					#{uname},
+					#{phnumber},
 					#{email}	
 			)
 	</insert>

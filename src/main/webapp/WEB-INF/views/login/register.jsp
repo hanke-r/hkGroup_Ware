@@ -37,7 +37,7 @@
 				</div>
 				
 				<span class="login100-form-title">
-					Member Register
+					HGroupWare 회원가입
 				</span>
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<input class="input100" type="text" id="id" placeholder="ID">
@@ -69,8 +69,15 @@
 						<i class="fa fa-envelope" aria-hidden="true"></i>
 					</span>
 				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Phone Number is required">
+					<input class="input100" type="text" id="phNumber" placeholder="핸드폰번호 (-) 뻬고 입력해주세요">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-phone" aria-hidden="true"></i>
+					</span>
+				</div>
 				<div class="wrap-input100 validate-input" data-validate = "name is required">
-					<input class="input100" type="text" id="name" placeholder="name">
+					<input class="input100" type="text" id="name" placeholder="이름">
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-address-card" aria-hidden="true"></i>

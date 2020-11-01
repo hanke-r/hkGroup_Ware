@@ -42,7 +42,7 @@
 				</c:forEach>
 				</tbody>
 			</table>
-			<a href="#" class="button button-alt">가입대기중</a>
+			<a href="/admin/adminPage" class="button button-alt">가입대기중</a>
 		</div>
 		<div class="boxB">
 			<p>Etiam neque. Vivamus consequat lorem at nisl. Nullam  wisi a sem semper eleifend. Donec mattis. Phasellus pellentesque, ante nec iaculis dapibus, eros justo auctor lectus, a lobortis lorem mauris quis nunc.</p>

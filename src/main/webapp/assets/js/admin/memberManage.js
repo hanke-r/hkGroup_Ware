@@ -52,34 +52,42 @@ var MANAGE = {
 		
 	},
 	
-	memExpire:function(userId){
-		swal({
-			title: "Member Expire!", 
-			text: "강퇴하시겠습니까?",
-			icon: "error",
-			buttons: true,
-			showCancelButton: true,
-			closeOnConfirm: false,
-			cancelButtonText: 'cancel'
-		}).then(function(result){
-			if(result.dismiss == 'cancel'){
-			}else {
-				var data={
-					userId:userId	
-				};
-				
-				$.ajax({
-					url: '/admin/memExpire',
-					type: 'post',
-					dataType:'json',
-					data:data,
-					success:function(result){
-						console.log("result = " + result);
-						
-						location.reload();
-					}
-				});
-			}
-		});
+	memExpire:function(userId, memGrade){
+		if(memGrade != 'ROLE_ADMIN'){
+			swal({
+				title: "Member Expire!", 
+				text: "강퇴하시겠습니까?",
+				icon: "error",
+				buttons: true,
+				showCancelButton: true,
+				closeOnConfirm: false,
+				cancelButtonText: 'cancel'
+			}).then(function(result){
+				if(result.dismiss == 'cancel'){
+				}else {
+					var data={
+						userId:userId	
+					};
+					
+					$.ajax({
+						url: '/admin/memExpire',
+						type: 'post',
+						dataType:'json',
+						data:data,
+						success:function(result){
+							console.log("result = " + result);
+							
+							location.reload();
+						}
+					});
+				}
+			});
+		} else {
+			swal({
+				title : "관리자입니다.",
+				icon : "error"
+			});
+		}
+		
 	},
 }

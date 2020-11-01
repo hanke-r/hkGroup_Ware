@@ -13,7 +13,8 @@ var REGI = {
 				ID: $("#id").val(),
 				PW: $("#password").val(),
 				EMAIL: $("#email").val(),
-				NAME: $("#name").val()
+				NAME: $("#name").val(),
+				PHONE : $("#phNumber").val()
 		};
 		
 		
@@ -27,7 +28,6 @@ var REGI = {
 				location.href="/login/loginForm";
 			},
 			error:function(error){
-				console.log("ERRRRRRRRRRRRRRRRRRR");
 			}
 		});
 	},
@@ -52,10 +52,18 @@ var REGI = {
 		
 		else if($("#name").val() == "" || $("#name").val() == null){
 			swal("이름을 입력해주세요","","error");
+		} 
+		
+		else if($("#phNumber").val() == "" || $("#phNumber").val() == null) {
+			swal("핸드폰번호를 입력해주세요", "", "error");
 		} else{
 			REGI.memRegi();
 		}
 		
+	},
+	
+	userReIdPw:function(){
+		console.log("접속 테스트 !!");
 	},
 	
 }

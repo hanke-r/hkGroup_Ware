@@ -40,7 +40,7 @@
 				<c:url value="/login" var="loginUrl" />
 				<form:form name="f" action="${loginUrl }" method="POST" class="login100-form validate-form">
 					<span class="login100-form-title">
-						Member Login
+						HGrouWare 로그인
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -52,7 +52,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password" autocomplete="on">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -67,16 +67,16 @@
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
-							Forgot
+							분실
 						</span>
-						<a class="txt2" href="#">
-							Username / Password?
+						<a class="txt2" href="javascript:void(0);" onclick="REGI.userReIdPw();">
+							ID / Password?
 						</a>
 					</div>
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="/login/register">
-							Create your Account
+							회원가입
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -98,6 +98,7 @@
 <!--===============================================================================================-->
 	<script src="../assets/Login_v1/vendor/tilt/tilt.jquery.min.js"></script>
 	<script src="../assets/Login_v1/js/main.js"></script>
+	<script src="../assets/js/login/register.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.js-tilt').tilt({

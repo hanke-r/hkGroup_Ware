@@ -3,7 +3,6 @@ package com.hanker.Controller;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +42,10 @@ public class LoginController {
 		memberVO.setPassword(req.getParameter("PW"));
 		memberVO.setEmail(req.getParameter("EMAIL"));
 		memberVO.setUname(req.getParameter("NAME"));
+		memberVO.setPhnumber(req.getParameter("PHONE"));
 		memberVO.setEnabled("0");
+		
+		
 		
 		String pwd = memberVO.getPassword();
 		

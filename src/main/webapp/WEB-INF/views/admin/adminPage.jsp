@@ -59,7 +59,7 @@
 						</td>
 						<td>
 							<button type="button" id="memOptChange" onclick="MANAGE.memOptionChange('${memberVO.username}');" class="btn btn-sm btn-primary">승인</button>
-							<button type="button" id="memExpire" onclick="MANAGE.memExpire('${memberVO.username}')" class="btn btn-sm btn-danger">강퇴</button>
+							<button type="button" id="memExpire" onclick="MANAGE.memExpire('${memberVO.username}', '${memberVO.authority }')" class="btn btn-sm btn-danger">강퇴</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -68,6 +68,28 @@
 	</div>
 </div>
 
+<script>
+	$(function(){
+		
+		var lang_kor ={
+				"paginate" :{
+					"first" : "첫 페이지",
+					"last" : "마지막 페이지",
+					"next" : "다음",
+					"previous" : "이전"
+				},
+				"info" : "_START_ - _END_ (총 _TOTAL_ 명)",
+				"infoEmpty" : "0명",
+				"emptyTable" : "회원이 없습니다.",
+				"lengthMenu" : "_MENU_ 개씩 보기"
+		}
+		$("#memberTable").DataTable({
+			"ordering": false,
+			"searching": false,
+			language: lang_kor
+		});
+	});
+</script>
 
 </body>
 </html>
