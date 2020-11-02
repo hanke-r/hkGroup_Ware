@@ -24,8 +24,19 @@ var REGI = {
 			dataType:"json",
 			data:data,
 			success:function(result){
-				console.log(result);
-				location.href="/login/loginForm";
+				if(result.SC == "SUCCESS"){
+					location.href="/login/loginForm";
+				}
+				
+				// email - valid check
+				if(result.SC == "emailError"){
+					swal("이메일을 정확하게 입력해주세요.", "(ex : ID @ abc.xyz )", "error");
+				}
+				
+				// phone - valid check
+				if(result.SC == "phError"){
+					swal("핸드폰번호를  정확하게 입력해주세요.", "", "error");
+				}
 			},
 			error:function(error){
 			}

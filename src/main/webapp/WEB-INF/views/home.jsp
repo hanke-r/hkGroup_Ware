@@ -24,7 +24,7 @@
 			<span class="byline">회원정보를 확인할 수 있습니다.</span>
 		</div>
 		<div class="boxA">
-			<table id="newMemList" class="table table-striped">
+			<table id="newMemList" class="table table-hover table-striped">
 				<thead>
 					<tr class="bg-dark text-white">
 						<th >no</th>
@@ -54,6 +54,7 @@
 		</div>
 	</div>
 </div>
+
 <style type="text/css">
 	.dataTables_scrollBody::-webkit-scrollbar-track {
 	     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -71,17 +72,29 @@
     .dataTables_wrapper.no-footer .dataTables_scrollBody{
    		border-bottom: 1px solid #f7f7f7;
     }
+    
+    .dataTables_wrapper .dataTables_scroll {
+        border: 1px solid #ccc;
+        margin: 1.5rem 0;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
 </style>
 <script>
 	$(function(){
 		$("#newMemList").DataTable({
 			"ordering": false,
-			"pageLength": 5,
+			"DisplayLength": 5,
 			"lengthChange": false,
 			"searching": false,
 			"scrollY": true,
+			"scrollCollapse":true,
 			"scrollY": "200px",
 			"paging": false,
+			"footer" : false,
 			"info": false
 			
 			

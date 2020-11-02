@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.hanker.DTO.MemberVO;
 import com.hanker.Service.LoginService;
 import com.hanker.Util.SecurityUtil;
+import com.hanker.Util.Validation;
 
 @Controller
 public class LoginController {
@@ -26,7 +27,6 @@ public class LoginController {
 	@RequestMapping(value="/login/loginForm", method=RequestMethod.POST)
 	public String postLoginForm() throws Exception{
 		
-		System.out.println("123");
 		
 		return "login/loginForm";
 	}
@@ -45,19 +45,30 @@ public class LoginController {
 		memberVO.setPhnumber(req.getParameter("PHONE"));
 		memberVO.setEnabled("0");
 		
-		
-		
 		String pwd = memberVO.getPassword();
 		
-		SecurityUtil sec = new SecurityUtil();
-		String encPwd = sec.encryptSHA256(pwd);
+		String validChck = Validation.register(memberVO.getEmail(), memberVO.getPhnumber());
 		
-		memberVO.setPassword(encPwd);
+		String result = "";
 		
-		loginService.memRegister(memberVO);
-		loginService.memGradeInsert(memberVO);
+		if(validChck == "SUCCESS") {
+			SecurityUtil sec = new SecurityUtil();
+			String encPwd = sec.encryptSHA256(pwd);
+			
+			memberVO.setPassword(encPwd);
+			
+			loginService.memRegister(memberVO);
+			loginService.memGradeInsert(memberVO);
+			
+			result = "SUCCESS";
+		} else if(validChck == "phError") {
+			
+			result = "phError";
+		} else if(validChck == "emailError") {
+			result = "emailError";
+		}
 		
-		model.addAttribute("SC", "SUCCESS");
+		model.addAttribute("SC", result);
 		
 		return "jsonView";
 	}

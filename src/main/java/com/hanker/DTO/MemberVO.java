@@ -2,12 +2,16 @@ package com.hanker.DTO;
 
 import java.util.Date;
 
+import javax.validation.constraints.Pattern;
+
 public class MemberVO {
 	
 	private String username;
 	private String password;
 	private String enabled;
 	private String uname;
+	
+	@Pattern(regexp = "^(01[1|6|7|8|9|0])-(\\d{3,4})-(\\d{4})$")
 	private String phnumber;
 	private String email;
 	private Date regdate;

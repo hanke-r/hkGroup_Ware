@@ -10,7 +10,7 @@
 					password,
 					enabled,
 					uname,
-					phnumber
+					phnumber,
 					email
 				)
 			VALUES(
