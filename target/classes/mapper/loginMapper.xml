@@ -34,4 +34,16 @@
 				"Non-members"
 			)
 	</insert>
+	
+	<!-- ID 중복확인 -->
+	<select id="dupliChck" parameterType="String" resultType="boolean">
+		<![CDATA[
+			SELECT 
+				IF(COUNT(*) = 1, 1, 0)
+			FROM
+				users
+			WHERE
+				username = #{username}
+		]]>
+	</select>
 </mapper>

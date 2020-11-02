@@ -26,5 +26,9 @@ public class LoginDAO {
 		sql.insert("loginMapper.memGradeInsert", memberVO);
 	}
 
+	public boolean dupliChck(String userName) {
+		return sql.selectOne("loginMapper.dupliChck", userName);
+	}
+
 
 }

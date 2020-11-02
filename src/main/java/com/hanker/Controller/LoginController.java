@@ -73,5 +73,25 @@ public class LoginController {
 		return "jsonView";
 	}
 	
+	@RequestMapping(value="/login/dupliChck", method=RequestMethod.POST)
+	public String dupliChck(Model model, HttpServletRequest req) throws Exception{
+		
+		String userName = req.getParameter("duId");
+		
+		boolean dupliId = loginService.dupliChck(userName);
+		
+		String result = "";
+		
+		if(!dupliId) {
+			result = "SUCCESS";
+		} else {
+			result = "DUPLICATION";
+		}
+		
+		model.addAttribute("SC", result);
+		
+		return "jsonView";
+	}
+	
 
 }

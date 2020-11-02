@@ -26,13 +26,14 @@
 	<link rel="stylesheet" href="../assets/Login_v1/css/util.css">
 	<link rel="stylesheet" href="../assets/Login_v1/css/main.css">
 <!--===============================================================================================-->
+
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt style="margin-bottom:30px; margin-left:200px;">
+				<div class="login100-pic js-tilt" data-tilt style="margin-bottom:30px; margin-left:calc(30%);">
 					<img src="../assets/Login_v1/images/img-01.png" alt="IMG" style="margin-left:15px;">
 				</div>
 				
@@ -40,7 +41,10 @@
 					HGroupWare 회원가입
 				</span>
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input class="input100" type="text" id="id" placeholder="ID">
+					<div class="IDC">
+						<input class="input100" type="text" id="id" placeholder="ID">
+						<button type="button" onclick="REGI.dupliChck();" class="btn btn-outline-secondary" style="margin-left: 5%;">중복확인</button>
+					</div>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -88,6 +92,9 @@
 					<button type="button" class="login100-form-btn" onclick="REGI.register();">
 						회원가입
 					</button>
+					<div class="help-tip">
+						<p> 회원가입 시 관리자 승인 후 로그인이 가능합니다. <br> 2~3일 정도 소요됩니다. </p>
+					</div>
 				</div>
 			</div>
 		</div>

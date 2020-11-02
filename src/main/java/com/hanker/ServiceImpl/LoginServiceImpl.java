@@ -25,5 +25,11 @@ public class LoginServiceImpl implements LoginService {
 		
 	}
 
+	@Override
+	public boolean dupliChck(String userName) throws Exception {
+		
+		return loginDAO.dupliChck(userName);
+	}
+
 
 }

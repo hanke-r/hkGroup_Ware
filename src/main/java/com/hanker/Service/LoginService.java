@@ -8,5 +8,7 @@ public interface LoginService {
 
 	public void memGradeInsert(MemberVO memberVO) throws Exception;
 
+	public boolean dupliChck(String userName) throws Exception;
+
 
 }

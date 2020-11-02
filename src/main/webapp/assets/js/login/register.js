@@ -77,4 +77,32 @@ var REGI = {
 		console.log("접속 테스트 !!");
 	},
 	
+	/* ID 중복확인 */
+	dupliChck:function(){
+		
+		var data = {
+			duId : $("#id").val(),
+		}
+		console.log(data.duId);
+		
+		
+		$.ajax({
+			url : '../login/dupliChck',
+			type : 'post',
+			dataType : 'json',
+			data : data,
+			success:function(rs){
+				console.log(rs);
+				
+				if(rs.SC == "DUPLICATION"){
+					swal("이미 가입된 ID입니다.", "", "error");
+				}
+				
+				if(rs.SC == "SUCCESS"){
+					swal("사용가능한 ID입니다.", "", "success");
+				}
+			}
+		});
+	}
+	
 }
