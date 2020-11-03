@@ -89,7 +89,6 @@
 				<div class="wrap-input100 validate-input" data-validate = "Phone Number is required">
 					<div class="IDC">
 						<input class="input100" type="text" id="phNumber" placeholder="핸드폰번호('-'제외)를  입력해주세요">
-						<button type="button" class="phCert">인 증</button>
 					</div>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">

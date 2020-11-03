@@ -118,6 +118,10 @@ public class LoginController {
 		
 		TmpTokenVO tmpTokenVO = new TmpTokenVO();
 		
+		// 이미 가입된 email여부 확인
+		boolean newNOldChck = loginService.indiEmailChck(tmpTokenVO);
+		
+		
 		// 이미 가입된 이메일인지 확인
 		boolean joinEmailChck = loginService.joinEmailChck(memberVO.getEmail()); 
 		
@@ -136,14 +140,12 @@ public class LoginController {
 		} else {
 			String str = "SUCCESS";
 			
-			
 			tmpTokenVO.setEmail(memberVO.getEmail());
 			tmpTokenVO.setToken(flag);
 			
-			boolean newNOldChck = loginService.indiEmailChck(tmpTokenVO);
-			
 			// 이메일이 있으면 true OR 없으면 false
 			if(newNOldChck) {
+				// 인증 후 인증을 다시 누르면 인증정보 초기화
 				loginService.tmpTokenUpd(tmpTokenVO);
 			} else {
 				loginService.tmpTokenIns(tmpTokenVO);

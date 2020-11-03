@@ -63,7 +63,8 @@
 		UPDATE
 			tmp_token_tb
 		SET 
-			token = #{token}
+			token = #{token},
+			emailcert = '0'
 		WHERE
 			email = #{email} 
 	</update>
