@@ -63,5 +63,10 @@ public class LoginServiceImpl implements LoginService {
 		loginDAO.emCertChange(tmpTokenVO);
 	}
 
+	@Override
+	public boolean joinEmailChck(String email) throws Exception {
+		return loginDAO.joinEmailChck(email);
+	}
+
 
 }

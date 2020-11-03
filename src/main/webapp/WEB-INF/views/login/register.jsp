@@ -29,7 +29,9 @@
 
 </head>
 <body>
-	
+	<div class="wrap-loading display-none">
+		<div><img src="../assets/Login_v1/images/ajax-loader.gif"></div>
+	</div>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">

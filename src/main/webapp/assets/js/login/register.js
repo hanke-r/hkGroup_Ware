@@ -144,6 +144,16 @@ var REGI = {
 					$("#eCertBox").css("display", "block");
 					$("#email").attr("readonly", true);
 				}
+				
+				if(rs.SC == "OVERLAP"){
+					swal("이미 가입된 EMAIL입니다.", "", "error");
+				}
+			},
+			beforeSend:function(){
+				$('.wrap-loading').removeClass('display-none');
+			},
+			complete:function(){
+				$('.wrap-loading').addClass('display-none');
 			}
 		});
 	},
@@ -163,8 +173,14 @@ var REGI = {
 			data:data,
 			success:function(rs){
 				if(rs.SC == "SUCCESS"){
-					
+					swal("인증되었습니다.", "", "success");
+					$("#eCertBox").css("display", "none");
+				} else{
+					swal("인증번호가 맞지 않습니다.", "", "error");
 				}
+			},
+			error:function(e){
+				swal("인증번호가 맞지 않습니다.", "", "error");
 			}
 		});
 	},

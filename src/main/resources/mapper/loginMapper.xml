@@ -114,4 +114,16 @@
 			email = #{email}
 	</update>
 	
+	<!-- 이메일 중복확인 -->
+	<select id="joinEmailChck" resultType="boolean">
+		<![CDATA[
+			SELECT
+				IF(COUNT(*) = 1,1,0)
+			FROM
+				users
+			WHERE
+				email = #{email}
+		]]>
+	</select>
+	
 </mapper>

@@ -56,5 +56,9 @@ public class LoginDAO {
 		sql.update("loginMapper.emCertChange", tmpTokenVO);
 	}
 
+	public boolean joinEmailChck(String email) throws Exception{
+		return sql.selectOne("loginMapper.joinEmailChck", email);
+	}
+
 
 }

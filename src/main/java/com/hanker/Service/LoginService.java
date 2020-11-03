@@ -23,5 +23,7 @@ public interface LoginService {
 
 	public void emCertChange(TmpTokenVO tmpTokenVO) throws Exception;
 
+	public boolean joinEmailChck(String Email) throws Exception;
+
 
 }

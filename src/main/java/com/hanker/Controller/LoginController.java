@@ -116,6 +116,17 @@ public class LoginController {
 		MemberVO memberVO = new MemberVO();
 		memberVO.setEmail(req.getParameter("EMAIL"));
 		
+		TmpTokenVO tmpTokenVO = new TmpTokenVO();
+		
+		// 이미 가입된 이메일인지 확인
+		boolean joinEmailChck = loginService.joinEmailChck(memberVO.getEmail()); 
+		
+		if(joinEmailChck) {
+			model.addAttribute("SC", "OVERLAP");
+			
+			return "jsonView";
+		}
+		
 		int flag = eToken.EmailTokenSending(memberVO.getEmail());
 		
 		if(flag == 0) {
@@ -125,7 +136,7 @@ public class LoginController {
 		} else {
 			String str = "SUCCESS";
 			
-			TmpTokenVO tmpTokenVO = new TmpTokenVO();
+			
 			tmpTokenVO.setEmail(memberVO.getEmail());
 			tmpTokenVO.setToken(flag);
 			
