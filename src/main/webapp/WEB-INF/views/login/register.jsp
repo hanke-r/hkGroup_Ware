@@ -34,16 +34,16 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt style="margin-bottom:30px; margin-left:calc(30%);">
-					<img src="../assets/Login_v1/images/img-01.png" alt="IMG" style="margin-left:15px;">
+					<img src="../assets/Login_v1/images/img-01.png" alt="IMG">
 				</div>
 				
 				<span class="login100-form-title">
 					HGroupWare 회원가입
 				</span>
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+				<div class="wrap-input100 validate-input" data-validate = "Id is required">
 					<div class="IDC">
 						<input class="input100" type="text" id="id" placeholder="ID">
-						<button type="button" onclick="REGI.dupliChck();" class="btn btn-outline-secondary" style="margin-left: 5%;">중복확인</button>
+						<button type="button" onclick="REGI.dupliChck();" class="dupliBtn">중복확인</button>
 					</div>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
@@ -67,19 +67,34 @@
 					</span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "email is required">
-					<input class="input100" type="text" id="email" placeholder="e-mail">
+					<div class="IDC">
+						<input class="input100" type="email" id="email" placeholder="e-mail">
+						<button type="button" onclick="REGI.emailCert();" class="emailCert">인 증</button>
+					</div>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-envelope" aria-hidden="true"></i>
 					</span>
 				</div>
+				
+				<div class="wrap-input100 validate-input" id="eCertBox" style="display:none;">
+					<div class="IDC">
+						<input class="input100" type="text" id="eCert" placeholder="인증번호">
+						<button type="button" onclick="REGI.tokenCheck();" class="emailCert">확 인</button>
+					</div>
+				</div>
+				
 				<div class="wrap-input100 validate-input" data-validate = "Phone Number is required">
-					<input class="input100" type="text" id="phNumber" placeholder="핸드폰번호 (-) 뻬고 입력해주세요">
+					<div class="IDC">
+						<input class="input100" type="text" id="phNumber" placeholder="핸드폰번호('-'제외)를  입력해주세요">
+						<button type="button" class="phCert">인 증</button>
+					</div>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-phone" aria-hidden="true"></i>
 					</span>
 				</div>
+				
 				<div class="wrap-input100 validate-input" data-validate = "name is required">
 					<input class="input100" type="text" id="name" placeholder="이름">
 					<span class="focus-input100"></span>

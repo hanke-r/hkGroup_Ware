@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.hanker.DTO.MemberVO;
+import com.hanker.DTO.TmpTokenVO;
 
 @Repository
 public class LoginDAO {
@@ -28,6 +29,31 @@ public class LoginDAO {
 
 	public boolean dupliChck(String userName) {
 		return sql.selectOne("loginMapper.dupliChck", userName);
+	}
+
+	public void tmpTokenIns(TmpTokenVO tmpTokenVO) {
+		// TODO Auto-generated method stub
+		sql.insert("loginMapper.tmpTokenIns", tmpTokenVO);
+	}
+
+	public boolean indiEmailChck(TmpTokenVO tmpTokenVO) throws Exception{
+		return sql.selectOne("loginMapper.indiEmailChck", tmpTokenVO);
+	}
+
+	public void tmpTokenUpd(TmpTokenVO tmpTokenVO) {
+		sql.update("loginMapper.tmpTokenUpd", tmpTokenVO);
+	}
+
+	public int tbToken(TmpTokenVO tmpTokenVO) throws Exception {
+		return sql.selectOne("loginMapper.tbToken", tmpTokenVO);
+	}
+
+	public String emailCertChck(TmpTokenVO tmpTokenVO) {
+		return sql.selectOne("loginMapper.emailCertChck", tmpTokenVO);
+	}
+
+	public void emCertChange(TmpTokenVO tmpTokenVO) throws Exception {
+		sql.update("loginMapper.emCertChange", tmpTokenVO);
 	}
 
 

@@ -37,6 +37,11 @@ var REGI = {
 				if(result.SC == "phError"){
 					swal("핸드폰번호를  정확하게 입력해주세요.", "", "error");
 				}
+				
+				// email 인증여부 확인
+				if(result.SC == "emailCertError"){
+					swal("이메일 인증을 받아주세요.", "", "error");
+				}
 			},
 			error:function(error){
 			}
@@ -83,7 +88,11 @@ var REGI = {
 		var data = {
 			duId : $("#id").val(),
 		}
-		console.log(data.duId);
+		
+		if(data.duId == null || data.duId == ""){
+			swal("아이디를 입력해주세요.", "", "error");
+			return false;
+		}
 		
 		
 		$.ajax({
@@ -103,6 +112,61 @@ var REGI = {
 				}
 			}
 		});
-	}
+	},
+	
+	/*email 인증*/
+	emailCert:function(){
+		
+		if($("#email").val() == "" || $("#email").val() == null){
+			swal("email를 입력해주세요", "", "error");
+			return false;
+		}
+		
+		var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		
+		if(!regExp.test($("#email").val())){
+			swal("이메일을 정확하게 입력해주세요", "(ex : ID @ abc.xyz )", "error");
+			return false;
+		}
+		
+		var data = {
+				EMAIL : $("#email").val(),
+		};
+		
+		$.ajax({
+			url : '../login/emailToken',
+			type : 'post',
+			dataType : 'json',
+			data : data,
+			success:function(rs){
+				if(rs.SC == "SUCCESS"){
+					swal("Email이 발송되었습니다.", "", "success");
+					$("#eCertBox").css("display", "block");
+					$("#email").attr("readonly", true);
+				}
+			}
+		});
+	},
+	
+	/*Email 인증 확인*/
+	tokenCheck:function(){
+		
+		var data = {
+				TOKEN : $("#eCert").val(),
+				EMAIL : $("#email").val()
+		};
+		
+		$.ajax({
+			url : '../login/tokenChck',
+			type: 'post',
+			dataType : 'json',
+			data:data,
+			success:function(rs){
+				if(rs.SC == "SUCCESS"){
+					
+				}
+			}
+		});
+	},
 	
 }

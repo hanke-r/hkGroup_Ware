@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanker.DTO.MemberVO;
+import com.hanker.DTO.TmpTokenVO;
 import com.hanker.Service.LoginService;
+import com.hanker.Util.EmailToken;
 import com.hanker.Util.SecurityUtil;
 import com.hanker.Util.Validation;
 
@@ -19,6 +21,9 @@ public class LoginController {
 	@Inject
 	private LoginService loginService;
 	
+	@Inject
+	private EmailToken eToken;
+
 	@RequestMapping(value="/login/loginForm", method=RequestMethod.GET)
 	public void getLoginForm() throws Exception{
 		
@@ -49,26 +54,37 @@ public class LoginController {
 		
 		String validChck = Validation.register(memberVO.getEmail(), memberVO.getPhnumber());
 		
-		String result = "";
+		String result = "SUCCESS";
 		
 		if(validChck == "SUCCESS") {
 			SecurityUtil sec = new SecurityUtil();
 			String encPwd = sec.encryptSHA256(pwd);
-			
 			memberVO.setPassword(encPwd);
-			
-			loginService.memRegister(memberVO);
-			loginService.memGradeInsert(memberVO);
 			
 			result = "SUCCESS";
 		} else if(validChck == "phError") {
-			
 			result = "phError";
 		} else if(validChck == "emailError") {
 			result = "emailError";
 		}
 		
+		TmpTokenVO tmpTokenVO = new TmpTokenVO();
+		tmpTokenVO.setEmail(req.getParameter("EMAIL"));
+		// email 인증여부 확인
+		String emailCertChck = loginService.emailCertChck(tmpTokenVO);
+		System.out.println("이메일 인증여부 = " + emailCertChck);
+		if(Integer.parseInt(emailCertChck) == 0) {
+			result = "emailCertError";
+		} else {
+			result = "SUCCESS";
+		}
+		
+		if(result == "SUCCESS") {
+			loginService.memRegister(memberVO);
+			loginService.memGradeInsert(memberVO);
+		}
 		model.addAttribute("SC", result);
+		
 		
 		return "jsonView";
 	}
@@ -93,5 +109,62 @@ public class LoginController {
 		return "jsonView";
 	}
 	
+	// email token 발송
+	@RequestMapping(value="/login/emailToken", method=RequestMethod.POST)
+	public String emailToken(Model model, HttpServletRequest req) throws Exception{
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setEmail(req.getParameter("EMAIL"));
+		
+		int flag = eToken.EmailTokenSending(memberVO.getEmail());
+		
+		if(flag == 0) {
+			model.addAttribute("SC", flag);
+			
+			return "jsonView";
+		} else {
+			String str = "SUCCESS";
+			
+			TmpTokenVO tmpTokenVO = new TmpTokenVO();
+			tmpTokenVO.setEmail(memberVO.getEmail());
+			tmpTokenVO.setToken(flag);
+			
+			boolean newNOldChck = loginService.indiEmailChck(tmpTokenVO);
+			
+			// 이메일이 있으면 true OR 없으면 false
+			if(newNOldChck) {
+				loginService.tmpTokenUpd(tmpTokenVO);
+			} else {
+				loginService.tmpTokenIns(tmpTokenVO);
+			}
+			
+			
+			model.addAttribute("SC", str);
+			return "jsonView";
+		}
+	}
+	
+	// Email Token Check
+	@RequestMapping(value="/login/tokenChck", method=RequestMethod.POST)
+	public String tokenCheck(Model model, HttpServletRequest req) throws Exception{
+		String result = "";
+		
+		TmpTokenVO tmpTokenVO = new TmpTokenVO();
+		tmpTokenVO.setEmail(req.getParameter("EMAIL"));
+		int inpToken = Integer.parseInt(req.getParameter("TOKEN"));
+
+		int tbToken = loginService.tbToken(tmpTokenVO);
+		if(tbToken == inpToken) {
+			System.out.println("인증에 성공하셨습니다.");
+			loginService.emCertChange(tmpTokenVO);
+			result = "SUCCESS";
+		} else {
+			System.out.println("인증번호가 맞지 않습니다. 다시 입력해주세요.");
+			result = "FALSE";
+		}
+		
+		model.addAttribute("SC", result);
+		return "jsonView";
+	}
 
 }

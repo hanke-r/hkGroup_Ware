@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.hanker.DTO.MemberVO" alias="memberVO" />
+		<typeAlias type="com.hanker.DTO.TmpTokenVO" alias="tmpTokenVO" />
 	</typeAliases>
 </configuration>

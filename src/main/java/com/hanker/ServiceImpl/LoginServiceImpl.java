@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.hanker.DAO.LoginDAO;
 import com.hanker.DTO.MemberVO;
+import com.hanker.DTO.TmpTokenVO;
 import com.hanker.Service.LoginService;
 
 @Service
@@ -29,6 +30,37 @@ public class LoginServiceImpl implements LoginService {
 	public boolean dupliChck(String userName) throws Exception {
 		
 		return loginDAO.dupliChck(userName);
+	}
+
+	@Override
+	public void tmpTokenIns(TmpTokenVO tmpTokenVO) throws Exception {
+		loginDAO.tmpTokenIns(tmpTokenVO);
+	}
+
+	@Override
+	public boolean indiEmailChck(TmpTokenVO tmpTokenVO) throws Exception {
+		
+		return loginDAO.indiEmailChck(tmpTokenVO);
+	}
+
+	@Override
+	public void tmpTokenUpd(TmpTokenVO tmpTokenVO) throws Exception {
+		loginDAO.tmpTokenUpd(tmpTokenVO);
+	}
+
+	@Override
+	public int tbToken(TmpTokenVO tmpTokenVO) throws Exception {
+		return loginDAO.tbToken(tmpTokenVO);
+	}
+
+	@Override
+	public String emailCertChck(TmpTokenVO tmpTokenVO) throws Exception {
+		return loginDAO.emailCertChck(tmpTokenVO);
+	}
+
+	@Override
+	public void emCertChange(TmpTokenVO tmpTokenVO) throws Exception {
+		loginDAO.emCertChange(tmpTokenVO);
 	}
 
 

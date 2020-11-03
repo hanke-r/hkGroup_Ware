@@ -11,17 +11,13 @@ public class MemberVO {
 	private String enabled;
 	private String uname;
 	
-	@Pattern(regexp = "^(01[1|6|7|8|9|0])-(\\d{3,4})-(\\d{4})$")
 	private String phnumber;
 	private String email;
 	private Date regdate;
 	
 	private String authority;
-
 	
 	
-
-
 
 	public String getPhnumber() {
 		return phnumber;

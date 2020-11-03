@@ -46,4 +46,72 @@
 				username = #{username}
 		]]>
 	</select>
+	
+	<!-- 발급 Token 저장 -->
+	<insert id="tmpTokenIns" parameterType="tmpTokenVO">
+		INSERT INTO
+			tmp_token_tb(
+				email,
+				token
+			)
+		VALUES(
+			#{email},
+			#{token}
+		)
+	</insert>
+	<update id="tmpTokenUpd" parameterType="tmpTokenVO">
+		UPDATE
+			tmp_token_tb
+		SET 
+			token = #{token}
+		WHERE
+			email = #{email} 
+	</update>
+	
+	<!-- 이미 한번이상 발급받은 이메일인지 check -->
+	<select id="indiEmailChck" resultType="boolean">
+		<![CDATA[
+			SELECT
+				IF(COUNT(*) = 1, 1, 0)
+			FROM
+				tmp_token_tb
+			WHERE
+				email = #{email}
+		]]>
+	</select>
+	
+	<!-- Token 비교를 위해 table에 있는 token SELECT -->
+	<select id="tbToken" resultType="Integer">
+		<![CDATA[
+			SELECT
+				token
+			FROM 
+				tmp_token_tb
+			WHERE
+				email = #{email}
+		]]>
+	</select>
+	
+	<!-- email 인증여부 확인 -->
+	<select id="emailCertChck" resultType="String">
+		<![CDATA[
+			SELECT
+				emailcert
+			FROM
+				tmp_token_tb
+			WHERE
+				email = #{email}
+		]]>
+	</select>
+	
+	<!-- 이메일 인증 완료 -->
+	<update id="emCertChange" parameterType="tmpTokenVO">
+		UPDATE
+			tmp_token_tb
+		SET
+			emailcert = '1'
+		WHERE
+			email = #{email}
+	</update>
+	
 </mapper>
