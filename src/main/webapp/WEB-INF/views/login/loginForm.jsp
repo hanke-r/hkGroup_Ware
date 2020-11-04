@@ -69,7 +69,7 @@
 						<span class="txt1">
 							분실
 						</span>
-						<a class="txt2" href="javascript:void(0);" onclick="REGI.userReIdPw();">
+						<a class="txt2" href="/login/userInfoSer">
 							ID / Password?
 						</a>
 					</div>
@@ -84,10 +84,9 @@
 			</div>
 		</div>
 	</div>
-	
-	
 
-	
+
+
 <!--===============================================================================================-->	
 	<script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

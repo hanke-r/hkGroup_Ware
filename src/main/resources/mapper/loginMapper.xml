@@ -127,4 +127,15 @@
 		]]>
 	</select>
 	
+	<!-- Email로 ID찾기 -->
+	<select id="idSearch" resultType="String">
+		<![CDATA[
+			SELECT
+				username
+			FROM
+				users
+			WHERE 
+				email = #{email}
+		]]>
+	</select>
 </mapper>

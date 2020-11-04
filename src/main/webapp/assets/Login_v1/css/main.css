@@ -180,7 +180,7 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -191,6 +191,15 @@ iframe {
   padding: 177px 130px 33px 95px;
 }
 
+.wrap-back100{
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+.f-s-30{
+	font-size: 30px;
+}
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
@@ -214,10 +223,13 @@ iframe {
   color: #333333;
   line-height: 1.2;
   text-align: center;
-
   width: 100%;
   display: block;
   padding-bottom: 54px;
+}
+
+.register-title{
+	margin-left: 65px;
 }
 
 
@@ -555,7 +567,7 @@ iframe {
   justify-content: center;
 }
 
-.dupliBtn, .emailCert, .phCert {
+.dupliBtn, .emailCert {
   width: 118px;
   height: 45px;
   font-family: 'Roboto', sans-serif;
@@ -609,4 +621,187 @@ iframe {
 
 .display-none { /*감추기*/
 	display: none;
+}
+/*---------------------------------------------------------------------------------*/
+.wizard {
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 25px;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #e0e0e0;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 65%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 2px solid #5bc0de;
+    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 33%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard li.active:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 50px;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+@media( max-width : 585px ) {
+
+    .wizard {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+}
+section{
+	width:100%;
+}
+
+.glyphicon{
+	top: 20px;
+}
+.list-inline{
+	margin-bottom: 15px;
+	margin-right: 25px;
+}
+
+#idSearch, #pwSearch{
+	text-align: center;
+}
+#idSearch > p,
+#pwSearch > p {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+#idSearch > div > input, 
+#pwSearch > div > input {
+	margin-left: 0%;
+	color: white;
+	border: solid gray;
+    height: 32px;
+    border-radius: 5px;
+    width: 20%;
+    background-color: gray;
+}
+
+.certBtn{
+	border: 1px solid gray;
+    margin-left: 25px;
+}
+
+#idCertCheck{
+	display:none;
+	margin-top: 5px;
+    margin-left: -59px;
 }

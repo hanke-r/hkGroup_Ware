@@ -15,7 +15,7 @@ public class EmailToken {
 	@Inject
 	private JavaMailSender mailSender;
 	
-	public Integer EmailTokenSending(String e_mail) throws Exception{
+	public Integer EmailTokenSending(String e_mail, int value) throws Exception{
 		
 		int flag = 0;
 		
@@ -25,16 +25,38 @@ public class EmailToken {
 		String setfrom = "hanker0804@gmail.com";
 		String tomail = e_mail;
 		String title = "회원가입 인증 메일 입니다.";
-		String content = 
-				System.getProperty("line.separator")+
-				System.getProperty("line.separator")+
-				"안녕하세요 회원님 HGroupWare 홈페이지를 찾아주셔서 감사합니다." +
-				System.getProperty("line.separator")+
-				System.getProperty("line.separator")+
-				" 인증번호는 " + dice + "입니다. " +
-				System.getProperty("line.separator")+
-				System.getProperty("line.separator");
-		
+		String content;
+		if(value == 0) {
+			content = 
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					"안녕하세요 회원님 HGroupWare 홈페이지를 찾아주셔서 감사합니다." +
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					" 인증번호는 " + dice + "입니다. " +
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator");
+		} else if(value == 1) {
+			content = 
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					"안녕하세요 회원님. ID찾기 문의 메일입니다." +
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					" 요청하신 인증번호는 " + dice + "입니다. " +
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator");
+		} else {
+			content = 
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					"안녕하세요 회원님. 비밀번호 찾기 문의 메일입니다." +
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator")+
+					" 요청하신 인증번호는 " + dice + "입니다. " +
+					System.getProperty("line.separator")+
+					System.getProperty("line.separator");
+		}
 		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
@@ -58,7 +80,6 @@ public class EmailToken {
 		} else {
 			return 0;
 		}
-		
-		
 	}
+	
 }

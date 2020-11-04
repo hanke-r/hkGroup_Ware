@@ -68,5 +68,11 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.joinEmailChck(email);
 	}
 
+	@Override
+	public String idSearch(String email) throws Exception {
+		return loginDAO.idSearch(email);
+	}
+
+
 
 }

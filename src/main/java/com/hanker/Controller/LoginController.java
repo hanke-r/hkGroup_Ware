@@ -130,8 +130,8 @@ public class LoginController {
 			
 			return "jsonView";
 		}
-		
-		int flag = eToken.EmailTokenSending(memberVO.getEmail());
+		// join = 0, idSearch = 1, pwSearch = 2
+		int flag = eToken.EmailTokenSending(memberVO.getEmail(), 0);
 		
 		if(flag == 0) {
 			model.addAttribute("SC", flag);
@@ -177,6 +177,38 @@ public class LoginController {
 		}
 		
 		model.addAttribute("SC", result);
+		return "jsonView";
+	}
+	
+	// ID, PW찾기
+	@RequestMapping(value="/login/userInfoSer", method=RequestMethod.GET)
+	public void userInfoSer() throws Exception{
+		
+	}
+	
+	//ID찾기 이메일 인증
+	@RequestMapping(value="/login/idSearch", method=RequestMethod.POST)
+	public String idSearch(Model model, HttpServletRequest req) throws Exception{
+		
+		TmpTokenVO tmpTokenVO = new TmpTokenVO();
+		tmpTokenVO.setEmail(req.getParameter("EMAIL"));
+		
+		boolean emailYN = loginService.joinEmailChck(tmpTokenVO.getEmail());
+		
+		if(!emailYN) {
+			model.addAttribute("SC", "FAILED");
+		} else {
+			String idSrch = loginService.idSearch(tmpTokenVO.getEmail());
+			System.out.println(idSrch);
+			
+			// join = 0, idSearch = 1, pwSearch = 2
+			int flag = eToken.EmailTokenSending(tmpTokenVO.getEmail(), 1);
+			tmpTokenVO.setToken(flag);
+			loginService.tmpTokenUpd(tmpTokenVO);
+			
+			model.addAttribute("SC", "SUCCESS");
+		}
+		
 		return "jsonView";
 	}
 

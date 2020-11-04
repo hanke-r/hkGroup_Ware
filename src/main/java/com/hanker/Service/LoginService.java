@@ -25,5 +25,9 @@ public interface LoginService {
 
 	public boolean joinEmailChck(String Email) throws Exception;
 
+	// Email로 ID찾기
+	public String idSearch(String email) throws Exception;
+
+
 
 }

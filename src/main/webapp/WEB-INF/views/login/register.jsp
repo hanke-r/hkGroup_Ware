@@ -35,13 +35,16 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
+				<span class="wrap-back100">
+					<a href="/login/loginForm"><i class="fa fa-arrow-left f-s-30"></i></a>
+				</span>
+				<span class="login100-form-title register-title">
+					HGroupWare 회원가입
+				</span>
+				
 				<div class="login100-pic js-tilt" data-tilt style="margin-bottom:30px; margin-left:calc(30%);">
 					<img src="../assets/Login_v1/images/img-01.png" alt="IMG">
 				</div>
-				
-				<span class="login100-form-title">
-					HGroupWare 회원가입
-				</span>
 				<div class="wrap-input100 validate-input" data-validate = "Id is required">
 					<div class="IDC">
 						<input class="input100" type="text" id="id" placeholder="ID">
@@ -87,9 +90,7 @@
 				</div>
 				
 				<div class="wrap-input100 validate-input" data-validate = "Phone Number is required">
-					<div class="IDC">
-						<input class="input100" type="text" id="phNumber" placeholder="핸드폰번호('-'제외)를  입력해주세요">
-					</div>
+					<input class="input100" type="text" id="phNumber" placeholder="핸드폰번호('-'제외)를  입력해주세요">
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-phone" aria-hidden="true"></i>
