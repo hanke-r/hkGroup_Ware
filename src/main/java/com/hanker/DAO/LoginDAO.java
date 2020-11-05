@@ -1,5 +1,7 @@
 package com.hanker.DAO;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -60,7 +62,7 @@ public class LoginDAO {
 		return sql.selectOne("loginMapper.joinEmailChck", email);
 	}
 
-	public String idSearch(String email) throws Exception {
+	public HashMap<String, Object> idSearch(String email) throws Exception {
 		return sql.selectOne("loginMapper.idSearch", email);
 	}
 

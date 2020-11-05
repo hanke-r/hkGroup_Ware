@@ -1,5 +1,7 @@
 package com.hanker.Service;
 
+import java.util.HashMap;
+
 import com.hanker.DTO.MemberVO;
 import com.hanker.DTO.TmpTokenVO;
 
@@ -26,7 +28,7 @@ public interface LoginService {
 	public boolean joinEmailChck(String Email) throws Exception;
 
 	// Email로 ID찾기
-	public String idSearch(String email) throws Exception;
+	public HashMap<String, Object> idSearch(String email) throws Exception;
 
 
 

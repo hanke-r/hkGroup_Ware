@@ -1,5 +1,7 @@
 package com.hanker.ServiceImpl;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -69,7 +71,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String idSearch(String email) throws Exception {
+	public HashMap<String, Object> idSearch(String email) throws Exception {
 		return loginDAO.idSearch(email);
 	}
 

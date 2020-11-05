@@ -128,7 +128,7 @@
 	</select>
 	
 	<!-- Email로 ID찾기 -->
-	<select id="idSearch" resultType="String">
+	<select id="idSearch" resultType="hashMap">
 		<![CDATA[
 			SELECT
 				username

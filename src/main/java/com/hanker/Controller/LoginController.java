@@ -1,5 +1,7 @@
 package com.hanker.Controller;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanker.DTO.MemberVO;
 import com.hanker.DTO.TmpTokenVO;
@@ -167,12 +170,13 @@ public class LoginController {
 		int inpToken = Integer.parseInt(req.getParameter("TOKEN"));
 
 		int tbToken = loginService.tbToken(tmpTokenVO);
+		
+		// 인증 SUCCESS
 		if(tbToken == inpToken) {
-			System.out.println("인증에 성공하셨습니다.");
 			loginService.emCertChange(tmpTokenVO);
 			result = "SUCCESS";
+		// 인증 FAILED
 		} else {
-			System.out.println("인증번호가 맞지 않습니다. 다시 입력해주세요.");
 			result = "FALSE";
 		}
 		
@@ -198,8 +202,6 @@ public class LoginController {
 		if(!emailYN) {
 			model.addAttribute("SC", "FAILED");
 		} else {
-			String idSrch = loginService.idSearch(tmpTokenVO.getEmail());
-			System.out.println(idSrch);
 			
 			// join = 0, idSearch = 1, pwSearch = 2
 			int flag = eToken.EmailTokenSending(tmpTokenVO.getEmail(), 1);
@@ -212,4 +214,37 @@ public class LoginController {
 		return "jsonView";
 	}
 
+	/*
+	 * ID 찾기
+	 * Email 인증 토큰 확인
+	 * */  
+	@RequestMapping(value="/login/ajaxETokenChck", method=RequestMethod.POST)
+	public String ajaxETokenChck(Model model, @RequestParam("ETOKEN") int token, @RequestParam("EMAIL") String email) throws Exception{
+		HashMap<String, Object> map = new HashMap<>();
+		
+		TmpTokenVO tmpTokenVO = new TmpTokenVO();
+		tmpTokenVO.setEmail(email);
+		tmpTokenVO.setToken(token);
+		
+		int tmpToken = loginService.tbToken(tmpTokenVO);
+		
+		String result = "";
+		// 인증 SUCCESS
+		if (tmpToken == tmpTokenVO.getToken()) {
+			loginService.emCertChange(tmpTokenVO);
+			map = loginService.idSearch(tmpTokenVO.getEmail());
+			
+			result = "SUCCESS";
+		// 인증 FAILED
+		} else {
+			result = "FALSE";
+		}
+		
+		map.put("result", result);
+		
+		System.out.println("map = " + map);
+		
+		model.addAttribute("SC", map);
+		return "jsonView";
+	}
 }

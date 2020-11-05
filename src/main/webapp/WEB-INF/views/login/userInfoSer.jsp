@@ -94,8 +94,8 @@
 				                        <button type="button" class="btn btn-gray certBtn" onclick="USIC.emailCert();">인증번호 전송</button>
 									</div>
 									<div id="idCertCheck">
-				                        <input type="text" id="email" placeholder="인증번호" style="width:228px">
-				                        <button type="button" class="btn btn-gray certBtn" onclick="USIC.emailCert();">확인</button>
+				                        <input type="text" id="emailToken" placeholder="인증번호" style="width:228px">
+				                        <button type="button" class="btn btn-gray certBtn" onclick="USIC.emailCertChck();">확인</button>
 									</div>
 			                        <ul class="list-inline pull-right" style="margin-top: 7%;">
 			                            <li><button type="button" class="btn btn-default" onclick="location.reload();">HOME</button></li>
@@ -119,12 +119,9 @@
 		                        </div>
 		                    </div>
 		                    <div class="tab-pane" role="tabpanel" id="complete">
-		                    	<div id="">
-			                        <h3>Complete</h3>
-			                        <p>로그인 화면으로 돌아가기</p>
-			                        <ul class="list-inline pull-right">
-				                        <li><button type="button" class="btn btn-default" onclick="location.href='/login/loginForm';">로그인</button></li>
-				                    </ul>
+		                    	<div id="compIdShow">
+
+			                       
 			                    </div>
 		                    </div>
 		                    <div class="clearfix"></div>
