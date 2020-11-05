@@ -75,6 +75,16 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.idSearch(email);
 	}
 
+	@Override
+	public boolean pwCheck(MemberVO memberVO) throws Exception {
+		return loginDAO.pwCheck(memberVO);
+	}
+
+	@Override
+	public void pwIssue(HashMap<String, Object> map) throws Exception {
+		loginDAO.pwIssue(map);
+	}
+
 
 
 }

@@ -138,4 +138,26 @@
 				email = #{email}
 		]]>
 	</select>
+	
+	<!-- 이메일, 아이디와 일치하는 pw있는지 확인 -->
+	<select id="pwCheck" resultType="boolean">
+		<![CDATA[
+			SELECT
+				IF(COUNT(password) = 1, 1, 0)
+			FROM
+				users
+			WHERE
+				username = #{username} AND email = #{email}
+		]]>
+	</select>
+	
+	<!-- 임시 비밀번호 insert -->
+	<update id="pwIssue" parameterType="hashMap">
+		UPDATE
+			users
+		SET
+			password = #{shaTmpPw}
+		WHERE
+			username = #{username}
+	</update>
 </mapper>

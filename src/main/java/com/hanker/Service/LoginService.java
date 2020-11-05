@@ -30,6 +30,10 @@ public interface LoginService {
 	// Email로 ID찾기
 	public HashMap<String, Object> idSearch(String email) throws Exception;
 
+	public boolean pwCheck(MemberVO memberVO) throws Exception;
+
+	public void pwIssue(HashMap<String, Object> map) throws Exception;
+
 
 
 }

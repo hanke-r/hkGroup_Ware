@@ -66,5 +66,13 @@ public class LoginDAO {
 		return sql.selectOne("loginMapper.idSearch", email);
 	}
 
+	public boolean pwCheck(MemberVO memberVO) throws Exception {
+		return sql.selectOne("loginMapper.pwCheck", memberVO);
+	}
+
+	public void pwIssue(HashMap<String, Object> map) {
+		sql.update("loginMapper.pwIssue", map);
+	}
+
 
 }

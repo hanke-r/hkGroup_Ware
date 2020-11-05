@@ -81,9 +81,9 @@
 			                        		style="border: 3px solid lightgrey; cursor:pointer; -webkit-border-radius: 40px;">
 			                        </div>
 		                        </div>
-		                        <ul class="list-inline pull-right">
-		                            <li><button type="button" class="btn btn-primary next-step">다음</button></li>
-		                        </ul>
+		                        <div style="height: 50px;">
+		                        	
+		                        </div>
 		                    </div>
 		                    <div class="tab-pane" role="tabpanel" id="step2">
 		                    	<div id="idSearch">
@@ -98,23 +98,25 @@
 				                        <button type="button" class="btn btn-gray certBtn" onclick="USIC.emailCertChck();">확인</button>
 									</div>
 			                        <ul class="list-inline pull-right" style="margin-top: 7%;">
-			                            <li><button type="button" class="btn btn-default" onclick="location.reload();">HOME</button></li>
-			                            <li><button type="button" class="btn btn-primary next-step">다음</button></li>
+			                            <li><button type="button" class="btn btn-default" onclick="location.href='/login/loginForm';">HOME</button></li>
 			                        </ul>
 		                        </div>
 		                        <div id="pwSearch" style="display:none;">
 			                        <h3>PW찾기</h3>
 			                        <p> < 가입 시 인증했던 ID, Email주소를 입력해주세요 > </p>
-			                        <div style="margin-left: -295px; margin-bottom: 5px; width: 1360px;">
-				                        <input type="text" placeholder="ID">
+			                        <div style="margin-left: -69px; margin-bottom: 5px; width: 1135px;">
+				                        <input type="text" placeholder="ID" id="pwFindId">
 			                        </div>
-			                        <div style="margin-left: -20%">
-				                        <input type="text" placeholder="Email">
-				                        <button type="button" class="btn btn-gray certBtn">인증번호 전송</button>
+			                        <div>
+				                        <input type="text" placeholder="Email" id="pwFindEmail">
+				                        <button type="button" class="btn btn-gray certBtn" onclick="USIC.pwFind();">인증번호 전송</button>
 			                        </div>
+			                        <div id="pwCertCheck">
+				                        <input type="text" id="emailPwToken" placeholder="인증번호" style="width:228px">
+				                        <button type="button" class="btn btn-gray certBtn" onclick="USIC.pwEmailCertChck();">확인</button>
+									</div>
 			                        <ul class="list-inline pull-right" >
-			                            <li><button type="button" class="btn btn-default" onclick="location.reload();">HOME</button></li>
-			                            <li><button type="button" class="btn btn-primary next-step">다음</button></li>
+			                            <li><button type="button" class="btn btn-default" onclick="location.href='/login/loginForm';">HOME</button></li>
 			                        </ul>
 		                        </div>
 		                    </div>
