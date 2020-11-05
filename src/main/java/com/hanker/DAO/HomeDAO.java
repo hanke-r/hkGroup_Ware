@@ -18,6 +18,10 @@ public class HomeDAO {
 	public List<MemberVO> memNewList() throws Exception{
 		return sql.selectList("homeMapper.memNewList", null);
 	}
+
+	public String userAuth(String name) {
+		return sql.selectOne("homeMapper.userAuth", name);
+	}
 	
 	
 }

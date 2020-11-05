@@ -219,7 +219,8 @@ public class LoginController {
 	 * Email 인증 토큰 확인
 	 * */  
 	@RequestMapping(value="/login/ajaxETokenChck", method=RequestMethod.POST)
-	public String ajaxETokenChck(Model model, @RequestParam("ETOKEN") int token, @RequestParam("EMAIL") String email) throws Exception{
+	public String ajaxETokenChck(Model model, @RequestParam("ETOKEN") int token, @RequestParam("EMAIL") String email, 
+												@RequestParam(value="INDEX", required=false, defaultValue="0") int index) throws Exception{
 		HashMap<String, Object> map = new HashMap<>();
 		
 		TmpTokenVO tmpTokenVO = new TmpTokenVO();
@@ -240,11 +241,56 @@ public class LoginController {
 			result = "FALSE";
 		}
 		
+		if(index == 2) {
+			SecurityUtil su = new SecurityUtil();
+			String password = su.tmpPassword();
+			
+			map.put("password", password);
+			
+			String shaTmpPw = su.encryptSHA256(password);
+			map.put("shaTmpPw", shaTmpPw);
+			loginService.pwIssue(map);
+		}
+		
 		map.put("result", result);
 		
 		System.out.println("map = " + map);
 		
 		model.addAttribute("SC", map);
+		return "jsonView";
+	}
+	
+	/*
+	 * PW찾기 
+	 * email 인증번호 전송
+	 * */
+	@RequestMapping(value="/login/pwSearch", method=RequestMethod.POST)
+	public String pwSearch(Model model, HttpServletRequest req) throws Exception{
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUsername(req.getParameter("ID"));
+		memberVO.setEmail(req.getParameter("EMAIL"));
+		
+		String result = "";
+		boolean pwCheck = loginService.pwCheck(memberVO);
+		
+		if(pwCheck) {
+			TmpTokenVO tmpTokenVO = new TmpTokenVO();
+			tmpTokenVO.setEmail(memberVO.getEmail());
+
+			// join = 0, idSearch = 1, pwSearch = 2
+			int flag = eToken.EmailTokenSending(tmpTokenVO.getEmail(), 1);
+			tmpTokenVO.setToken(flag);
+			loginService.tmpTokenUpd(tmpTokenVO);
+			
+			result = "SUCCESS";
+			model.addAttribute("SC", result);
+		} else {
+			
+			result = "FAILED";
+			model.addAttribute("SC", result);
+		}
+		
 		return "jsonView";
 	}
 }

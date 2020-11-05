@@ -21,4 +21,9 @@ public class HomeServiceImpl implements HomeService{
 		return homeDAO.memNewList();
 	}
 
+	@Override
+	public String userAuth(String name) throws Exception {
+		return homeDAO.userAuth(name);
+	}
+
 }

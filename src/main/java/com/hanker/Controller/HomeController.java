@@ -30,11 +30,12 @@ public class HomeController {
 	public String home(Principal principal, Model model) throws Exception{
 		
 		MemberVO memberVO = new MemberVO();
-		
+
 		List<MemberVO> newMemList = homeService.memNewList();
-		
+
 		model.addAttribute("newMemList", newMemList);
-		
+
 		return "home";
+		
 	}
 }
