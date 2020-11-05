@@ -37,6 +37,7 @@ Released   : 20140330
 <!-- script -->
 <script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
+<script src="../assets/js/hkGroup/function.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -70,17 +71,17 @@ Released   : 20140330
 			<h1><a href="#">Master_k</a></h1>
 		</div>
 		<div id="menu">
-			<ul>
-				<li><a href="/" accesskey="1" title="">Home</a></li>
-				<li><a href="#" accesskey="2" title=""></a></li>
-				<li><a href="#" accesskey="3" title=""></a></li>
-				<li><a href="#" accesskey="4" title=""></a></li>
-				<li><a href="#" accesskey="5" title=""></a></li>
+			<ul style="margin-bottom:-5px;">
+				<li class="liActive"><a href="/" id="home" accesskey="1" title="">Home</a></li>
+				<li class="liDisabled"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
+				<li class="liDisabled"><a href="javascript:void(0);" accesskey="3" title="">형상관리</a></li>
+				<li class="liDisabled"><a href="javascript:void(0);" accesskey="4" title="">자유게시판</a></li>
+				<li class="liDisabled"><a href="javascript:void(0);" accesskey="5" title="">문의사항</a></li>
 			</ul>
 		</div>
 		<sec:authorize access="hasAnyRole('MANAGER','ADMIN')">
 			<div id="adminMenu">
-				<button type="button" id="adminBtn" onclick="location.href='/';">관리자 페이지</button>
+				<button type="button" id="adminBtn" onclick="location.href='/admin/home';">관리자 페이지</button>
 			</div>
 		</sec:authorize>
 	</div>

@@ -14,8 +14,20 @@
 	#memTitle {
 	   text-decoration: underline;
 	}
+	#userMenu {
+	position: absolute;
+    top: 4px;
+    right: 3px;
+	}
+	
+	#userBtn{
+		border-color: white;
+	    background-color: #111111;
+	    color: white;
+	    font-size: 13px;
+	    height: 30px;
+	}
 </style>
-
 
 <div id="wrapper">
 	<div id="three-column" class="container">
@@ -25,7 +37,7 @@
 		</div>
 		<table id="memberTable" class="table table-bordered">
 			<thead>
-				<tr>
+				<tr class="bg-dark" style="color: white;">
 					<th>No</th>
 					<th>ID</th>
 					<th>이름</th>

@@ -1,9 +1,9 @@
 package com.hanker.Controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hanker.DTO.MemberVO;
+import com.hanker.Service.HomeService;
 import com.hanker.Service.MemberService;
 
 @Controller
@@ -19,6 +20,21 @@ public class MemberManageController {
 
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private HomeService homeService;
+	
+	@RequestMapping(value="/admin/home", method=RequestMethod.GET)
+	public String home(Principal principal, Model model) throws Exception{
+		
+		MemberVO memberVO = new MemberVO();
+
+		List<MemberVO> newMemList = homeService.memNewList();
+
+		model.addAttribute("newMemList", newMemList);
+
+		return "admin/home";
+		
+	}
 	
 	@RequestMapping(value="/admin/adminPage", method=RequestMethod.GET)
 	public String GetMemManage(Model model) throws Exception{

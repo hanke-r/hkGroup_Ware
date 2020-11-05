@@ -28,6 +28,7 @@ Released   : 20140330
 <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
 <link href="../assets/css/assembly/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../assets/css/assembly/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../assets/css/hkGroup/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="../assets/css/default/app.min.css" rel="stylesheet" />
 
@@ -36,6 +37,7 @@ Released   : 20140330
 <!-- script -->
 <script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
+<script src="../assets/js/hkGroup/function.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -58,16 +60,16 @@ Released   : 20140330
 			<h1><a href="#">Master_k 관리자</a></h1>
 		</div>
 		<div id="menu">
-			<ul>
-				<li><a href="/" accesskey="1" title="">Home</a></li>
-				<li><a href="/admin/adminPage" title="">회원관리</a></li>
-				<li><a href="#" accesskey="3" title=""></a></li>
-				<li><a href="#" accesskey="4" title=""></a></li>
-				<li><a href="#" accesskey="5" title=""></a></li>
+			<ul style="margin-bottom:-5px;">
+				<li class="liActive"><a href="/admin/home" accesskey="1" title="">Home</a></li>
+				<li class="liDisabled"><a href="/admin/adminPage" title="">회원관리</a></li>
+				<li class="liDisabled"><a href="#" accesskey="3" title=""></a></li>
+				<li class="liDisabled"><a href="#" accesskey="4" title=""></a></li>
+				<li class="liDisabled"><a href="#" accesskey="5" title=""></a></li>
 			</ul>
 		</div>
 		<div id="userMenu">
-			<button type="button" id="userBtn" onclick="location.href='/hkGroup/main';">USER</button>
+			<button type="button" id="userBtn" onclick="location.href='/';">USER</button>
 		</div>
 	</div>
 </div>
