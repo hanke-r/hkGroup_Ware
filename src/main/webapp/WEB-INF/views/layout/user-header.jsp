@@ -27,6 +27,7 @@ Released   : 20140330
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
 <link href="../assets/css/assembly/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../assets/css/hkGroup/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../assets/css/assembly/fonts.css" rel="stylesheet" type="text/css" media="all" />
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="../assets/css/default/app.min.css" rel="stylesheet" />
@@ -40,6 +41,17 @@ Released   : 20140330
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
+<style>
+#loginOut {
+    top: 40px;
+    right: 40px;
+    position: absolute;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: white;
+}
+</style>
 </head>
 <body>
 <div id="header-wrapper">
@@ -55,20 +67,22 @@ Released   : 20140330
 	
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">Master_k 관리자</a></h1>
+			<h1><a href="#">Master_k</a></h1>
 		</div>
 		<div id="menu">
 			<ul>
 				<li><a href="/" accesskey="1" title="">Home</a></li>
-				<li><a href="/admin/adminPage" title="">회원관리</a></li>
+				<li><a href="#" accesskey="2" title=""></a></li>
 				<li><a href="#" accesskey="3" title=""></a></li>
 				<li><a href="#" accesskey="4" title=""></a></li>
 				<li><a href="#" accesskey="5" title=""></a></li>
 			</ul>
 		</div>
-		<div id="userMenu">
-			<button type="button" id="userBtn" onclick="location.href='/hkGroup/main';">USER</button>
-		</div>
+		<sec:authorize access="hasAnyRole('MANAGER','ADMIN')">
+			<div id="adminMenu">
+				<button type="button" id="adminBtn" onclick="location.href='/';">관리자 페이지</button>
+			</div>
+		</sec:authorize>
 	</div>
 </div>
 
