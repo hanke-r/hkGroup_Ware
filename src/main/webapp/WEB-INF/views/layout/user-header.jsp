@@ -72,8 +72,8 @@ Released   : 20140330
 		</div>
 		<div id="menu">
 			<ul style="margin-bottom:-5px;">
-				<li class="liActive"><a href="/" id="home" accesskey="1" title="">Home</a></li>
-				<li class="liDisabled"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
+				<li id="home"><a href="/" id="home" accesskey="1" title="">Home</a></li>
+				<li id="notice"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="3" title="">형상관리</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="4" title="">자유게시판</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="5" title="">문의사항</a></li>

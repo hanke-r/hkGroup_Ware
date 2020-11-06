@@ -14,9 +14,8 @@ var FUCN = {
 			url : '../hkGroup/board',
 			type : 'post',
 			dataType : 'json',
-			data : data,
 			success:function(rs){
-				console.log(rs);
+				location.href="/hkGroup/board";
 			}
 		});
 	},

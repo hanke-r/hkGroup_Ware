@@ -31,3 +31,17 @@ li > a {
     position: relative;
     top: 7px;
 }
+
+/* notice */
+
+.notice-title{
+	margin-left: 20%;
+	width:60%;
+	border-bottom: 1px solid black;
+}
+
+.notice-content{
+	margin-left: 20%;
+	margin-top: 10px;
+	width: 60%;
+}

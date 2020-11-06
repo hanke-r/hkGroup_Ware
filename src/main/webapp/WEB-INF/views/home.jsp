@@ -5,4 +5,10 @@
 <div id="wrapper" style="height: 50%;">
 
 </div>
+
+<script>
+	$(function(){
+		$("#home").addClass("liActive");
+	});
+</script>
 <%@ include file="/WEB-INF/views/layout/user-footer.jsp" %>

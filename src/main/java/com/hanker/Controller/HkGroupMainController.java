@@ -17,8 +17,13 @@ public class HkGroupMainController {
 	
 	@Inject
 	private HkGroupMainService hkGroupMainService;
-
+	
 	@RequestMapping(value="/hkGroup/board", method=RequestMethod.GET)
+	public void hkBoard() throws Exception{
+		
+	}
+
+	@RequestMapping(value="/hkGroup/board", method=RequestMethod.POST)
 	public String hkMain(Model model) throws Exception{
 		
 		List<NoticeBoardVO> list = hkGroupMainService.listAll();
