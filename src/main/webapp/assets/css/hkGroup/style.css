@@ -45,3 +45,22 @@ li > a {
 	margin-top: 10px;
 	width: 60%;
 }
+
+#notice-write{
+	float:right;
+	margin-top: -35px;
+}
+
+#noWrite {
+	background: #36c6c8;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 90px;
+    color: white;
+}
+
+.tr-title{
+	background-color: #f5f6fa;
+	color : black;
+}

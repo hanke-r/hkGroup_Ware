@@ -31,7 +31,7 @@ Released   : 20140330
 <link href="../assets/css/assembly/fonts.css" rel="stylesheet" type="text/css" media="all" />
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="../assets/css/default/app.min.css" rel="stylesheet" />
-
+<link rel="stylesheet" href="../assets/summernote/summernote-lite.css" />
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 <!-- script -->
@@ -42,6 +42,8 @@ Released   : 20140330
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
+<script src="../assets/summernote/summernote-lite.js"></script>
+<script src="../assets/summernote/lang/summernote-ko-KR.js"></script>
 <style>
 #loginOut {
     top: 40px;

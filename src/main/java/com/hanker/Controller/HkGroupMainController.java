@@ -1,5 +1,6 @@
 package com.hanker.Controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,5 +33,12 @@ public class HkGroupMainController {
 		
 		model.addAttribute("list", list);
 		return "jsonView";
+	}
+	
+	@RequestMapping(value="/hkGroup/boardWrite", method=RequestMethod.GET)
+	public void boardWrite(Model model, Principal principal) throws Exception{
+		
+		
+		model.addAttribute("SC","");
 	}
 }
