@@ -1,15 +1,24 @@
 package com.hanker.DTO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class NoticeBoardVO {
 	
 	private int nbno;
 	private String nbtitle;
+	private String nbwriter;
 	private String nbcontent;
 	private String nbviewcnt;
 	private Date regdate;
 	
+	
+	
+	public String getNbwriter() {
+		return nbwriter;
+	}
+	public void setNbwriter(String nbwriter) {
+		this.nbwriter = nbwriter;
+	}
 	public int getNbno() {
 		return nbno;
 	}

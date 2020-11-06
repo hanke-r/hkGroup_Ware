@@ -6,7 +6,7 @@
 		border: 1px solid gray;
     	border-radius: 5px;
 	}
-	#form {
+	form {
 		margin : 0 auto;
 		width: 90%;
 		margin-top: 20px;
@@ -46,10 +46,23 @@
 					${NBVIEW.nbcontent }
 				</div>
 			</div>
-			<button type="button" class="btn btn-sm btn-primary" onclick="FUCN.noticeWriter();">작성</button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="FUCN.noticeModify();">수정</button>
 			<button type="button" class="btn btn-sm btn-warning" onclick="location.href='/hkGroup/board';">목록</button>
 		</form>
 	</div>
+	
+	<div class="notice-reple">
+		<form>
+			<div class="mb-3">
+				<label for="title">댓글</label> <input type="text" class="form-control" name="title" id="title" placeholder="댓글을 입력해주세요.">
+			</div>
+			<div class="mb-3">
+				<button type="button" id="noticeReple" class="btn btn-danger" style="float:right;">댓글작성</button>
+			</div>
+		</form>
+	</div>
+	
+	
 </div>
 
 

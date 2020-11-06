@@ -46,6 +46,14 @@ li > a {
 	width: 60%;
 }
 
+.notice-reple{
+	margin-left: 20%;
+	margin-top: 10px;
+	width: 60%;
+	border: 1px solid gray;
+    border-radius: 5px;
+}
+
 #notice-write{
 	float:right;
 	margin-top: -35px;
