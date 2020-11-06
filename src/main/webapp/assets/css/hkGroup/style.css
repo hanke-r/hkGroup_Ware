@@ -64,3 +64,28 @@ li > a {
 	background-color: #f5f6fa;
 	color : black;
 }
+
+.nb-content{
+	display: block;
+    width: 100%;
+    padding: 7px .75rem;
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #2d353c;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d5dbe0;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.nb-viewcnt{
+	width: 29%;
+    float: right;
+    margin-top: -60px;
+}
+
+.nb-writer{
+	width: 70%;
+}

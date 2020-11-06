@@ -17,5 +17,17 @@ public class HkGroupMainDAO {
 
 	public List<NoticeBoardVO> listAll() throws Exception{
 		return sql.selectList("hkGroupMainMapper.listAll", null);
+	}
+
+	public String getWriter(String username) throws Exception{
+		return sql.selectOne("hkGroupMainMapper.getWriter", username);
+	}
+
+	public void noticeBoardWrite(NoticeBoardVO noticeBoardVO) {
+		sql.insert("hkGroupMainMapper.noticeBoardWrite", noticeBoardVO);
+	}
+
+	public NoticeBoardVO noticeBoardView(int nbno) {
+		return sql.selectOne("hkGroupMainMapper.noticeBoardView", nbno);
 	} 
 }

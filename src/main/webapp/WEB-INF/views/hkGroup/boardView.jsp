@@ -17,21 +17,34 @@
 <div id="wrapper">
 	<div class="notice-title">
 		<h2 class="pageTitle pos-rel">
-			<i class="fas fa-bullhorn"></i> 공지하기
+			<i class="fas fa-bullhorn"></i> 공지보기
 		</h2>
 	</div>
 	
 	<div class="notice-content">
-		<form name="form" id="form" role="form" method="post">
+		<form name="form" id="form" role="form">
 			<div class="mb-3">
-				<label for="title">제목</label> <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+				<label for="title">제목</label> <input type="text" class="form-control" name="title" id="title" value="<c:out value='${NBVIEW.nbtitle }'/>" readonly>
 			</div>
 			<div class="mb-3">
-				<label for="reg_id">작성자</label> <input type="text" class="form-control" name="writer" id="writer" value="${WRITER}" readonly>
+				<div class="nb-writer">
+					<label for="reg_id">작성자</label> <input type="text" class="form-control" name="writer" id="writer" value="<c:out value='${NBVIEW.nbwriter }'/>" readonly>
+				</div>
+				
+				<div class="nb-viewcnt">
+					<label for="viewCnt">조회수</label> <input type="text" class="form-control" name="viewCnt" id="viewCnt" value="<c:out value='${NBVIEW.nbviewcnt }'/>" readonly>
+				</div>
+			</div>
+			<div class="mb-3">
+				<div class="nb-regdate">
+					<label for="regdate">작성일</label> <input type="text" class="form-control" name="regdate" id="regdate" value="<c:out value='${NBVIEW.regdate }'/>" readonly>
+				</div>
 			</div>
 			<div class="mb-3">
 				<label for="content">내용</label>
-				<textarea class="form-control" rows="5" name="content" id="summernote"></textarea>
+				<div class="nb-content">
+					${NBVIEW.nbcontent }
+				</div>
 			</div>
 			<button type="button" class="btn btn-sm btn-primary" onclick="FUCN.noticeWriter();">작성</button>
 			<button type="button" class="btn btn-sm btn-warning" onclick="location.href='/hkGroup/board';">목록</button>
@@ -41,14 +54,6 @@
 
 
 <script>
-	$('#summernote').summernote({
-		height: 300,                 // 에디터 높이
-		minHeight: null,             // 최소 높이
-		maxHeight: null,             // 최대 높이
-		focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		lang: "ko-KR",					// 한글 설정
-		placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-	});
 	
 	$(function() {
 		// 메뉴 선택 css

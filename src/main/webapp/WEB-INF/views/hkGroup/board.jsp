@@ -18,11 +18,11 @@
 		<table id="noticeTb" class="table table-bordered">
 			<thead>
 				<tr class="tr-title">
-					<th>No</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>조회수</th>
-					<th>작성일</th>
+					<th style="width:5%;">No</th>
+					<th style="width:10%;">작성자</th>
+					<th style="width:58%;">제목</th>
+					<th style="width:7%;">조회수</th>
+					<th style="width:20%;">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,8 +30,11 @@
 					<tr id="memStatus">
 						<td>${status.count }</td>
 						<td>${noticeBoardVO.nbwriter }</td>
-						<td>${noticeBoardVO.nbtitle }</td>
-						<td>${noticeBoardVO.nbcontent }</td>
+						<td>
+							<span onclick="location.href='/hkGroup/boardView?nbno=${noticeBoardVO.nbno}';" style="cursor: pointer;">
+								<b>${noticeBoardVO.nbtitle }</b>
+							</span>
+						</td>
 						<td>${noticeBoardVO.nbviewcnt }</td>
 						<td>
 							<fmt:formatDate value="${noticeBoardVO.regdate }" pattern="yyyy년 MM월 dd일 EE요일" />
@@ -42,27 +45,6 @@
 		</table>
 	</div>
 </div>
-
-
-<div class="modal fade" id="noModal" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">모달 타이틀</h4>
-			</div>
-			<div class="modal-body">내용</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">확인</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-			</div>
-		</div>
-	</div>
-</div>
-
 
 
 <script>
@@ -77,11 +59,11 @@
 				"next" : "다음",
 				"previous" : "이전"
 			},
-			"info" : "_START_ - _END_ (총 _TOTAL_ 명)",
+			"info" : "_START_ - _END_ (총 _TOTAL_ 개)",
 			"infoEmpty" : "0개",
 			"emptyTable" : "등록된 공지가 없습니다.",
-
 		}
+		
 		$("#noticeTb").DataTable({
 			"ordering" : false,
 			"searching" : false,

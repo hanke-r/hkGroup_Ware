@@ -8,6 +8,7 @@
 			SELECT
 				nbno,
 				nbtitle,
+				nbwriter,
 				nbcontent,
 				nbviewcnt,
 				regdate
@@ -16,4 +17,39 @@
 		]]>
 	</select>
 	
+	<select id="getWriter" resultType="String">
+		<![CDATA[
+			SELECT
+				uname
+			FROM
+				users
+			WHERE
+				username = #{username}
+		]]>
+	</select>
+	
+	<insert id="noticeBoardWrite" parameterType="noticeBoardVO">
+		INSERT INTO
+			notice_board(
+				nbtitle,
+				nbwriter,
+				nbcontent
+			)
+			VALUES(
+				#{nbtitle},
+				#{nbwriter},
+				#{nbcontent}
+			)
+	</insert>
+	
+	<select id="noticeBoardView" resultType="noticeBoardVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				notice_board
+			WHERE
+				nbno = #{nbno}
+		]]>
+	</select>
 </mapper>

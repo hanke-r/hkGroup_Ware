@@ -98,6 +98,7 @@
 		$("#memberTable").DataTable({
 			"ordering": false,
 			"searching": false,
+			"lengthChange" : false,
 			language: lang_kor
 		});
 	});
