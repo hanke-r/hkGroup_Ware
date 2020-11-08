@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.RepleVO;
 
 @Repository
 public class HkGroupMainDAO {
@@ -22,6 +23,10 @@ public class HkGroupMainDAO {
 	public String getWriter(String username) throws Exception{
 		return sql.selectOne("hkGroupMainMapper.getWriter", username);
 	}
+	
+	public int getUserNum(String username) {
+		return sql.selectOne("hkGroupMainMapper.getUserNum", username);
+	}
 
 	public void noticeBoardWrite(NoticeBoardVO noticeBoardVO) {
 		sql.insert("hkGroupMainMapper.noticeBoardWrite", noticeBoardVO);
@@ -29,5 +34,16 @@ public class HkGroupMainDAO {
 
 	public NoticeBoardVO noticeBoardView(int nbno) {
 		return sql.selectOne("hkGroupMainMapper.noticeBoardView", nbno);
-	} 
+	}
+
+	public void insReple(RepleVO repleVO) {
+		sql.insert("hkGroupMainMapper.insReple", repleVO);
+	}
+
+	public List<RepleVO> viewReple(int nbno) throws Exception{
+		return sql.selectList("hkGroupMainMapper.viewReple", nbno);
+	}
+
+	
+
 }

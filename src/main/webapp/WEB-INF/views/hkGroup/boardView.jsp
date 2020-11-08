@@ -53,11 +53,12 @@
 	
 	<div class="notice-reple">
 		<form>
-			<div class="mb-3">
-				<label for="title">댓글</label> <input type="text" class="form-control" name="title" id="title" placeholder="댓글을 입력해주세요.">
+			<div class="mb-3" id="reView">
+				<b>  등록된 댓글이 없습니다.</b>
 			</div>
 			<div class="mb-3">
-				<button type="button" id="noticeReple" class="btn btn-danger" style="float:right;">댓글작성</button>
+				<label for="title">댓글</label> <input type="text" class="form-control" name="title" id="re_title" placeholder="댓글을 입력해주세요.">
+				<button type="button" id="noticeReple" onclick="FUCN.doCretRple('${NBVIEW.nbno}');" class="btn btn-danger" style="margin-left: 92.7%; margin-top: 5px;">댓글작성</button>
 			</div>
 		</form>
 	</div>
@@ -71,8 +72,8 @@
 	$(function() {
 		// 메뉴 선택 css
 		$("#notice").addClass("liActive");
-		
-		
 	});
+	
+	FUCN.viewReple('${NBVIEW.nbno}');
 </script>
 <%@ include file="/WEB-INF/views/layout/user-footer.jsp" %>

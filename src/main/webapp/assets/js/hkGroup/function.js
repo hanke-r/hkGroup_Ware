@@ -49,5 +49,54 @@ var FUCN = {
 		
 	},
 	
+	doCretRple: function(nbno){
+		var data = {
+				NBNO : nbno,
+				RETITLE : $("#re_title").val()
+		};
+		
+		$.ajax({
+			url : '../hkGroup/doReple',
+			type: 'post',
+			dataType: 'json',
+			data : data,
+			success:function(rs){
+				
+				var noticeBoardNum = rs.SC.nbno;
+				
+				$("#re_title").val("");
+				
+				FUCN.viewReple(noticeBoardNum);
+			}
+		});
+	},
+	
+	viewReple: function(noticeBoardNum){
+		
+		var data ={
+				NBNO : noticeBoardNum
+		}
+		
+		$.ajax({
+			url : '../hkGroup/viewReple',
+			type : 'post',
+			dataType : 'json',
+			data :data,
+			success:function(rs){
+				console.log(rs.SC.length);
+				var html = "";
+				$("#reView").html("");
+				for(var i = 0; i < rs.SC.length ; i++){
+					html
+						= '<b>'+ rs.SC[i].rewriter +' = ' + rs.SC[i].recontent + '         ' + rs.SC[i].regdate + '</b></br>';
+					
+					$("#reView").append(html);
+				}
+				
+				
+			}
+		});
+	}
+	
 
 }

@@ -28,6 +28,17 @@
 		]]>
 	</select>
 	
+	<select id="getUserNum" resultType="Integer">
+		<![CDATA[
+			SELECT
+				uno
+			FROM
+				users
+			WHERE
+				username = #{username}
+		]]>
+	</select>
+	
 	<insert id="noticeBoardWrite" parameterType="noticeBoardVO">
 		INSERT INTO
 			notice_board(
@@ -48,6 +59,33 @@
 				*
 			FROM
 				notice_board
+			WHERE
+				nbno = #{nbno}
+		]]>
+	</select>
+	
+	<insert id="insReple" parameterType="repleVO">
+		INSERT INTO
+			re_notice_board(
+				nbno,
+				uno,
+				rewriter,
+				recontent
+			)
+			VALUES(
+				#{nbno},
+				#{uno},
+				#{rewriter},
+				#{recontent}
+			)
+	</insert>
+	
+	<select id="viewReple" resultType="repleVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				re_notice_board
 			WHERE
 				nbno = #{nbno}
 		]]>

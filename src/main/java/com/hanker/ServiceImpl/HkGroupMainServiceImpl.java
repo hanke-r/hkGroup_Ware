@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.hanker.DAO.HkGroupMainDAO;
 import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.RepleVO;
 import com.hanker.Service.HkGroupMainService;
 
 @Service
@@ -25,6 +26,11 @@ public class HkGroupMainServiceImpl implements HkGroupMainService{
 	public String getWriter(String username) throws Exception {
 		return hkGroupMainDAO.getWriter(username);
 	}
+	
+	@Override
+	public int getUserNum(String username) throws Exception {
+		return hkGroupMainDAO.getUserNum(username);
+	}
 
 	@Override
 	public void noticeBoardWrite(NoticeBoardVO noticeBoardVO) throws Exception {
@@ -34,5 +40,17 @@ public class HkGroupMainServiceImpl implements HkGroupMainService{
 	@Override
 	public NoticeBoardVO noticeBoardView(int nbno) throws Exception {
 		return hkGroupMainDAO.noticeBoardView(nbno);
-	} 
+	}
+
+	@Override
+	public void insReple(RepleVO repleVO) throws Exception {
+		hkGroupMainDAO.insReple(repleVO);
+	}
+
+	@Override
+	public List<RepleVO> viewReple(int nbno) throws Exception {
+		return hkGroupMainDAO.viewReple(nbno);
+	}
+
+	
 }

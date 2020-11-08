@@ -97,3 +97,8 @@ li > a {
 .nb-writer{
 	width: 70%;
 }
+
+#reView{
+	border: 1px solid gray;
+    border-radius: 5px;
+}
