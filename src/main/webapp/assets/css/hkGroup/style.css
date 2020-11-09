@@ -2,19 +2,19 @@
 
 #adminMenu {
 	position: absolute;
-    top: 4px;
-    right: 3px;
+	top: 4px;
+	right: 3px;
 }
 
-#adminBtn{
+#adminBtn {
 	border-color: white;
-    background-color: #111111;
-    color: white;
-    font-size: 13px;
-    height: 30px;
+	background-color: #111111;
+	color: white;
+	font-size: 13px;
+	height: 30px;
 }
 
-#menu{
+#menu {
 	border-bottom: 3px solid white;
 }
 
@@ -22,83 +22,124 @@
 	height: 40px;
 }
 
-.liActive{
-    border: 2px solid white;
-    border-radius: 10px;
+.liActive {
+	border: 2px solid white;
+	border-radius: 10px;
 }
 
-li > a {
-    position: relative;
-    top: 7px;
+li>a {
+	position: relative;
+	top: 7px;
 }
 
 /* notice */
-
-.notice-title{
+.notice-title {
 	margin-left: 20%;
-	width:60%;
+	width: 60%;
 	border-bottom: 1px solid black;
 }
 
-.notice-content{
+.notice-content {
 	margin-left: 20%;
 	margin-top: 10px;
 	width: 60%;
 }
 
-.notice-reple{
+.notice-reple {
 	margin-left: 20%;
 	margin-top: 10px;
 	width: 60%;
 	border: 1px solid gray;
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
-#notice-write{
-	float:right;
+#notice-write {
+	float: right;
 	margin-top: -35px;
 }
 
 #noWrite {
 	background: #36c6c8;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    width: 90px;
-    color: white;
+	border: none;
+	border-radius: 5px;
+	height: 30px;
+	width: 90px;
+	color: white;
 }
 
-.tr-title{
+.tr-title {
 	background-color: #f5f6fa;
-	color : black;
+	color: black;
 }
 
-.nb-content{
+.nb-content {
 	display: block;
-    width: 100%;
-    padding: 7px .75rem;
-    font-size: .75rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #2d353c;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #d5dbe0;
-    border-radius: 4px;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	width: 100%;
+	padding: 7px .75rem;
+	font-size: .75rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #2d353c;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #d5dbe0;
+	border-radius: 4px;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.nb-viewcnt{
+.nb-viewcnt {
 	width: 29%;
-    float: right;
-    margin-top: -60px;
+	float: right;
+	margin-top: -60px;
 }
 
-.nb-writer{
+.nb-writer {
 	width: 70%;
 }
 
-#reView{
+#reView {
 	border: 1px solid gray;
-    border-radius: 5px;
+	border-radius: 5px;
+}
+
+.commitCon {
+	border-radius: 5px;
+	margin-top: 30px;
+	margin-left: 10px;
+	height: 70px;
+	background-color: #5897bb;
+	color: white;
+	width: 98%;
+}
+
+.fntSize {
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.confContainer {
+	border: 1px solid gray;
+	border-radius: 5px;
+	overflow: auto;
+	height: 500px;
+}
+
+.confContainer::-webkit-scrollbar {
+	width: 10px;
+}
+
+.confContainer::-webkit-scrollbar-thumb {
+	background-color: #2f3542;
+	border-radius: 10px;
+}
+
+.confContainer::-webkit-scrollbar-track {
+	background-color: grey;
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 5px white;
+}
+
+#commitSch {
+	margin-left: 93%;
+	margin-top: -50px;
 }

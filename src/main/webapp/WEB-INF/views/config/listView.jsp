@@ -5,11 +5,12 @@
 <div id="wrapper">
 	<div class="notice-title">
 		<h2 class="pageTitle pos-rel">
-			<i class="fas fa-bullhorn"></i> 공지사항		
+			<i class="fas fa-bullhorn"></i> 형상관리		
 		</h2>
 	</div>
 	<div class="notice-content">
-		<h5>Issue List</h5>
+		<h5>Commit List</h5>
+		<button type="button" class="btn btn-warning" id="commitSch">커밋관리</button>
 		<div class="confContainer">
 				
 		</div>
@@ -17,23 +18,39 @@
 </div>
 
 <script>
-	$(document).ready(function(){
+	$(document).ready(function() {
+		$("#config").addClass("liActive");
+		
+		$("#commitSch").click(function(){
+		    $("#myModal").modal();
+		});
+
 		var auth = window.btoa("");
 		$.ajax({
-			type: "GET",
-			headers: {
+			type : "GET",
+			headers : {
 				Authorization : "Basic " + auth,
 			},
-			url: "https://api.github.com/repos/hanjaeok/hkGroup_Ware/commits",
-			dataType: "json",
-			success:function(response){
-				console.log(response);
+			url : "https://api.github.com/repos/hanjaeok/hkGroup_Ware/commits",
+			dataType : "json",
+			success : function(response) {
 				var array = response;
-				for(var i = 0 ; i < array.length ; i++){
-					$(".confContainer").append("<p>" + array[i].commit.message + "</p>");
+				var max = array.length;
+				for (var i = 0; i < array.length; i++) {
+					var cal = array[i].commit.author.date;
+					var result = cal.split('T', 1);
+					$(".confContainer").append(
+											"<div class='commitCon'><b class='fntSize'> "
+												+ max
+												+ ". "
+												+ array[i].commit.message
+												+ "</b></div><div style='color: orange;margin-left: 87%;'>"
+												+ array[i].commit.author.date
+												+ "</div>");
+					max = max - 1;
 				}
 			},
-			error:function (e){
+			error : function(e) {
 				console.log("error");
 			}
 		});

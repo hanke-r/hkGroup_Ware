@@ -77,7 +77,7 @@ Released   : 20140330
 			<ul style="margin-bottom:-5px;">
 				<li id="home"><a href="/" id="home" accesskey="1" title="">Home</a></li>
 				<li id="notice"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
-				<li class="liDisabled"><a href="javascript:void(0);" onclick="CONF.confManage();" accesskey="3" title="">형상관리</a></li>
+				<li id="config"><a href="javascript:void(0);" onclick="CONF.confManage();" accesskey="3" title="">형상관리</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="4" title="">자유게시판</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="5" title="">문의사항</a></li>
 			</ul>

@@ -14,20 +14,20 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 		<!-- mysql 설정  -->
-		<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		    <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property> 
 		    <property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/hanker?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
 		    <property name="username" value="hanker"></property>
 		    <property name="password" value="20150804"></property>
-		</bean> -->
+		</bean>
 		
 		<!-- port:63306 -->
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		    <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property> 
 		    <property name="url" value="jdbc:log4jdbc:mysql://localhost:63306/hgroupware?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
 		    <property name="username" value="hanker"></property>
 		    <property name="password" value="hanker"></property>
-		</bean>
+		</bean> -->
 		
 		<!-- Gmail -->
 	    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
