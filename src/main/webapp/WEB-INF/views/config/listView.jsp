@@ -10,7 +10,7 @@
 	</div>
 	<div class="notice-content">
 		<h5>Issue List</h5>
-		<div class="container">
+		<div class="confContainer">
 				
 		</div>
 	</div>
@@ -18,19 +18,19 @@
 
 <script>
 	$(document).ready(function(){
-		var auth = window.btoa("hanjaeok: ");
+		var auth = window.btoa("");
 		$.ajax({
 			type: "GET",
 			headers: {
 				Authorization : "Basic " + auth,
 			},
-			url: "https://api.github.com/user/",
+			url: "https://api.github.com/repos/hanjaeok/hkGroup_Ware/commits",
 			dataType: "json",
 			success:function(response){
 				console.log(response);
 				var array = response;
 				for(var i = 0 ; i < array.length ; i++){
-					$(".container").append("<p>" + array[i] + "</p>");
+					$(".confContainer").append("<p>" + array[i].commit.message + "</p>");
 				}
 			},
 			error:function (e){
