@@ -38,6 +38,7 @@ Released   : 20140330
 <script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
 <script src="../assets/js/hkGroup/function.js"></script>
+<script src="../assets/js/hkGroup/config.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -76,7 +77,7 @@ Released   : 20140330
 			<ul style="margin-bottom:-5px;">
 				<li id="home"><a href="/" id="home" accesskey="1" title="">Home</a></li>
 				<li id="notice"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
-				<li class="liDisabled"><a href="javascript:void(0);" accesskey="3" title="">형상관리</a></li>
+				<li class="liDisabled"><a href="javascript:void(0);" onclick="CONF.confManage();" accesskey="3" title="">형상관리</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="4" title="">자유게시판</a></li>
 				<li class="liDisabled"><a href="javascript:void(0);" accesskey="5" title="">문의사항</a></li>
 			</ul>

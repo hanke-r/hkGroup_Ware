@@ -8,7 +8,6 @@ var FUCN = {
 
 	urlBoard : function() {
 		$(".liActive").removeClass("liActive");
-		$("#board").attr("class", "liActive");
 
 		location.href="/hkGroup/board";
 	},
@@ -97,6 +96,8 @@ var FUCN = {
 			}
 		});
 	}
+	
+	
 	
 
 }
