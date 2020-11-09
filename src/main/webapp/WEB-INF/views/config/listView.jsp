@@ -18,13 +18,13 @@
 
 <script>
 	$(document).ready(function(){
-		var auth = window.btoa("hanjaeok:c33a14c3714f4f16bb458b2b7f872e7690f14450");
+		var auth = window.btoa("hanjaeok: ");
 		$.ajax({
 			type: "GET",
 			headers: {
 				Authorization : "Basic " + auth,
 			},
-			url: "https://api.github.com/user/repos",
+			url: "https://api.github.com/user/",
 			dataType: "json",
 			success:function(response){
 				console.log(response);
