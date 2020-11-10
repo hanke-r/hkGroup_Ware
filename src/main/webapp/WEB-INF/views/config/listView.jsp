@@ -14,7 +14,10 @@
 		<div class="confContainer">
 				
 		</div>
+		<button type="button" class="btn btn-primary" id="prevBtn">이전</button>
+		<button type="button" class="btn btn-default" id="nextBtn">다음</button>
 	</div>
+	
 </div>
 <!-- Modal window -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -40,14 +43,15 @@
 		$("#commitSch").click(function(){
 		    
 		});
-
+		
+		var pageNo = 0;
 		var auth = window.btoa("");
 		$.ajax({
 			type : "GET",
 			headers : {
 				Authorization : "Basic " + auth,
 			},
-			url : "https://api.github.com/repos/hanjaeok/hkGroup_Ware/commits",
+			url : "https://api.github.com/repos/hanjaeok/hkGroup_Ware/commits?page="+pageNo,
 			dataType : "json",
 			success : function(response) {
 				var array = response;
