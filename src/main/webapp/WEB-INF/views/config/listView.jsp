@@ -14,8 +14,8 @@
 		<div class="confContainer">
 				
 		</div>
-		<button type="button" class="btn btn-primary" id="prevBtn">이전</button>
-		<button type="button" class="btn btn-default" id="nextBtn">다음</button>
+		<div class="confFooter">
+		</div>
 	</div>
 	
 </div>
@@ -24,8 +24,8 @@
 	<div class="modal-dialog" style="z-index:1100;">
 		<div class="modal-content">
 			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Git Commit Log</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-				<h4 class="modal-title" id="myModalLabel"></h4>
 			</div>
 			<div class="modal-body">
 				<div style="display:block;">
@@ -38,7 +38,25 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" onclick="CONF.gitCommitMsg();">확인</button>
+				<button type="button" class="btn btn-primary" onclick="CONF.gitCommitMsg(0);" data-dismiss="modal">확인</button>
+				<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- git Calc Modal Window -->
+<div class="modal fade" id="gitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="z-index:1100;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Git Commit Status</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+			</div>
+			<div class="modal-body">
+				<%@ include file="/WEB-INF/views/layout/calendar.jsp" %>
+			</div>
+			<div class="modal-footer">
 				<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">닫기</button>
 			</div>
 		</div>
@@ -48,7 +66,6 @@
 <script>
 	$(document).ready(function() {
 		$("#config").addClass("liActive");
-		
 	});
 </script>
 <%@ include file="/WEB-INF/views/layout/user-footer.jsp" %>

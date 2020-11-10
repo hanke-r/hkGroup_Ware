@@ -6,7 +6,7 @@
 
 var CONF = {
 	global : {
-
+		number: 0,
 	},
 	
 	
@@ -16,20 +16,22 @@ var CONF = {
 		location.href="/config/listView";
 	},
 	
-	gitCommitMsg: function(){
+	gitCommitMsg: function(i){
 		var owner = $("#owner").val();
 		var repos = $("#repos").val();
 		
-		var pageNo = 0;
+		var pageNo = 1 + i;
 		var auth = window.btoa("");
 		$.ajax({
 			type : "GET",
 			headers : {
 				Authorization : "Basic " + auth,
 			},
-			url : "https://api.github.com/repos/"+owner+"/"+repos+"/commits?page="+pageNo,
+			url : "https://api.github.com/repos/"+owner+"/"+repos+"/commits?per_page=100&page="+pageNo,
 			dataType : "json",
 			success : function(response) {
+				console.log(response.length);
+				console.log(pageNo);
 				var array = response;
 				var max = array.length;
 				for (var i = 0; i < array.length; i++) {
@@ -45,12 +47,44 @@ var CONF = {
 												+ "</div>");
 					max = max - 1;
 				}
+				
+				if(array.length == 100 && pageNo > 1){
+					$(".confFooter").append(
+							'<button type="button" class="btn btn-primary" id="prevBtn" onclick="CONF.gitPrev();>이전</button>'
+						  + '<button type="button" class="btn btn-default" id="nextBtn" onclick="CONF.gitNext();">다음</button>'	
+						  +	'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+					);
+				} else if(array.length < 100 && pageNo > 1){
+					$(".confFooter").append(
+							'<button type="button" class="btn btn-primary" id="prevBtn" onclick="CONF.gitPrev();>이전</button>'
+						+	'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+					);
+				} else if(array.length == 100 && pageNo == 1){
+					$(".confFooter").append(
+							'<button type="button" class="btn btn-default" id="nextBtn" onclick="CONF.gitNext();>다음</button>'
+						+	'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+					);
+				} else if(array.length <= 100 && pageNo == 1){
+					$(".confFooter").append(
+							'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+					);
+				}
 			},
 			error : function(e) {
 				console.log("error");
 			}
 		});
-	}
+	},
+	
+	gitNext: function(){
+		CONF.global.number = CONF.global.number + 1; 
+		CONF.gitCommitMsg(CONF.global.number);
+	},
+	
+	gitPrev: function(){
+		CONF.global.number = CONF.global.number - 1;
+		CONF.gitCommitMsg(CONF.global.number);
+	},
 	
 	
 }

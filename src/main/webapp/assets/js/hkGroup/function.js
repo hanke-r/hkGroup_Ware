@@ -92,7 +92,6 @@ var FUCN = {
 					$("#reView").append(html);
 				}
 				
-				
 			}
 		});
 	}
