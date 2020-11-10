@@ -289,7 +289,7 @@
 
 	#wrapper
 	{
-		position: relative;
+		/* position: relative; */
 		padding: 5em 0em 7em 0em;
 		background: #FFF;
 	}
@@ -300,7 +300,7 @@
 
 	#header-wrapper
 	{
-		position: relative;
+		/* position: relative; */
 		padding: 5em 0em 7em 0em;
 		background: #111111 url(images/header-bg.jpg) no-repeat center;
 		background-size: cover;
@@ -308,7 +308,7 @@
 
 	#header
 	{
-		position: relative;
+		/* position: relative; */
 		padding: 5em 0em;
 	}
 
@@ -318,7 +318,7 @@
 
 	#logo
 	{
-		position: absolute;
+		/* position: absolute; */
 		top: 3.6em;
 		left: 0;
 	}
@@ -341,9 +341,10 @@
 
 	#menu
 	{
-		position: absolute;
+		width: 32%;
 		top: 4.5em;
 		right: 0;
+		margin-left: 68%;
 	}
 	
 	#menu ul
@@ -453,7 +454,7 @@
 	
 	#footer-wrapper
 	{
-		position: relative;
+		/* position: relative; */
 		padding: 5em 0em 7em 0em;
 		background: #111111 url(images/header-bg.jpg) no-repeat center;
 		background-size: cover;
@@ -490,7 +491,7 @@
 
 	#welcome
 	{
-		position: relative;
+		/* position: relative; */
 		padding: 7em 0em 7em 0em;
 		background: #2651a8;
 		background-size: cover;

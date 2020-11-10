@@ -34,6 +34,9 @@ Released   : 20140330
 <link rel="stylesheet" href="../assets/summernote/summernote-lite.css" />
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
+
 <!-- script -->
 <script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
@@ -47,9 +50,7 @@ Released   : 20140330
 <script src="../assets/summernote/lang/summernote-ko-KR.js"></script>
 <style>
 #loginOut {
-    top: 40px;
-    right: 40px;
-    position: absolute;
+    margin-left: 93%;
     background: transparent;
     outline: none;
     border: none;
@@ -74,7 +75,7 @@ Released   : 20140330
 			<h1><a href="#">Master_k</a></h1>
 		</div>
 		<div id="menu">
-			<ul style="margin-bottom:-5px;">
+			<ul style="margin-bottom:-17px; width: 120%; margin-left: -15%">
 				<li id="home"><a href="/" id="home" accesskey="1" title="">Home</a></li>
 				<li id="notice"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
 				<li id="config"><a href="javascript:void(0);" onclick="CONF.confManage();" accesskey="3" title="">형상관리</a></li>

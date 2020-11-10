@@ -15,9 +15,8 @@
 	   text-decoration: underline;
 	}
 	#userMenu {
-	position: absolute;
-    top: 4px;
-    right: 3px;
+	    margin-left: 93%;
+    	margin-top: -10%;
 	}
 	
 	#userBtn{

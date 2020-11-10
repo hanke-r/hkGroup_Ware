@@ -33,6 +33,8 @@ Released   : 20140330
 <link href="../assets/css/default/app.min.css" rel="stylesheet" />
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
 
 <!-- script -->
 <script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>

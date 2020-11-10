@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
 #adminMenu {
-	position: absolute;
-	top: 4px;
-	right: 3px;
+	margin-left: 90%;
+    margin-top: -9%;
 }
 
 #adminBtn {
@@ -28,7 +27,7 @@
 }
 
 li>a {
-	position: relative;
+	/* position: relative; */
 	top: 7px;
 }
 
