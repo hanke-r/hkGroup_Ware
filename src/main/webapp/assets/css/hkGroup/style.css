@@ -103,16 +103,17 @@ li>a {
 
 .commitCon {
 	border-radius: 5px;
+	border: 1px solid gray;
 	margin-top: 30px;
 	margin-left: 10px;
 	height: 70px;
-	background-color: #5897bb;
-	color: white;
+	background-color: white;
+	color: black;
 	width: 98%;
 }
 
 .fntSize {
-	font-size: 15px;
+	font-size: 13px;
 	margin-left: 10px;
 }
 

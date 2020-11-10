@@ -88,6 +88,11 @@ Released   : 20140330
 				<button type="button" id="adminBtn" onclick="location.href='/admin/home';">관리자 페이지</button>
 			</div>
 		</sec:authorize>
+		<sec:authorize access="hasRole('USER')">
+			<div id="adminMenu">
+				<button type="button" id="adminBtn" onclick="location.href='/admin/home';" style="visibility:hidden;"></button>
+			</div>
+		</sec:authorize>
 	</div>
 </div>
 
