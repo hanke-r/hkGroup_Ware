@@ -25,12 +25,21 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				<h4 class="modal-title" id="myModalLabel"></h4>
 			</div>
-			<div class="modal-body">Modal body</div>
+			<div class="modal-body">
+				<div style="display:block;">
+					<label for="owner">관리자  :  </label>
+					<input type="text" id="owner" class="form-control" style="display: initial;width: 70%;">
+				</div>
+				<div style="display:block; margin-top: 5px;">
+					<label for="repos">저장소  :  </label>
+					<input type="text" id="repos" class="form-control" style="display: initial;width: 70%;">
+				</div>
+			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" onclick="CONF.gitCommitMsg();">확인</button>
+				<button type="button" class="btn btn-danger pull-left" data-dismiss="modal">닫기</button>
 			</div>
 		</div>
 	</div>
@@ -40,40 +49,6 @@
 	$(document).ready(function() {
 		$("#config").addClass("liActive");
 		
-		$("#commitSch").click(function(){
-		    
-		});
-		
-		var pageNo = 0;
-		var auth = window.btoa("");
-		$.ajax({
-			type : "GET",
-			headers : {
-				Authorization : "Basic " + auth,
-			},
-			url : "https://api.github.com/repos/hanjaeok/hkGroup_Ware/commits?page="+pageNo,
-			dataType : "json",
-			success : function(response) {
-				var array = response;
-				var max = array.length;
-				for (var i = 0; i < array.length; i++) {
-					var cal = array[i].commit.author.date;
-					var result = cal.split('T', 1);
-					$(".confContainer").append(
-											"<div class='commitCon'><b class='fntSize'> "
-												+ max
-												+ ". "
-												+ array[i].commit.message
-												+ "</b></div><div style='color: orange;margin-left: 87%;'>"
-												+ array[i].commit.author.date
-												+ "</div>");
-					max = max - 1;
-				}
-			},
-			error : function(e) {
-				console.log("error");
-			}
-		});
 	});
 </script>
 <%@ include file="/WEB-INF/views/layout/user-footer.jsp" %>
