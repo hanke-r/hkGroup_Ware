@@ -92,4 +92,11 @@ public class HkGroupMainController {
 		
 		return "jsonView";
 	}
+	
+	@RequestMapping(value="/layout/calendar", method=RequestMethod.GET)
+	public String testCal() throws Exception{
+
+        
+        return "layout/calendar";
+	}
 }

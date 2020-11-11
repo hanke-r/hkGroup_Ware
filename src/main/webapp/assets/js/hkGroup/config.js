@@ -7,6 +7,7 @@
 var CONF = {
 	global : {
 		number: 0,
+		gitDate : [], 
 	},
 	
 	
@@ -30,13 +31,12 @@ var CONF = {
 			url : "https://api.github.com/repos/"+owner+"/"+repos+"/commits?per_page=100&page="+pageNo,
 			dataType : "json",
 			success : function(response) {
-				console.log(response.length);
-				console.log(pageNo);
 				var array = response;
 				var max = array.length;
+				
 				for (var i = 0; i < array.length; i++) {
 					var cal = array[i].commit.author.date;
-					var result = cal.split('T', 1);
+					CONF.global.gitDate[i] = cal;
 					$(".confContainer").append(
 											"<div class='commitCon'><b class='fntSize'> "
 												+ max
@@ -53,20 +53,28 @@ var CONF = {
 							'<button type="button" class="btn btn-primary" id="prevBtn" onclick="CONF.gitPrev();>이전</button>'
 						  + '<button type="button" class="btn btn-default" id="nextBtn" onclick="CONF.gitNext();">다음</button>'	
 						  +	'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+						  + '<input type="hidden" id="gitOwner" value="'+ owner +'">'
+						  + '<input type="hidden" id="gitRepos" value="'+ repos +'">'
 					);
 				} else if(array.length < 100 && pageNo > 1){
 					$(".confFooter").append(
 							'<button type="button" class="btn btn-primary" id="prevBtn" onclick="CONF.gitPrev();>이전</button>'
 						+	'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+						+ '<input type="hidden" id="gitOwner" value="'+ owner +'">'
+						+ '<input type="hidden" id="gitRepos" value="'+ repos +'">'
 					);
 				} else if(array.length == 100 && pageNo == 1){
 					$(".confFooter").append(
-							'<button type="button" class="btn btn-default" id="nextBtn" onclick="CONF.gitNext();>다음</button>'
-						+	'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+						  '<button type="button" class="btn btn-default" id="nextBtn" onclick="CONF.gitNext();>다음</button>'
+						+ '<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+						+ '<input type="hidden" id="gitOwner" value="'+ owner +'">'
+						+ '<input type="hidden" id="gitRepos" value="'+ repos +'">'
 					);
 				} else if(array.length <= 100 && pageNo == 1){
 					$(".confFooter").append(
-							'<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal">Commit 확인</button>'
+						  '<button type="button" class="btn btn-danger" id="commitCalc" data-toggle="modal" data-target="#gitModal" onclick="testfn();">Commit 확인</button>'
+						+ '<input type="hidden" id="gitOwner" value="'+ owner +'">'
+						+ '<input type="hidden" id="gitRepos" value="'+ repos +'">'
 					);
 				}
 			},
@@ -85,6 +93,7 @@ var CONF = {
 		CONF.global.number = CONF.global.number - 1;
 		CONF.gitCommitMsg(CONF.global.number);
 	},
+	
 	
 	
 }

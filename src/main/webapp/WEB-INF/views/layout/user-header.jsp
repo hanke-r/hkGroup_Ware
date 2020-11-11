@@ -25,7 +25,7 @@ Released   : 20140330
 
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
+<meta name="viewport" content="width=device-width" />
 <link href="../assets/css/assembly/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../assets/css/hkGroup/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="../assets/css/assembly/fonts.css" rel="stylesheet" type="text/css" media="all" />
