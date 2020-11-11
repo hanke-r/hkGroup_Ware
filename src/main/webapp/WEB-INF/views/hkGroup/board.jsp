@@ -56,8 +56,8 @@
 			"paginate" : {
 				"first" : "첫 페이지",
 				"last" : "마지막 페이지",
-				"next" : "다음",
-				"previous" : "이전"
+				"next" : ">",
+				"previous" : "<"
 			},
 			"info" : "_START_ - _END_ (총 _TOTAL_ 개)",
 			"infoEmpty" : "0개",

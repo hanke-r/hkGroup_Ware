@@ -18,6 +18,14 @@
 		</div>
 	</div>
 	
+	<div class="conf-left">
+		<p> < </p>
+	</div>
+	
+	<div class="conf-right">
+		<p> > </p>
+	</div>
+	
 </div>
 <!-- Modal window -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

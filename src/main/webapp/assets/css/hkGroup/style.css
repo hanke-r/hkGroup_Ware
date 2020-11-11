@@ -143,3 +143,25 @@ li>a {
 	margin-left: 93%;
 	margin-top: -50px;
 }
+
+.conf-left{
+	left: 10%;
+    position: absolute;
+    top: 82%;
+    display: none;
+}
+
+.conf-left:hover{
+	display: block;
+}
+
+.conf-right{
+	right: 10%;
+	position: absolute;
+	top: 82%;
+	display: none;
+}
+
+.conf-right:hover{
+	display: block;
+}
