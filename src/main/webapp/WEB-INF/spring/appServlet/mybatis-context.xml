@@ -7,5 +7,6 @@
 		<typeAlias type="com.hanker.DTO.TmpTokenVO" alias="tmpTokenVO" />
 		<typeAlias type="com.hanker.DTO.NoticeBoardVO" alias="noticeBoardVO" />
 		<typeAlias type="com.hanker.DTO.RepleVO" alias="repleVO" />
+		<typeAlias type="com.hanker.DTO.FrBoardVO" alias="frBoardVO" />
 	</typeAliases>
 </configuration>

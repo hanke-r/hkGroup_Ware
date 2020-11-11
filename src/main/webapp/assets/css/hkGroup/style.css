@@ -75,7 +75,7 @@ li>a {
 	display: block;
 	width: 100%;
 	padding: 7px .75rem;
-	font-size: .75rem;
+	/* font-size: .75rem; */
 	font-weight: 400;
 	line-height: 1.5;
 	color: #2d353c;
@@ -144,24 +144,3 @@ li>a {
 	margin-top: -50px;
 }
 
-.conf-left{
-	left: 10%;
-    position: absolute;
-    top: 82%;
-    display: none;
-}
-
-.conf-left:hover{
-	display: block;
-}
-
-.conf-right{
-	right: 10%;
-	position: absolute;
-	top: 82%;
-	display: none;
-}
-
-.conf-right:hover{
-	display: block;
-}

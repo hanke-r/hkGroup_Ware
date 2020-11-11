@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="frBoardMapper">
+	
+	<select id="frList" resultType="frBoardVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				free_board
+		]]>
+	</select>
+	
+	<insert id="frbWrt" parameterType="frBoardVO">
+		INSERT INTO
+			free_board(
+				frtitle,
+				frwriter,
+				frcontent
+			)
+			VALUES(
+				#{frtitle},
+				#{frwriter},
+				#{frcontent}
+			)
+	</insert>
+	
+	<select id="frBoardView" resultType="frBoardVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				free_board
+			WHERE
+				frno = #{frno}
+		]]>
+	</select>
+	
+	<update id="frbUpdate" parameterType="frBoardVO">
+		UPDATE
+			free_board
+		SET
+			frtitle = #{frtitle},
+			frcontent = #{frcontent}
+		WHERE
+			frno = #{frno}
+	</update>
+</mapper>
