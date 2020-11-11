@@ -26,7 +26,7 @@
 		color: orange;
 	}
 	
-	.cal_week > th {
+	.cal_week > tr > th {
 		text-align:center;
 	}
 	

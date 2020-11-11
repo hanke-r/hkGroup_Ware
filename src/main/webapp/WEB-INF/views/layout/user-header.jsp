@@ -42,6 +42,8 @@ Released   : 20140330
 <script src="../assets/js/admin/memberManage.js"></script>
 <script src="../assets/js/hkGroup/function.js"></script>
 <script src="../assets/js/hkGroup/config.js"></script>
+<script src="../assets/js/hkGroup/frBoard.js"></script>
+<script src="../assets/js/hkGroup/question.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -79,8 +81,8 @@ Released   : 20140330
 				<li id="home"><a href="/" id="home" accesskey="1" title="">Home</a></li>
 				<li id="notice"><a href="javascript:void(0);" onclick="FUCN.urlBoard();" accesskey="2" title="">공지사항</a></li>
 				<li id="config"><a href="javascript:void(0);" onclick="CONF.confManage();" accesskey="3" title="">형상관리</a></li>
-				<li class="liDisabled"><a href="javascript:void(0);" accesskey="4" title="">자유게시판</a></li>
-				<li class="liDisabled"><a href="javascript:void(0);" accesskey="5" title="">문의사항</a></li>
+				<li id="frBoard"><a href="javascript:void(0);" onclick="FRBD.frBoardMain();" accesskey="4" title="">자유게시판</a></li>
+				<li id="question"><a href="javascript:void(0);" onclick="QUES.qsBoardMain();" accesskey="5" title="">문의사항</a></li>
 			</ul>
 		</div>
 		<sec:authorize access="hasAnyRole('MANAGER','ADMIN')">
