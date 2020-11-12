@@ -8,5 +8,6 @@
 		<typeAlias type="com.hanker.DTO.NoticeBoardVO" alias="noticeBoardVO" />
 		<typeAlias type="com.hanker.DTO.RepleVO" alias="repleVO" />
 		<typeAlias type="com.hanker.DTO.FrBoardVO" alias="frBoardVO" />
+		<typeAlias type="com.hanker.DTO.HkVisitVO" alias="hkVisitVO" />
 	</typeAliases>
 </configuration>

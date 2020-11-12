@@ -5,7 +5,7 @@
 <div id="wrapper">
 	<div class="notice-title">
 		<h2 class="pageTitle pos-rel">
-			<i class="fas fa-bullhorn"></i> 문의사항		
+			<i class="fas fa-comments"></i> 문의사항		
 		</h2>
 	</div>
 

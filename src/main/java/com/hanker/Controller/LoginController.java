@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +30,6 @@ public class LoginController {
 
 	@RequestMapping(value="/login/loginForm", method=RequestMethod.GET)
 	public void getLoginForm() throws Exception{
-		
 	}
 	
 	@RequestMapping(value="/login/loginForm", method=RequestMethod.POST)

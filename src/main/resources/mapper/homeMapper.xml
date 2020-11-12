@@ -24,4 +24,46 @@
 				username = #{name}
 		]]>	
 	</select>
+	
+	<insert id="visitorIns" parameterType="hkVisitVO">
+		INSERT INTO
+			hk_visit(
+				visit_id,
+				visit_ip
+			) VALUES(
+				#{visit_id},
+				#{visit_ip}
+			)
+	</insert>
+	
+	<select id="totalVisitCount" resultType="Integer">
+		<![CDATA[
+			SELECT
+				COUNT(*)
+			FROM
+				hk_visit
+		]]>
+	</select>
+	
+	<select id="monthVisitCount" resultType="Integer">
+		<![CDATA[
+			SELECT
+				COUNT(*)
+			FROM
+				hk_visit
+			WHERE
+				visit_time >= date_add(now(), interval -1 month)
+		]]>
+	</select>
+	
+	<select id="todayVisitCount" resultType="Integer">
+		<![CDATA[
+			SELECT
+				COUNT(*)
+			FROM
+				hk_visit
+			WHERE
+				date_format(visit_time, "%Y-%m-%d") = CURDATE()
+		]]>
+	</select>
 </mapper>

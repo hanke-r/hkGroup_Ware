@@ -13,14 +13,18 @@
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/login/loginForm" access="permitAll" /> 
 		<security:intercept-url pattern="/" access="hasAnyRole('USER','MANAGE','ADMIN')" />
-		<security:intercept-url pattern="/hkGroup/**" access="permitAll" />
+		<security:intercept-url pattern="/hkGroup/**" access="hasAnyRole('USER','MANAGE','ADMIN')" />
 		<security:intercept-url pattern="/admin/**" access="hasAnyRole('MANAGE','ADMIN')" />
-		<security:form-login login-page="/login/loginForm" default-target-url="/" 
+		<security:form-login login-page="/login/loginForm" default-target-url="/loginScsHandler" 
 								authentication-failure-url="/login/loginForm?error"
 								username-parameter="id" password-parameter="password" />
-		<security:logout logout-url="/logout" logout-success-url="/login/loginForm" />
+		<security:logout logout-url="/logout" logout-success-url="/login/loginForm" invalidate-session="true"/>
 		<security:access-denied-handler error-page="/login/accessDenied"/>
 		<security:csrf disabled="true"/>
+		
+		<security:session-management invalid-session-url="/login/loginForm">
+			<security:concurrency-control max-sessions="1" expired-url="/login/loginForm" />
+		</security:session-management>
 	</security:http>
 	<!-- 
 		access= "permitAll" ( 누구나 접근 가능 )
