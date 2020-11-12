@@ -1,6 +1,9 @@
 package com.hanker.Controller;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -53,7 +56,8 @@ public class HomeController {
 		HttpSession session = req.getSession();
 		
 		HashMap<String, Object> map = new HashMap<>();
-		
+		HashMap<String, Object> tmap = new HashMap<>();
+		HashMap<String, Object> lmap = new HashMap<>();
 		int totalVisitCount = homeService.totalVisitCount();
 		int monthVisitCount = homeService.monthVisitCount();
 		int todayVisitCount = homeService.todayVisitCount();
@@ -62,7 +66,24 @@ public class HomeController {
 		map.put("month", monthVisitCount);
 		map.put("today", todayVisitCount);
 		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		
+		for(int i = 0 ; i < 7 ; i++) {
+			
+			cal.add(Calendar.DATE, -i);
+			String time1 = format.format(cal.getTime());
+			
+			String dateVisit = homeService.dateVisitNum(time1);
+			tmap.put("dt"+i, dateVisit);
+			lmap.put("day"+i, time1);
+		}
+		
 		model.addAttribute("RS", map);
+		model.addAttribute("CHART", tmap);
+		model.addAttribute("DAY", lmap);
 		return "home";
 	}
 }

@@ -38,6 +38,7 @@ Released   : 20140330
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
 
 <!-- script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="../assets/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="../assets/js/admin/memberManage.js"></script>
 <script src="../assets/js/hkGroup/function.js"></script>

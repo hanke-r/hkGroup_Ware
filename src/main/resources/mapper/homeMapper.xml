@@ -66,4 +66,15 @@
 				date_format(visit_time, "%Y-%m-%d") = CURDATE()
 		]]>
 	</select>
+	
+	<select id="dateVisitNum" resultType="String">
+		<![CDATA[
+			SELECT 
+				count(*) 
+			FROM 
+				hk_visit 
+			WHERE
+				date_format(visit_time, '%Y%m%d') = #{time1}
+		]]>
+	</select>
 </mapper>

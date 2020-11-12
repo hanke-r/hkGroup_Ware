@@ -1,5 +1,6 @@
 package com.hanker.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -39,6 +40,10 @@ public class HomeDAO {
 
 	public int todayVisitCount() throws Exception{
 		return sql.selectOne("homeMapper.todayVisitCount");
+	}
+
+	public String dateVisitNum(String time1) throws Exception {
+		return sql.selectOne("homeMapper.dateVisitNum", time1);
 	}
 	
 	

@@ -143,4 +143,35 @@ li>a {
 	margin-left: 93%;
 	margin-top: -50px;
 }
+#visitCntTt, #visitCntMo, #visitCntTd {
+	width: 15%;
+	height: 33%;
+	color: black;
+	
+}
+
+#totalCntWr, #monthCntWr, #todayCntWr {
+	width: 50%;
+	float: left;
+	text-align: center;
+	background-color: black;
+	color:orange;
+	border: 1px solid orange;
+}
+
+#totalCnt, #monthCnt, #todayCnt {
+	float: right;
+	width: 50%;
+	background-color: black;
+	color:orange;
+	text-align: center;
+	border: 1px solid orange;
+}
+#ttVisit{
+	height: 69px;
+    width: 75%;
+    top: 20%;
+    left: 7%;
+    position: relative;
+}
 

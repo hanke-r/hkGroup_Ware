@@ -1,5 +1,6 @@
 package com.hanker.ServiceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,6 +47,12 @@ public class HomeServiceImpl implements HomeService{
 	@Override
 	public int todayVisitCount() throws Exception {
 		return homeDAO.todayVisitCount();
+	}
+
+	@Override
+	public String dateVisitNum(String time1) throws Exception{
+		
+		return homeDAO.dateVisitNum(time1);
 	}
 
 }

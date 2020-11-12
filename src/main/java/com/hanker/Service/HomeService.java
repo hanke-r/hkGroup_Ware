@@ -1,5 +1,6 @@
 package com.hanker.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.hanker.DTO.HkVisitVO;
@@ -19,4 +20,6 @@ public interface HomeService {
 	public int monthVisitCount() throws Exception;
 
 	public int todayVisitCount() throws Exception;
+
+	public String dateVisitNum(String time1) throws Exception;
 }
