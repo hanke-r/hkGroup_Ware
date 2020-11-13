@@ -52,7 +52,7 @@
 	
 	$(function() {
 		// 메뉴 선택 css
-		$("#notice").addClass("liActive");
+		$("#frBoard").addClass("liActive");
 		
 		
 	});

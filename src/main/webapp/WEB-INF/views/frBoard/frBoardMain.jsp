@@ -32,7 +32,7 @@
 								<b>${frBoardVO.frtitle }</b>
 							</span>
 						</td>
-						<td><b>${frBoardVO.frviewcnt }</b></td>
+						<td>${frBoardVO.frviewcnt }</td>
 						<td>
 							<fmt:formatDate value="${frBoardVO.regdate }" pattern="yyyy년 MM월 dd일 EE요일" />
 						</td>						

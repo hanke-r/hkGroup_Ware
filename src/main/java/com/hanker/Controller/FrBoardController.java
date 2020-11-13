@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanker.DTO.FrBoardVO;
-import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.RepleFrVO;
+import com.hanker.DTO.RepleVO;
 import com.hanker.Service.FrBoardService;
 import com.hanker.Service.HkGroupMainService;
 
@@ -67,8 +68,12 @@ public class FrBoardController {
 		String username = principal.getName();
 		String name = hkGroupMainService.getWriter(username);
 		
+		// 조회수		
+		frBoardService.frbViewCnt(frno);
+		
 		frBoardVO = frBoardService.frBoardView(frno);
 		model.addAttribute("FRVIEW", frBoardVO);
+		
 		if(name.equals(frBoardVO.getFrwriter())) {
 			model.addAttribute("SC", "SUCCESS");
 		} else {
@@ -88,6 +93,36 @@ public class FrBoardController {
 		frBoardVO.setFrcontent(req.getParameter("CONTENT"));
 		
 		frBoardService.frbUpdate(frBoardVO);
+		
+		return "jsonView";
+	}
+	
+	// 댓글
+	@RequestMapping(value="/frBoard/doReple", method=RequestMethod.POST)
+	public String doReple(Model model, Principal principal, @RequestParam("FRNO") int frno, @RequestParam("RETITLE") String recontent) throws Exception{
+		
+		String username = principal.getName();
+		String name = frBoardService.getWriter(username);
+		int userNumber = frBoardService.getUserNum(username);
+		
+		RepleFrVO repleFrVO = new RepleFrVO();
+		repleFrVO.setFrno(frno);
+		repleFrVO.setRef_writer(name);
+		repleFrVO.setRef_content(recontent);
+		repleFrVO.setUno(userNumber);
+		
+		frBoardService.insReple(repleFrVO);
+		
+		model.addAttribute("SC", repleFrVO);
+		return "jsonView";
+	}
+	
+	@RequestMapping(value="/frBoard/viewReple", method=RequestMethod.POST)
+	public String viewReple(Model model, @RequestParam("FRNO") int frno) throws Exception{
+		
+		List<RepleFrVO> listRe = frBoardService.viewReple(frno);
+		
+		model.addAttribute("SC", listRe);
 		
 		return "jsonView";
 	}

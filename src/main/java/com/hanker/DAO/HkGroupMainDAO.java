@@ -44,6 +44,14 @@ public class HkGroupMainDAO {
 		return sql.selectList("hkGroupMainMapper.viewReple", nbno);
 	}
 
+	public void boardViewCnt(int nbno) throws Exception {
+		sql.update("hkGroupMainMapper.boardViewCnt", nbno);
+	}
+
+	public void nbUpdate(NoticeBoardVO nbVO) throws Exception {
+		sql.update("hkGroupMainMapper.nbUpdate", nbVO);
+	}
+
 	
 
 }

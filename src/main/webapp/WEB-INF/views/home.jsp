@@ -8,26 +8,31 @@
 			<i class="fas fa-home"></i> Main
 		</h2>
 	</div>
-	<div>
-		<canvas id="myChart" width="550" height="300" style="margin-left:20%; margin-top:3%;"></canvas>
+	<div style="width: 60%; margin-left: 20%;">
+		<canvas id="myChart" width="550" height="300" style="margin-left:3%; margin-top:3%;"></canvas>
+		<div style="width: 20%; float: right; margin-top: -20%; margin-right: 15%;">
+			<div id="totalCntWr">총 방문자 수</div>
+			<div id="totalCnt">${RS.total }</div>
+			
+			<div id="todayCntWr" style="margin-top: 25%;">오늘 방문자 수</div>
+			<div id="todayCnt">${RS.today }</div>
+		</div>3
+		
 	</div>
-
-
 
 	<div id="ttVisit">
-		<div id="visitCntTt">
-			<div id="totalCntWr">총 방문자수</div>
-			<div id="totalCnt">${RS.total }</div>
+			<div id="visitCntTt">
+				
+			</div>
+			<div id="visitCntMo">
+				
+			</div>
+			<div id="visitCntTd">
+				
+			</div>
 		</div>
-		<div id="visitCntMo">
-			<div id="monthCntWr">이번달 방문자수</div>
-			<div id="monthCnt">${RS.month }</div>
-		</div>
-		<div id="visitCntTd">
-			<div id="todayCntWr">오늘 방문자수</div>
-			<div id="todayCnt">${RS.today }</div>
-		</div>
-	</div>
+
+	
 
 </div>
 
@@ -45,8 +50,8 @@
 		        labels: ['${DAY.day6}', '${DAY.day5}', '${DAY.day4}', '${DAY.day3}', '${DAY.day2}', '${DAY.day1}', '${DAY.day0}'],
 		        datasets: [{
 		            label: '일일 방문자',
-		            backgroundColor: 'rgb(255, 99, 132)',
-		            borderColor: 'rgb(255, 99, 132)',
+		            backgroundColor: 'rgb(255, 255, 255)',
+		            borderColor: 'rgb(0, 0, 255)',
 		            data: ['${CHART.dt6}', '${CHART.dt5}', '${CHART.dt4}', '${CHART.dt3}', '${CHART.dt2}', '${CHART.dt1}', '${CHART.dt0}']
 		        }]
 		    },

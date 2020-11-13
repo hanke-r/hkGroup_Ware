@@ -74,8 +74,8 @@ Released   : 20140330
 	</sec:authorize>
 	
 	<div id="header" class="container">
-		<div id="logo">
-			<h1><a href="#">Master_k</a></h1>
+		<div id="mainLogo">
+			<h1><span style="cursor:pointer;">Master_k</span></h1>
 		</div>
 		<div id="menu">
 			<ul style="margin-bottom:-17px; width: 120%; margin-left: -15%">

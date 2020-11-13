@@ -15,4 +15,27 @@ var QUES = {
 		location.href="/question/qsBoardMain";
 	},
 	
+	
+	inqWrite: function(){
+		var data = {
+				TITLE : $("#title").val(),
+				WRITER : $("#writer").val(),
+				EMAIL : $("#email").val(),
+				CONTENT : $("#summernote").val()
+		}
+		
+		$.ajax({
+			url : '../question/inqWrite',
+			type : 'post',
+			dataType : 'json',
+			data : data,
+			success: function(rs){
+				console.log(rs);
+				
+				QUES.qsBoardMain();
+			}
+		});
+	},
+	
+	
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="questMapper">
+	
+	<select id="userInfo" resultType="HashMap">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				users
+			WHERE
+				username = #{username}
+		]]>
+	</select>
+	
+	<insert id="inqWrite" parameterType="inqVO">
+		INSERT INTO
+			inq_board(
+				uno,
+				inq_title,
+				inq_content,
+				inq_email,
+				inq_writer
+			)
+			VALUES(
+				#{uno},
+				#{inq_title},
+				#{inq_content},
+				#{inq_email},
+				#{inq_writer}
+			)
+			
+	</insert>
+	
+	<select id="inqList" resultType="inqVO">
+		SELECT 
+			*
+		FROM
+			inq_board
+	</select>
+	
+	<select id="inqView" resultType="inqVO">
+		SELECT
+			*
+		FROM
+			inq_board
+		WHERE
+			inq_no = #{inq_no}
+	</select>
+</mapper>

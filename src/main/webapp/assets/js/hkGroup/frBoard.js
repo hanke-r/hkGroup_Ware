@@ -86,5 +86,52 @@ var FRBD = {
 				location.href="/frBoard/frBoardView?frno="+frno;
 			}
 		});
+	},
+	
+	doCretRple: function(frno){
+		var data = {
+				FRNO : frno,
+				RETITLE : $("#re_title").val()
+		};
+		
+		$.ajax({
+			url : '../frBoard/doReple',
+			type: 'post',
+			dataType: 'json',
+			data : data,
+			success:function(rs){
+				
+				var freeBoardNum = rs.SC.frno;
+				
+				$("#re_title").val("");
+				
+				FRBD.viewReple(freeBoardNum);
+			}
+		});
+	},
+	
+	viewReple: function(fbnum){
+		var data ={
+				FRNO : fbnum
+		}
+		
+		$.ajax({
+			url : '../frBoard/viewReple',
+			type : 'post',
+			dataType : 'json',
+			data :data,
+			success:function(rs){
+				console.log(rs.SC.length);
+				var html = "";
+				$("#reView").html("");
+				for(var i = 0; i < rs.SC.length ; i++){
+					html
+						= '<b>'+ rs.SC[i].ref_writer +' = ' + rs.SC[i].ref_content + '         ' + rs.SC[i].regdate + '</b></br>';
+					
+					$("#reView").append(html);
+				}
+				
+			}
+		});
 	}
 }

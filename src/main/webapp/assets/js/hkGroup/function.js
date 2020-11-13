@@ -3,7 +3,8 @@
  */
 var FUCN = {
 	global : {
-
+		formData : [],
+		status : [],
 	},
 
 	urlBoard : function() {
@@ -39,7 +40,8 @@ var FUCN = {
 			dataType : 'json',
 			data: data,
 			success:function(rs){
-				location.href='/hkGroup/board';
+				FUCN.sendFileToServer(FUCN.global.formData, FUCN.global.status);
+				
 			},
 			error:function(){
 				swal("내부 오류가 발생했습니다.", "", "error");
@@ -94,7 +96,85 @@ var FUCN = {
 				
 			}
 		});
-	}
+	},
+	
+	noticeModify: function(){
+		$("#title").attr("readonly", false);
+		$("#nbContentView").css("display", "none");
+		
+		var html = 
+				'<label for="content">내용</label>'
+			+	'<textarea class="form-control" rows="5" name="content" id="summernote"></textarea>';
+		$("#boardContent").append(html);
+		
+		$("#update").css("display", "none");
+		$("#list").css("display", "none");
+		
+		$("#updateChk").show();
+		$("#back").show();
+		
+		$('#summernote').summernote({
+			height: 300,                 // 에디터 높이
+			minHeight: null,             // 최소 높이
+			maxHeight: null,             // 최대 높이
+			focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
+			lang: "ko-KR",					// 한글 설정
+		});
+	},
+	
+	nbUpdate: function(nbno){
+		var data={
+				NBNO : nbno,
+				TITLE : $("#title").val(),
+				CONTENT : $("#summernote").val()
+		}
+		
+		$.ajax({
+			url : '../hkGroup/nbUpdate',
+			type : 'post',
+			dataType: 'json',
+			data : data,
+			success:function(rs){
+				location.href="/hkGroup/boardView?nbno="+nbno;
+			}
+		});
+	},
+	
+	 sendFileToServer: function(formData,status) {
+        var uploadURL = "/fileUpload/post"; //Upload URL
+        var extraData ={}; //Extra Data.
+        var jqXHR=$.ajax({
+                xhr: function() {
+                var xhrobj = $.ajaxSettings.xhr();
+                if (xhrobj.upload) {
+                        xhrobj.upload.addEventListener('progress', function(event) {
+                            var percent = 0;
+                            var position = event.loaded || event.position;
+                            var total = event.total;
+                            if (event.lengthComputable) {
+                                percent = Math.ceil(position / total * 100);
+                            }
+                            //Set progress
+                            status.setProgress(percent);
+                        }, false);
+                    }
+                return xhrobj;
+            },
+            url: uploadURL,
+            type: "POST",
+            contentType:false,
+            processData: false,
+            cache: false,
+            data: formData,
+            success: function(data){
+                status.setProgress(100);
+                location.href='/hkGroup/board';
+                //$("#status1").append("File upload Done<br>");           
+            }
+        }); 
+     
+        status.setAbort(jqXHR);
+    }
 	
 	
 	

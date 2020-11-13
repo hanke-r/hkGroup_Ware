@@ -22,6 +22,10 @@ public interface HkGroupMainService {
 
 	public List<RepleVO> viewReple(int nbno) throws Exception;
 
+	public void boardViewCnt(int nbno) throws Exception;
+
+	public void nbUpdate(NoticeBoardVO nbVO) throws Exception;
+
 	
 
 

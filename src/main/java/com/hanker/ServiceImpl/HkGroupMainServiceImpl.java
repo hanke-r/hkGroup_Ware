@@ -52,5 +52,15 @@ public class HkGroupMainServiceImpl implements HkGroupMainService{
 		return hkGroupMainDAO.viewReple(nbno);
 	}
 
+	@Override
+	public void boardViewCnt(int nbno) throws Exception {
+		hkGroupMainDAO.boardViewCnt(nbno);
+	}
+
+	@Override
+	public void nbUpdate(NoticeBoardVO nbVO) throws Exception {
+		hkGroupMainDAO.nbUpdate(nbVO);
+	}
+
 	
 }

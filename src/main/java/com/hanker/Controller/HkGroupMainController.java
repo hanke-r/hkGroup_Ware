@@ -1,6 +1,8 @@
 package com.hanker.Controller;
 
+import java.io.File;
 import java.security.Principal;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hanker.DTO.NoticeBoardVO;
 import com.hanker.DTO.RepleVO;
@@ -60,12 +64,24 @@ public class HkGroupMainController {
 	}
 	
 	@RequestMapping(value="/hkGroup/boardView", method=RequestMethod.GET)
-	public String BoardView(Model model, @RequestParam("nbno") int nbno) throws Exception{
+	public String BoardView(Model model, @RequestParam("nbno") int nbno, Principal principal) throws Exception{
+		
+		// 조회수
+		hkGroupMainService.boardViewCnt(nbno);
+		
+		String username = principal.getName();
+		String name = hkGroupMainService.getWriter(username);
 		
 		NoticeBoardVO noticeBoardVO = new NoticeBoardVO();
 		noticeBoardVO = hkGroupMainService.noticeBoardView(nbno);
 		
 		model.addAttribute("NBVIEW", noticeBoardVO);
+		
+		if(name.equals(noticeBoardVO.getNbwriter())) {
+			model.addAttribute("SC", "SUCCESS");
+		} else {
+			model.addAttribute("SC","FAIL");
+		}
 		
 		return "hkGroup/boardView";
 	}
@@ -98,10 +114,54 @@ public class HkGroupMainController {
 		return "jsonView";
 	}
 	
-	@RequestMapping(value="/layout/calendar", method=RequestMethod.GET)
-	public String testCal() throws Exception{
-
+	@RequestMapping(value="/hkGroup/nbUpdate", method=RequestMethod.POST)
+	public String nbUpdate(Model model, HttpServletRequest req, NoticeBoardVO nbVO) throws Exception{
+		
+		nbVO.setNbno(Integer.parseInt(req.getParameter("NBNO")));
+		nbVO.setNbtitle(req.getParameter("TITLE"));
+		nbVO.setNbcontent(req.getParameter("CONTENT"));
+		
+		hkGroupMainService.nbUpdate(nbVO);
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping(value="/fileUpload/post", method=RequestMethod.POST)
+	public String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
+		
+		Iterator<String> itr =  multipartRequest.getFileNames();
         
-        return "layout/calendar";
+        String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX\\1.데이터"; //설정파일로 뺀다.
+        
+        while (itr.hasNext()) { //받은 파일들을 모두 돌린다.
+            
+            /* 기존 주석처리
+            MultipartFile mpf = multipartRequest.getFile(itr.next());
+            String originFileName = mpf.getOriginalFilename();
+            System.out.println("FILE_INFO: "+originFileName); //받은 파일 리스트 출력'
+            */
+            
+            MultipartFile mpf = multipartRequest.getFile(itr.next());
+     
+            String originalFilename = mpf.getOriginalFilename(); //파일명
+            originalFilename = new String(originalFilename.getBytes("8859_1"), "utf-8");
+            
+            String fileFullPath = filePath+"\\"+originalFilename; //파일 전체 경로
+     
+            try {
+                //파일 저장
+                mpf.transferTo(new File(fileFullPath)); //파일저장 실제로는 service에서 처리
+                
+                System.out.println("originalFilename => "+originalFilename);
+                System.out.println("fileFullPath => "+fileFullPath);
+     
+            } catch (Exception e) {
+                System.out.println("postTempFile_ERROR======>"+fileFullPath);
+                e.printStackTrace();
+            }
+                         
+       }
+		
+		return "success";
 	}
 }

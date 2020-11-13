@@ -3,8 +3,8 @@
 
 
 
-<div id="footer-wrapper">
-	<div id="copyright" class="container">
+<div id="footer-wrapper" style="height: 21%;">
+	<div id="copyright" class="container" style="margin-top: -3%">
 		<p>
 			&copy; Untitled. All rights reserved. | Photos by <a
 				href="http://fotogrph.com/">Fotogrph</a> | Design by <a

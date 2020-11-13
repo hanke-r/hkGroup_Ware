@@ -1,5 +1,5 @@
 <div id="header-wrapper">
-	<div id="copyright" class="container">
+	<div id="copyright" class="container" style="margin-top: -5%;">
 		<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 	</div>
 </div>

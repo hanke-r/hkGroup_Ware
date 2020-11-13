@@ -12,7 +12,7 @@
 	<meta content="" name="author" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<!-- <link rel="icon" href="../assets/Login_v1/images/icons/favicon.ico"/> -->
+	<link rel="icon" href="../assets/Login_v1/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" href="../assets/Login_v1/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->

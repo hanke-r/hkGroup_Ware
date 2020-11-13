@@ -67,7 +67,7 @@
 			</div>
 			<div class="mb-3">
 				<label for="title">댓글</label> <input type="text" class="form-control" name="title" id="re_title" placeholder="댓글을 입력해주세요.">
-				<button type="button" id="noticeReple" onclick="FUCN.doCretRple('${NBVIEW.nbno}');" class="btn btn-danger" style="margin-left: 92.7%; margin-top: 5px;">댓글작성</button>
+				<button type="button" id="noticeReple" onclick="FRBD.doCretRple('${FRVIEW.frno}');" class="btn btn-danger" style="margin-left: 92.7%; margin-top: 5px;">댓글작성</button>
 			</div>
 		</form>
 	</div>

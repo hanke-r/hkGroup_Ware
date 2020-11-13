@@ -37,6 +37,28 @@
 		]]>
 	</select>
 	
+	<select id="getWriter" resultType="String">
+		<![CDATA[
+			SELECT
+				uname
+			FROM
+				users
+			WHERE
+				username = #{username}
+		]]>
+	</select>
+	
+	<select id="getUserNum" resultType="Integer">
+		<![CDATA[
+			SELECT
+				uno
+			FROM
+				users
+			WHERE
+				username = #{username}
+		]]>
+	</select>
+	
 	<update id="frbUpdate" parameterType="frBoardVO">
 		UPDATE
 			free_board
@@ -46,4 +68,40 @@
 		WHERE
 			frno = #{frno}
 	</update>
+	
+	<update id="frbViewCnt" parameterType="Integer">
+		UPDATE
+			free_board
+		SET
+			frviewcnt = frviewcnt + 1
+		WHERE
+			frno = #{frno}
+	</update>
+	
+	<insert id="insReple" parameterType="repleFrVO">
+		INSERT INTO
+			re_free_board(
+				frno,
+				uno,
+				ref_writer,
+				ref_content
+			)
+			VALUES(
+				#{frno},
+				#{uno},
+				#{ref_writer},
+				#{ref_content}
+			)
+	</insert>
+	
+	<select id="viewReple" resultType="repleFrVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				re_free_board
+			WHERE
+				frno = #{frno}
+		]]>
+	</select>
 </mapper>

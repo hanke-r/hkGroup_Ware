@@ -40,14 +40,24 @@
 					<label for="regdate">작성일</label> <input type="text" class="form-control" name="regdate" id="regdate" value="<c:out value='${NBVIEW.regdate }'/>" readonly>
 				</div>
 			</div>
-			<div class="mb-3">
-				<label for="content">내용</label>
-				<div class="nb-content">
-					${NBVIEW.nbcontent }
+			<div class="mb-3" id="boardContent">
+				<div id="nbContentView">
+					<label for="content">내용</label>
+					<div class="nb-content">
+						${NBVIEW.nbcontent }
+					</div>
 				</div>
 			</div>
-			<button type="button" class="btn btn-sm btn-primary" onclick="FUCN.noticeModify();">수정</button>
-			<button type="button" class="btn btn-sm btn-warning" onclick="location.href='/hkGroup/board';">목록</button>
+			
+			
+			<c:set var="SC" value="${SC }" />
+			<c:if test = "${SC eq 'SUCCESS' }">
+				<button type="button" class="btn btn-sm btn-primary" id="update" onclick="FUCN.noticeModify();">수정</button>
+			</c:if>
+			<button type="button" class="btn btn-sm btn-warning" id="list" onclick="location.href='/hkGroup/board';">목록</button>
+			
+			<button type="button" class="btn btn-sm btn-danger" id="updateChk" onclick="FUCN.nbUpdate('${NBVIEW.nbno}');" style="display:none;">확인</button>
+			<button type="button" class="btn btn-sm btn-warning" id="back" onclick="location.href='/hkGroup/boardView?nbno=${NBVIEW.nbno}'" style="display:none;">back</button>
 		</form>
 	</div>
 	

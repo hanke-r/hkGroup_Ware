@@ -90,4 +90,23 @@
 				nbno = #{nbno}
 		]]>
 	</select>
+	
+	<update id="boardViewCnt" parameterType="Integer">
+		UPDATE
+			notice_board
+		SET
+			nbviewcnt = nbviewcnt + 1
+		WHERE
+			nbno = #{nbno}
+	</update>
+	
+	<update id="nbUpdate" parameterType="noticeBoardVO">
+		UPDATE
+			notice_board
+		SET
+			nbtitle = #{nbtitle},
+			nbcontent = #{nbcontent}
+		WHERE
+			nbno = #{nbno}
+	</update>
 </mapper>
