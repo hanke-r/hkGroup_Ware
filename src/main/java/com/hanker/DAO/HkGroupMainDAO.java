@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.NoticeFileVO;
 import com.hanker.DTO.RepleVO;
 
 @Repository
@@ -50,6 +51,14 @@ public class HkGroupMainDAO {
 
 	public void nbUpdate(NoticeBoardVO nbVO) throws Exception {
 		sql.update("hkGroupMainMapper.nbUpdate", nbVO);
+	}
+
+	public void fileIns(NoticeFileVO nfVO) throws Exception {
+		sql.insert("hkGroupMainMapper.fileIns", nfVO);
+	}
+
+	public int getNbno() throws Exception{
+		return sql.selectOne("hkGroupMainMapper.getNbno");
 	}
 
 	

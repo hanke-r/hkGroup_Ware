@@ -11,5 +11,6 @@
 		<typeAlias type="com.hanker.DTO.HkVisitVO" alias="hkVisitVO" />
 		<typeAlias type="com.hanker.DTO.RepleFrVO" alias="repleFrVO" />
 		<typeAlias type="com.hanker.DTO.InqueryVO" alias="inqVO" />
+		<typeAlias type="com.hanker.DTO.NoticeFileVO" alias="nfVO" />
 	</typeAliases>
 </configuration>

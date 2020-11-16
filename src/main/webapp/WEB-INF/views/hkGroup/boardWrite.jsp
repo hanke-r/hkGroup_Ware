@@ -33,11 +33,13 @@
 				<label for="content">내용</label>
 				<textarea class="form-control" rows="5" name="content" id="summernote"></textarea>
 			</div>
+			
 			<div class="mb-3">
 				<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
-				<input type="file" name="fileUpload" id="fileUpload" style="display:none;" multiple />
+        		<input type="file" name="fileUpload" id="fileUpload" style="display:none;" multiple/>
 			</div>
-			<button type="button" class="btn btn-sm btn-primary" onclick="FUCN.noticeWriter();">작성</button>
+
+			<button type="button" class="btn btn-sm btn-primary" id="wilWrite" onclick="FUCN.noticeWriter();">작성</button>
 			<button type="button" class="btn btn-sm btn-warning" onclick="location.href='/hkGroup/board';">목록</button>
 		</form>
 	</div>
@@ -105,6 +107,7 @@
          
          function handleFileUpload(files,obj)
          {
+        	$("#wilWrite").attr("disabled", true);
             for (var i = 0; i < files.length; i++) 
             {
                  var fd = new FormData();
@@ -112,16 +115,13 @@
           
                  var status = new createStatusbar(obj); //Using this we can set progress.
                  status.setFileNameSize(files[i].name,files[i].size);
-                 
-                 FUCN.global.formData = fd;
-                 FUCN.global.status = status;
-                 //sendFileToServer(FUCN.global.formData, FUCN.global.status);
+                 sendFileToServer(fd,status);
+          
             }
          }
          
          var rowCount=0;
          function createStatusbar(obj){
-                 
              rowCount++;
              var row="odd";
              if(rowCount %2 ==0) row ="even";
@@ -130,9 +130,10 @@
              this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
              this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
              this.abort = $("<div class='abort'>중지</div>").appendTo(this.statusbar);
+             this.delFile = $("<div class='abort'>삭제</div>").appendTo(this.statusbar);
              
              obj.after(this.statusbar);
-          
+             
              this.setFileNameSize = function(name,size){
                  var sizeStr="";
                  var sizeKB = size/1024;
@@ -158,14 +159,75 @@
              
              this.setAbort = function(jqxhr){
                  var sb = this.statusbar;
+                 var fn = this.filename;
                  this.abort.click(function()
                  {
                      jqxhr.abort();
                      sb.hide();
                  });
+                 
+                 this.delFile.click(function(){
+                	 console.log(fn.text());
+                	 // 파일명 가져오기
+                	 var orgFileName = fn.text();
+                	 var data = {
+                			 ORGFN : orgFileName,
+                	 }
+                	 
+                	 $.ajax({
+                		url : '/hkGroup/fsDel',
+                		type : 'post',
+                		dataType : 'json',
+                		data: data,
+                		success: function(rs){
+                			 jqxhr.abort();
+                        	 sb.hide();
+                		}
+                	 });
+                 });
              }
          }
          
+         function sendFileToServer(formData,status)
+         {
+             var uploadURL = "/fileUpload/post"; //Upload URL
+             var extraData ={}; //Extra Data.
+             var jqXHR=$.ajax({
+                     xhr: function() {
+                     var xhrobj = $.ajaxSettings.xhr();
+                     if (xhrobj.upload) {
+                             xhrobj.upload.addEventListener('progress', function(event) {
+                                 var percent = 0;
+                                 var position = event.loaded || event.position;
+                                 var total = event.total;
+                                 if (event.lengthComputable) {
+                                     percent = Math.ceil(position / total * 100);
+                                 }
+                                 //Set progress
+                                 status.setProgress(percent);
+                             }, false);
+                         }
+                     return xhrobj;
+                 },
+                 url: uploadURL,
+                 type: "POST",
+                 contentType:false,
+                 processData: false,
+                 cache: false,
+                 data: formData,
+                 success: function(sc){
+                	 
+                     status.setProgress(100);
+                     
+          			 $("#wilWrite").attr("disabled", false);
+                     //$("#status1").append("File upload Done<br>");           
+                 }
+             }); 
+          
+             status.setAbort(jqXHR);
+         }
+         
      });
+
 </script>
 <%@ include file="/WEB-INF/views/layout/user-footer.jsp" %>

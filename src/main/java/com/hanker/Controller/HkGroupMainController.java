@@ -2,6 +2,8 @@ package com.hanker.Controller;
 
 import java.io.File;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,18 +16,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.NoticeFileVO;
 import com.hanker.DTO.RepleVO;
 import com.hanker.Service.HkGroupMainService;
+import com.hanker.Util.FilePrepareDel;
 
 @Controller
 public class HkGroupMainController {
 	
 	@Inject
 	private HkGroupMainService hkGroupMainService;
+	// orgfilename, file Size 
+	List<HashMap> FILEINFO = new ArrayList<HashMap>();
+	private int INDEX;
+	private String FSIZE;
 	
 	@RequestMapping(value="/hkGroup/board", method=RequestMethod.GET)
 	public String hkMain(Model model, HttpServletRequest req) throws Exception{
@@ -59,6 +68,22 @@ public class HkGroupMainController {
 		noticeBoardVO.setNbcontent(req.getParameter("CONTENT"));
 		
 		hkGroupMainService.noticeBoardWrite(noticeBoardVO);
+		
+		int nbno = hkGroupMainService.getNbno();
+		
+		NoticeFileVO nfVO = new NoticeFileVO();
+		for(int i = 0 ; i < FILEINFO.size() ; i++) {
+			nfVO.setNf_filename(FILEINFO.get(i).get("filename").toString());
+			nfVO.setNf_path(FILEINFO.get(i).get("path").toString());
+			nfVO.setNf_size(FILEINFO.get(i).get("size").toString());
+			nfVO.setNf_fullpath(nfVO.getNf_path() + nfVO.getNf_filename());
+			nfVO.setNbno(nbno);
+			
+			hkGroupMainService.fileUpload(nfVO);
+		}
+		
+		FILEINFO = new ArrayList<HashMap>();
+		
 		
 		return "jsonView";
 	}
@@ -126,42 +151,55 @@ public class HkGroupMainController {
 		return "jsonView";
 	}
 	
-	@RequestMapping(value="/fileUpload/post", method=RequestMethod.POST)
-	public String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
+	@RequestMapping(value = "/fileUpload/post") //ajax에서 호출하는 부분
+    @ResponseBody
+    public String upload(MultipartHttpServletRequest multipartRequest) throws Exception{ //Multipart로 받는다.
+        HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		Iterator<String> itr =  multipartRequest.getFileNames();
+        Iterator<String> itr =  multipartRequest.getFileNames();
         
-        String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX\\1.데이터"; //설정파일로 뺀다.
+        String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX"; //설정파일로 뺀다.
         
         while (itr.hasNext()) { //받은 파일들을 모두 돌린다.
             
-            /* 기존 주석처리
             MultipartFile mpf = multipartRequest.getFile(itr.next());
-            String originFileName = mpf.getOriginalFilename();
-            System.out.println("FILE_INFO: "+originFileName); //받은 파일 리스트 출력'
-            */
             
-            MultipartFile mpf = multipartRequest.getFile(itr.next());
-     
-            String originalFilename = mpf.getOriginalFilename(); //파일명
-            originalFilename = new String(originalFilename.getBytes("8859_1"), "utf-8");
+            String fileSize = String.valueOf(mpf.getSize());
             
+            String originalFilename = new String(mpf.getOriginalFilename().getBytes("8859_1"), "UTF-8"); //파일명
+            
+            map.put("filename", originalFilename);
+            map.put("size", fileSize);
+            map.put("path", filePath);
+            FILEINFO.add(map);
             String fileFullPath = filePath+"\\"+originalFilename; //파일 전체 경로
-     
             try {
                 //파일 저장
                 mpf.transferTo(new File(fileFullPath)); //파일저장 실제로는 service에서 처리
-                
-                System.out.println("originalFilename => "+originalFilename);
-                System.out.println("fileFullPath => "+fileFullPath);
      
             } catch (Exception e) {
-                System.out.println("postTempFile_ERROR======>"+fileFullPath);
                 e.printStackTrace();
             }
-                         
+            
+            
        }
+        
+       return "success";
+    }
+	
+	// 작성 전 Drag & Drop 파일리스트 삭제 처리
+	@RequestMapping(value="/hkGroup/fsDel", method=RequestMethod.POST)
+	public String fileServerDel(@RequestParam("ORGFN") String orgFileName) throws Exception{
+		String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX\\";
 		
-		return "success";
+		for(int i = 0 ; i < FILEINFO.size(); i++) {
+			if(FILEINFO.get(i).get("filename").equals(orgFileName)) {
+				FILEINFO.remove(i);
+			}
+		}
+		FilePrepareDel filePrepareDel = new FilePrepareDel();
+		filePrepareDel.FileServerDel(orgFileName, filePath);
+		
+		return "jsonView";
 	}
 }

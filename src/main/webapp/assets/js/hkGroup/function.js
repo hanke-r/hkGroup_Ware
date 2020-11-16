@@ -3,8 +3,7 @@
  */
 var FUCN = {
 	global : {
-		formData : [],
-		status : [],
+		
 	},
 
 	urlBoard : function() {
@@ -40,8 +39,8 @@ var FUCN = {
 			dataType : 'json',
 			data: data,
 			success:function(rs){
-				FUCN.sendFileToServer(FUCN.global.formData, FUCN.global.status);
 				
+				location.href="/hkGroup/board";
 			},
 			error:function(){
 				swal("내부 오류가 발생했습니다.", "", "error");
@@ -140,41 +139,7 @@ var FUCN = {
 		});
 	},
 	
-	 sendFileToServer: function(formData,status) {
-        var uploadURL = "/fileUpload/post"; //Upload URL
-        var extraData ={}; //Extra Data.
-        var jqXHR=$.ajax({
-                xhr: function() {
-                var xhrobj = $.ajaxSettings.xhr();
-                if (xhrobj.upload) {
-                        xhrobj.upload.addEventListener('progress', function(event) {
-                            var percent = 0;
-                            var position = event.loaded || event.position;
-                            var total = event.total;
-                            if (event.lengthComputable) {
-                                percent = Math.ceil(position / total * 100);
-                            }
-                            //Set progress
-                            status.setProgress(percent);
-                        }, false);
-                    }
-                return xhrobj;
-            },
-            url: uploadURL,
-            type: "POST",
-            contentType:false,
-            processData: false,
-            cache: false,
-            data: formData,
-            success: function(data){
-                status.setProgress(100);
-                location.href='/hkGroup/board';
-                //$("#status1").append("File upload Done<br>");           
-            }
-        }); 
-     
-        status.setAbort(jqXHR);
-    }
+
 	
 	
 	

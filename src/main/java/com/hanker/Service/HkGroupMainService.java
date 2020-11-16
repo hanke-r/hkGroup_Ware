@@ -3,6 +3,7 @@ package com.hanker.Service;
 import java.util.List;
 
 import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.NoticeFileVO;
 import com.hanker.DTO.RepleVO;
 
 public interface HkGroupMainService {
@@ -25,6 +26,10 @@ public interface HkGroupMainService {
 	public void boardViewCnt(int nbno) throws Exception;
 
 	public void nbUpdate(NoticeBoardVO nbVO) throws Exception;
+
+	public void fileUpload(NoticeFileVO nfVO) throws Exception;
+
+	public int getNbno() throws Exception;
 
 	
 

@@ -109,4 +109,34 @@
 		WHERE
 			nbno = #{nbno}
 	</update>
+	
+	<select id="getNbno" resultType="Integer">
+		<![CDATA[
+			SELECT
+				AUTO_INCREMENT
+			FROM
+				information_schema.tables
+			WHERE
+				table_name = 'notice_board' AND table_schema = DATABASE();
+		]]>
+	</select>
+	
+	<insert id="fileIns" parameterType="nfVO">
+		INSERT INTO
+			notice_file(
+				nbno,
+				nf_filename,
+				nf_path,
+				nf_fullpath,
+				nf_size
+			)
+			VALUES(
+				#{nbno},
+				#{nf_filename},
+				#{nf_path},
+				#{nf_fullpath},
+				#{nf_size}
+			)
+	</insert>
+	
 </mapper>

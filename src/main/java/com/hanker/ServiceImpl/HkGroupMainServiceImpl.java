@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.hanker.DAO.HkGroupMainDAO;
 import com.hanker.DTO.NoticeBoardVO;
+import com.hanker.DTO.NoticeFileVO;
 import com.hanker.DTO.RepleVO;
 import com.hanker.Service.HkGroupMainService;
 
@@ -60,6 +61,17 @@ public class HkGroupMainServiceImpl implements HkGroupMainService{
 	@Override
 	public void nbUpdate(NoticeBoardVO nbVO) throws Exception {
 		hkGroupMainDAO.nbUpdate(nbVO);
+	}
+
+	@Override
+	public void fileUpload(NoticeFileVO nfVO) throws Exception {
+		hkGroupMainDAO.fileIns(nfVO);
+	}
+
+	@Override
+	public int getNbno() throws Exception {
+		// TODO Auto-generated method stub
+		return hkGroupMainDAO.getNbno();
 	}
 
 	
