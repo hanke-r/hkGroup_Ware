@@ -51,7 +51,8 @@ public class HkGroupMainController {
 	
 	@RequestMapping(value="/hkGroup/boardWrite", method=RequestMethod.GET)
 	public void boardWrite(Model model, Principal principal) throws Exception{
-
+		FILEINFO = new ArrayList<HashMap>();
+		
 		String username = principal.getName();
 		
 		String name = hkGroupMainService.getWriter(username);
@@ -81,9 +82,6 @@ public class HkGroupMainController {
 			
 			hkGroupMainService.fileUpload(nfVO);
 		}
-		
-		FILEINFO = new ArrayList<HashMap>();
-		
 		
 		return "jsonView";
 	}

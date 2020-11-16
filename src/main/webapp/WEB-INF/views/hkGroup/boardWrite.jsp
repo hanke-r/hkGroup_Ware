@@ -34,8 +34,12 @@
 				<textarea class="form-control" rows="5" name="content" id="summernote"></textarea>
 			</div>
 			
-			<div class="mb-3">
-				<div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
+			<div class="mb-3" id="DragForm" style="height:33px">
+				<a href="javascript:void(0);" id="dfOpen"><span></span></a>
+			</div>
+			
+			<div class="mb-3" id="DragBox">
+				<div id="fileUpload" style="width: 1020px;" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
         		<input type="file" name="fileUpload" id="fileUpload" style="display:none;" multiple/>
 			</div>
 
@@ -59,6 +63,11 @@
 	$(function() {
 		// 메뉴 선택 css
 		$("#notice").addClass("liActive");
+		$("#DragBox").hide();
+		
+		$("#dfOpen").click(function(){
+			$("#DragBox").show();
+		});
 	});
 	
 	 $(document).ready(function(){
@@ -94,10 +103,6 @@
          $(document).on('drop', function (e){
              e.stopPropagation();
              e.preventDefault();
-         });
-         //drag 영역 클릭시 파일 선택창
-         objDragAndDrop.on('click',function (e){
-             $('input[type=file]').trigger('click');
          });
 
          $('input[type=file]').on('change', function(e) {
@@ -227,6 +232,9 @@
              status.setAbort(jqXHR);
          }
          
+         function dragBoxShow(){
+        	 DragBox.show();
+         }
      });
 
 </script>
