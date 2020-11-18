@@ -26,6 +26,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				
 				<c:forEach items="${list }" var="noticeBoardVO" varStatus="status">
 					<tr id="memStatus">
 						<td>${status.count }</td>
@@ -33,6 +34,10 @@
 						<td>
 							<span onclick="location.href='/hkGroup/boardView?nbno=${noticeBoardVO.nbno}';" style="cursor: pointer;">
 								<b>${noticeBoardVO.nbtitle }</b>
+								<c:set var="stat" value="${noticeBoardVO.nb_fstat }" />
+									<c:if test="${stat eq '1' }">
+										<i class="fas fa-folder-open" style="color:#f0cf6f;"></i>
+									</c:if>
 							</span>
 						</td>
 						<td>${noticeBoardVO.nbviewcnt }</td>

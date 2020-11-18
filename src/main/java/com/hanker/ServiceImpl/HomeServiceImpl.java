@@ -55,4 +55,9 @@ public class HomeServiceImpl implements HomeService{
 		return homeDAO.dateVisitNum(time1);
 	}
 
+	@Override
+	public HkVisitVO monMaxVistMem() throws Exception {
+		return homeDAO.monMaxVistMem();
+	}
+
 }

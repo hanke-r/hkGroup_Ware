@@ -81,9 +81,17 @@ public class HomeController {
 			lmap.put("day"+i, time1);
 		}
 		
+		// 이번달 최다 접속자 수
+		HkVisitVO hkVisitVO = new HkVisitVO();
+		hkVisitVO = homeService.monMaxVistMem();
+		
 		model.addAttribute("RS", map);
 		model.addAttribute("CHART", tmap);
 		model.addAttribute("DAY", lmap);
+		
+		//최다 접속자
+		model.addAttribute("BMEM", hkVisitVO);
+		
 		return "home";
 	}
 }

@@ -45,6 +45,10 @@ public class HomeDAO {
 	public String dateVisitNum(String time1) throws Exception {
 		return sql.selectOne("homeMapper.dateVisitNum", time1);
 	}
+
+	public HkVisitVO monMaxVistMem() throws Exception {
+		return sql.selectOne("homeMapper.monMaxVistMem");
+	}
 	
 	
 }

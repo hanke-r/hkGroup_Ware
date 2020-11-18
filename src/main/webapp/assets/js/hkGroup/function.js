@@ -83,7 +83,6 @@ var FUCN = {
 			dataType : 'json',
 			data :data,
 			success:function(rs){
-				console.log(rs.SC.length);
 				var html = "";
 				$("#reView").html("");
 				for(var i = 0; i < rs.SC.length ; i++){
@@ -140,7 +139,22 @@ var FUCN = {
 	},
 	
 
-	
+	fileDownload: function(nfno, fileName, path){
+		var data={
+				NFNO : nfno,
+				FILENAME: fileName,
+				PATH : path
+		}
+		
+		$.ajax({
+			url: '../hkGroup/fileDown',
+			type: 'get',
+			data: data,
+			success:function(rs){
+				location.href="/hkGroup/fileDown?NFNO="+nfno+"&FILENAME="+fileName+"&PATH="+path;
+			}
+		});
+	},
 	
 	
 

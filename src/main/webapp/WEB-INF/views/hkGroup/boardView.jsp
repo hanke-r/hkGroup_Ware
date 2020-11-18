@@ -49,6 +49,27 @@
 				</div>
 			</div>
 			
+			<div class="mb-3">
+				<label for="fileList">파일리스트</label>
+				<div id="boardFileList">
+					<c:forEach items="${NBFILE }" var="nfVO" varStatus="status">
+						<span id="fileIcon">
+							<i class="fas fa-file" style="color: #f0cf6f;"></i>
+							<b>${status.count }</b>
+						</span>
+						<span id="fileName">
+							 ${nfVO.nf_filename } 
+						</span>
+						<span id="fileSize">
+							${nfVO.nf_size }byte
+							<a style="cursor:pointer;" onclick="FUCN.fileDownload('${nfVO.nfno }','${nfVO.nf_filename }', '${nfVO.nf_path }');"><b>[ 다운 ]</b></a>
+						</span>
+						<br/>
+					</c:forEach>
+				</div>
+			</div>
+			
+			
 			
 			<c:set var="SC" value="${SC }" />
 			<c:if test = "${SC eq 'SUCCESS' }">

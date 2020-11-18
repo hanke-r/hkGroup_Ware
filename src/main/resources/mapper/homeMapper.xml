@@ -77,4 +77,20 @@
 				date_format(visit_time, '%Y%m%d') = #{time1}
 		]]>
 	</select>
+	
+	<select id="monMaxVistMem" resultType="hkVisitVO">
+		<![CDATA[
+			SELECT
+				visit_id, count(*) as cnt
+			FROM
+				hk_visit
+			WHERE
+				visit_time BETWEEN DATE_ADD(now(), INTERVAL -1 MONTH) AND NOW()
+			GROUP BY
+				visit_id
+			ORDER BY
+				cnt DESC
+			LIMIT 0,1
+		]]>
+	</select>
 </mapper>

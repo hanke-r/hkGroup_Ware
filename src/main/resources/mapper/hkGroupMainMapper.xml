@@ -11,10 +11,12 @@
 				nbwriter,
 				nbcontent,
 				nbviewcnt,
+				nb_fstat,
 				regdate
 			FROM
 				notice_board
-		]]>
+			ORDER BY nbno DESC
+		]]> 
 	</select>
 	
 	<select id="getWriter" resultType="String">
@@ -112,12 +114,7 @@
 	
 	<select id="getNbno" resultType="Integer">
 		<![CDATA[
-			SELECT
-				AUTO_INCREMENT
-			FROM
-				information_schema.tables
-			WHERE
-				table_name = 'notice_board' AND table_schema = DATABASE();
+			SELECT max(nbno) from notice_board
 		]]>
 	</select>
 	
@@ -138,5 +135,22 @@
 				#{nf_size}
 			)
 	</insert>
+	
+	<select id="nbFileList" resultType="nfVO">
+		<![CDATA[
+			SELECT
+				*
+			FROM
+				notice_file
+			WHERE
+				nbno = #{nbno}
+		]]>
+	</select>
+	
+	<update id="updNoBoard" parameterType="Integer">
+		UPDATE notice_board
+		SET nb_fstat = 1
+		WHERE nbno = #{nbno}
+	</update>
 	
 </mapper>

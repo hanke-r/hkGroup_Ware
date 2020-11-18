@@ -9,10 +9,17 @@ public class NoticeBoardVO {
 	private String nbwriter;
 	private String nbcontent;
 	private String nbviewcnt;
+	private String nb_fstat;
 	private Date regdate;
 	
 	
 	
+	public String getNb_fstat() {
+		return nb_fstat;
+	}
+	public void setNb_fstat(String nb_fstat) {
+		this.nb_fstat = nb_fstat;
+	}
 	public String getNbwriter() {
 		return nbwriter;
 	}

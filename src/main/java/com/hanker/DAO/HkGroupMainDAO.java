@@ -61,6 +61,14 @@ public class HkGroupMainDAO {
 		return sql.selectOne("hkGroupMainMapper.getNbno");
 	}
 
+	public List<NoticeFileVO> nbFileList(int nbno) throws Exception{
+		return sql.selectList("hkGroupMainMapper.nbFileList", nbno);
+	}
+
+	public void updNoBoard(int nbno) throws Exception{
+		sql.update("hkGroupMainMapper.updNoBoard", nbno);
+	}
+
 	
 
 }

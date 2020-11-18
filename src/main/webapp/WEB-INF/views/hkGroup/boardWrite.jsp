@@ -35,7 +35,8 @@
 			</div>
 			
 			<div class="mb-3" id="DragForm" style="height:33px">
-				<a href="javascript:void(0);" id="dfOpen"><span></span></a>
+				<a href="javascript:void(0);" id="dfOpen" style="display:block;"><span></span></a>
+				<a href="javasciprt:void(0);" id="dfClose" style="display: none;"><span></span></a>
 			</div>
 			
 			<div class="mb-3" id="DragBox">
@@ -67,6 +68,14 @@
 		
 		$("#dfOpen").click(function(){
 			$("#DragBox").show();
+			$("#dfOpen").css("display", "none");
+			$("#dfClose").css("display", "block");
+		});
+		
+		$("#dfClose").click(function(){
+			$("#DragBox").hide();
+			$("#dfClose").css("display", "none");
+			$("#dfOpen").css("display", "block");
 		});
 	});
 	

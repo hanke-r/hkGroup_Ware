@@ -246,11 +246,12 @@ li>a {
 
 #DragForm>a span {
 	position: relative;
-	top: 20px;
+	top: -35px;
 	left: 50%;
 }
 
-#DragForm>a span::after {
+
+#dfOpen>span::after {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -264,3 +265,86 @@ li>a {
 	transform: rotate(-45deg);
 	box-sizing: border-box;
 }
+
+#dfClose>span::after{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	content: '';
+	width: 16px;
+	height: 16px;
+	margin: -12px 0 0 -8px;
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	-webkit-transform: rotate(135deg);
+	transform: rotate(135deg);
+	box-sizing: border-box;
+}
+
+#boardFileList {
+	border: 1px solid #d5dbe0;
+	border-radius: 4px;
+	display: block;
+	
+}
+
+#fileIcon{
+	margin-left: 1%;
+}
+
+#fileName{
+	margin-left: 1%;
+}
+
+#fileSize{
+	float: right;
+    margin-right: 2%;
+}
+
+/* slide2 */
+body {
+    background:
+radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#282828;
+background-size:16px 16px;
+}
+
+
+.neon_effect p {
+  text-align: center;
+  font-size: 2vw;
+  margin: 50px;
+  transition: all 0.4s;
+}
+.neon_effect p:nth-child(1){
+  color: #fff;
+  font-family: Monoton;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+.neon_effect p:nth-child(2){
+  color: #fff;
+  font-family: Lobster;
+  animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+  }
+}
+@keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+

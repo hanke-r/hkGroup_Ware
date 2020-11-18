@@ -31,6 +31,10 @@ public interface HkGroupMainService {
 
 	public int getNbno() throws Exception;
 
+	public List<NoticeFileVO> nbFileList(int nbno) throws Exception;
+
+	public void updNoBoard(int nbno) throws Exception;
+
 	
 
 

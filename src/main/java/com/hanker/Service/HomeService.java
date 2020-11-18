@@ -22,4 +22,6 @@ public interface HomeService {
 	public int todayVisitCount() throws Exception;
 
 	public String dateVisitNum(String time1) throws Exception;
+
+	public HkVisitVO monMaxVistMem() throws Exception;
 }

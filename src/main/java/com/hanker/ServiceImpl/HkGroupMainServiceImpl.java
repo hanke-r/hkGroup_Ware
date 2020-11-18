@@ -74,5 +74,16 @@ public class HkGroupMainServiceImpl implements HkGroupMainService{
 		return hkGroupMainDAO.getNbno();
 	}
 
+	@Override
+	public List<NoticeFileVO> nbFileList(int nbno) throws Exception {
+		// TODO Auto-generated method stub
+		return hkGroupMainDAO.nbFileList(nbno);
+	}
+
+	@Override
+	public void updNoBoard(int nbno) throws Exception {
+		hkGroupMainDAO.updNoBoard(nbno);
+	}
+
 	
 }

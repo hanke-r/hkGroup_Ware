@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import com.hanker.DTO.NoticeBoardVO;
 import com.hanker.DTO.NoticeFileVO;
 import com.hanker.DTO.RepleVO;
 import com.hanker.Service.HkGroupMainService;
+import com.hanker.Util.FileDownload;
 import com.hanker.Util.FilePrepareDel;
 
 @Controller
@@ -40,7 +42,6 @@ public class HkGroupMainController {
 	public String hkMain(Model model, HttpServletRequest req) throws Exception{
 		
 		HttpSession session = req.getSession();
-		
 		
 		List<NoticeBoardVO> list = hkGroupMainService.listAll();
 		
@@ -70,17 +71,26 @@ public class HkGroupMainController {
 		
 		hkGroupMainService.noticeBoardWrite(noticeBoardVO);
 		
-		int nbno = hkGroupMainService.getNbno();
+		int noticeBoardNo = hkGroupMainService.getNbno();
 		
 		NoticeFileVO nfVO = new NoticeFileVO();
-		for(int i = 0 ; i < FILEINFO.size() ; i++) {
-			nfVO.setNf_filename(FILEINFO.get(i).get("filename").toString());
-			nfVO.setNf_path(FILEINFO.get(i).get("path").toString());
-			nfVO.setNf_size(FILEINFO.get(i).get("size").toString());
-			nfVO.setNf_fullpath(nfVO.getNf_path() + nfVO.getNf_filename());
-			nfVO.setNbno(nbno);
+		try {
+			for(int i = 0 ; i < FILEINFO.size() ; i++) {
+				nfVO.setNf_filename(FILEINFO.get(i).get("filename").toString());
+				nfVO.setNf_path(FILEINFO.get(i).get("path").toString());
+				nfVO.setNf_size(FILEINFO.get(i).get("size").toString());
+				nfVO.setNf_fullpath(nfVO.getNf_path() + nfVO.getNf_filename());
+				nfVO.setNbno(noticeBoardNo);
+				
+				hkGroupMainService.fileUpload(nfVO);
+			}
+			// 파일 첨부 시 nb_fstat 0 → 1 변경
+			if(FILEINFO.size() >= 1) {
+				hkGroupMainService.updNoBoard(noticeBoardNo);
+			}
 			
-			hkGroupMainService.fileUpload(nfVO);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return "jsonView";
@@ -92,14 +102,18 @@ public class HkGroupMainController {
 		// 조회수
 		hkGroupMainService.boardViewCnt(nbno);
 		
+		// nb (Title, Content, Writer, ViewCnt, Regdate)
 		String username = principal.getName();
 		String name = hkGroupMainService.getWriter(username);
 		
 		NoticeBoardVO noticeBoardVO = new NoticeBoardVO();
 		noticeBoardVO = hkGroupMainService.noticeBoardView(nbno);
 		
-		model.addAttribute("NBVIEW", noticeBoardVO);
+		// nbFile
+		List<NoticeFileVO> nfVO = hkGroupMainService.nbFileList(nbno);
 		
+		model.addAttribute("NBVIEW", noticeBoardVO);
+		model.addAttribute("NBFILE", nfVO);
 		if(name.equals(noticeBoardVO.getNbwriter())) {
 			model.addAttribute("SC", "SUCCESS");
 		} else {
@@ -156,7 +170,7 @@ public class HkGroupMainController {
 		
         Iterator<String> itr =  multipartRequest.getFileNames();
         
-        String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX"; //설정파일로 뺀다.
+        String filePath = "D:/Han/95.프로젝트/HkGroupWare/19.EX"; //설정파일로 뺀다.
         
         while (itr.hasNext()) { //받은 파일들을 모두 돌린다.
             
@@ -170,7 +184,7 @@ public class HkGroupMainController {
             map.put("size", fileSize);
             map.put("path", filePath);
             FILEINFO.add(map);
-            String fileFullPath = filePath+"\\"+originalFilename; //파일 전체 경로
+            String fileFullPath = filePath+"/"+originalFilename; //파일 전체 경로
             try {
                 //파일 저장
                 mpf.transferTo(new File(fileFullPath)); //파일저장 실제로는 service에서 처리
@@ -197,6 +211,18 @@ public class HkGroupMainController {
 		}
 		FilePrepareDel filePrepareDel = new FilePrepareDel();
 		filePrepareDel.FileServerDel(orgFileName, filePath);
+		
+		return "jsonView";
+	}
+	
+	//파일 다운로드 처리
+	@ResponseBody
+	@RequestMapping(value="/hkGroup/fileDown", method=RequestMethod.GET)
+	public String fileDown(HttpServletRequest req, HttpServletResponse rep, Model model) throws Exception{
+
+		FileDownload fd = new FileDownload();
+		fd.eFileDownLoad(req, rep);
+		
 		
 		return "jsonView";
 	}
