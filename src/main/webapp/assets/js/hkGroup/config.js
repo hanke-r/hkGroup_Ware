@@ -36,12 +36,13 @@ var CONF = {
 				
 				for (var i = 0; i < array.length; i++) {
 					var cal = array[i].commit.author.date;
+					console.log(array[i].commit.message);
 					CONF.global.gitDate[i] = cal;
 					$(".confContainer").append(
 											"<div class='commitCon'><b class='fntSize'> "
 												+ max
 												+ ". "
-												+ array[i].commit.message
+												+ "<pre>" + array[i].commit.message + "</pre>"
 												+ "</b></div><div style='color: orange;margin-left: 87%;'>"
 												+ array[i].commit.author.date
 												+ "</div>");
