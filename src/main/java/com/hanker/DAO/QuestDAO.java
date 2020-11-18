@@ -31,6 +31,10 @@ public class QuestDAO {
 	public InqueryVO inqView(int inq_no) throws Exception{
 		return sql.selectOne("questMapper.inqView", inq_no);
 	}
+
+	public void inqReply(InqueryVO inqVO) throws Exception {
+		sql.update("questMapper.inqReply", inqVO);
+	}
 	
 	
 }

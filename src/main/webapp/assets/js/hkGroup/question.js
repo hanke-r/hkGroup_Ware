@@ -37,5 +37,22 @@ var QUES = {
 		});
 	},
 	
+	reAnsChck: function(inqNum){
+		
+		var data = {
+				INQ_NO : inqNum,
+				RECONTENT : $("#qaAns").val(),
+		};
+		
+		$.ajax({
+			url : '../question/inqReply',
+			type : 'post',
+			dataType : 'json',
+			data: data,
+			success:function(){
+				location.href="/question/qsBoardMain";
+			}
+		});
+	}
 	
 }

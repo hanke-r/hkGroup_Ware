@@ -11,10 +11,17 @@ public class InqueryVO {
 	private String inq_email;
 	private String inq_writer;
 	private String inq_answer;
+	private String inq_reply;
 	private Date regdate;
 	
 	
 	
+	public String getInq_reply() {
+		return inq_reply;
+	}
+	public void setInq_reply(String inq_reply) {
+		this.inq_reply = inq_reply;
+	}
 	public String getInq_email() {
 		return inq_email;
 	}

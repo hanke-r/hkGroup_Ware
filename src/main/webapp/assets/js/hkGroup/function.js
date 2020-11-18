@@ -39,7 +39,6 @@ var FUCN = {
 			dataType : 'json',
 			data: data,
 			success:function(rs){
-				
 				location.href="/hkGroup/board";
 			},
 			error:function(){

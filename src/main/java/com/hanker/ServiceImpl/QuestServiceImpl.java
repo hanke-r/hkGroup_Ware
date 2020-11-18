@@ -37,5 +37,10 @@ public class QuestServiceImpl implements QuestService{
 		return questDAO.inqView(inq_no);
 	}
 
+	@Override
+	public void inqReply(InqueryVO inqVO) throws Exception {
+		questDAO.inqReply(inqVO);
+	}
+
 }
 	

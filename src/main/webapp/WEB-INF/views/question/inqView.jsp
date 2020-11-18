@@ -17,7 +17,7 @@
 <div id="wrapper">
 	<div class="notice-title">
 		<h2 class="pageTitle pos-rel">
-			<i class="fas fa-bullhorn"></i> 자유게시판
+			<i class="fas fa-bullhorn"></i> 문의사항
 		</h2>
 	</div>
 	
@@ -69,7 +69,32 @@
 	</div>
 	
 	<div class="notice-reple">
-		
+		<form>
+			<c:choose>
+				<c:when test="${INQ.inq_answer == 0 }">
+					<div class="mb-3">
+						<div id="answerTab">
+							<label for="title">답변</label>
+							<input type="text" class="form-control" id="qaAns" style="height:200px;">
+						</div>
+						
+						
+					</div>
+					<div class="mb-3">
+						<button type="button" class="btn btn-default" style="margin-left: 94.7%;" onclick="QUES.reAnsChck('${INQ.inq_no}');">답변</button>
+					</div>
+				</c:when>
+				<c:when test="${INQ.inq_answer == 1 }">
+					<div class="mb-3">
+						<div id="answerTab">
+							<label for="title">답변</label>
+							<input type="text" class="form-control" id="qaAns" style="height:200px;" value="<c:out value='${INQ.inq_reply }' />" readonly /> 
+						</div>
+					</div>
+				</c:when>
+			</c:choose>
+			
+		</form>
 	</div>
 	
 	

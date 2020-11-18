@@ -83,4 +83,16 @@ public class QuestionController {
 		
 		return "question/inqView";
 	}
+	
+	@RequestMapping(value="/question/inqReply", method=RequestMethod.POST)
+	public String inqReply(Model model, @RequestParam("INQ_NO") int inq_no, @RequestParam("RECONTENT") String inq_reply) throws Exception{
+		
+		InqueryVO inqVO = new InqueryVO();
+		inqVO.setInq_no(inq_no);
+		inqVO.setInq_reply(inq_reply);
+		
+		questService.inqReply(inqVO);
+		
+		return "jsonView";
+	}
 }

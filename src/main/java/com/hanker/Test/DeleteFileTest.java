@@ -5,8 +5,8 @@ import java.io.File;
 public class DeleteFileTest {
 	
 	public static void main(String[] ar) {
-		String filePath = "D:\\\\Han\\\\95.프로젝트\\\\HkGroupWare\\\\19.EX\\\\";
-		String orgName = "ajax-loader.gif";
+		String filePath = "E:/DATA/";
+		String orgName = "Home.PNG";
 		File file = new File(filePath+orgName);
 		
 		if( file.exists() ){ 

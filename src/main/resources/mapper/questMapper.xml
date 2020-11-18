@@ -48,4 +48,14 @@
 		WHERE
 			inq_no = #{inq_no}
 	</select>
+	
+	<update id="inqReply" parameterType="inqVO">
+		UPDATE
+			inq_board
+		SET
+			inq_reply = #{inq_reply},
+			inq_answer = 1
+		WHERE
+			inq_no = #{inq_no}
+	</update>
 </mapper>

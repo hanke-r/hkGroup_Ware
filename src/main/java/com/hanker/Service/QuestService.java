@@ -15,4 +15,6 @@ public interface QuestService {
 
 	public InqueryVO inqView(int inq_no) throws Exception;
 
+	public void inqReply(InqueryVO inqVO) throws Exception;
+
 }

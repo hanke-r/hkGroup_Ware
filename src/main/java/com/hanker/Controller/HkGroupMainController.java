@@ -170,7 +170,8 @@ public class HkGroupMainController {
 		
         Iterator<String> itr =  multipartRequest.getFileNames();
         
-        String filePath = "D:/Han/95.프로젝트/HkGroupWare/19.EX"; //설정파일로 뺀다.
+        //String filePath = "D:/Han/95.프로젝트/HkGroupWare/19.EX"; //설정파일로 뺀다.
+        String filePath = "E:/DATA"; //설정파일로 뺀다.
         
         while (itr.hasNext()) { //받은 파일들을 모두 돌린다.
             
@@ -202,8 +203,9 @@ public class HkGroupMainController {
 	// 작성 전 Drag & Drop 파일리스트 삭제 처리
 	@RequestMapping(value="/hkGroup/fsDel", method=RequestMethod.POST)
 	public String fileServerDel(@RequestParam("ORGFN") String orgFileName) throws Exception{
-		String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX\\";
-		
+		//String filePath = "D:\\Han\\95.프로젝트\\HkGroupWare\\19.EX\\";
+		String filePath = "E:/DATA/";
+		System.out.println(FILEINFO);
 		for(int i = 0 ; i < FILEINFO.size(); i++) {
 			if(FILEINFO.get(i).get("filename").equals(orgFileName)) {
 				FILEINFO.remove(i);
