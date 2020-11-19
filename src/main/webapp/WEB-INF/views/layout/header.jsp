@@ -63,8 +63,8 @@ Released   : 20140330
 		</div>
 		<div id="menu">
 			<ul style="margin-bottom:-5px;">
-				<li class="liActive"><a href="/admin/home" accesskey="1" title="">Home</a></li>
-				<li class="liDisabled"><a href="/admin/adminPage" title="">회원관리</a></li>
+				<li id="adMain" class="liActive"><a href="/admin/home" accesskey="1" title="">Home</a></li>
+				<li id="memMang"><a href="/admin/adminPage" title="">회원관리</a></li>
 				<li class="liDisabled"><a href="#" accesskey="3" title=""></a></li>
 				<li class="liDisabled"><a href="#" accesskey="4" title=""></a></li>
 				<li class="liDisabled"><a href="#" accesskey="5" title=""></a></li>

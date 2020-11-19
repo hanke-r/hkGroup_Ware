@@ -69,7 +69,16 @@
 							<fmt:formatDate value="${memberVO.regdate }" pattern="yyyy년 MM월 dd일 EE요일" />
 						</td>
 						<td>
-							<button type="button" id="memOptChange" onclick="MANAGE.memOptionChange('${memberVO.username}');" class="btn btn-sm btn-primary">승인</button>
+							<c:choose>
+								<c:when test="${memberVO.enabled == 1 }">
+									<button type="button" class="btn btn-sm btn-primary" disabled="disabled">승인</button>
+								</c:when>
+							</c:choose>
+							<c:choose>
+								<c:when test="${memberVO.enabled == 0 }">
+									<button type="button" id="memOptChange" onclick="MANAGE.memOptionChange('${memberVO.username}');" class="btn btn-sm btn-primary">승인</button>
+								</c:when>
+							</c:choose>
 							<button type="button" id="memExpire" onclick="MANAGE.memExpire('${memberVO.username}', '${memberVO.authority }')" class="btn btn-sm btn-danger">강퇴</button>
 						</td>
 					</tr>
@@ -80,6 +89,9 @@
 </div>
 
 <script>
+
+	$("#memMang").addClass("liActive");
+	$("#adMain").removeClass("liActive");
 	$(function(){
 		
 		var lang_kor ={
